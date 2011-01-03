@@ -1,0 +1,180 @@
+// !$*UTF8*$!
+{
+	256AC3D80F4B6AC300CF3369 /* Golden_TriangleAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 492}}";
+			sepNavSelRange = "{213, 0}";
+			sepNavVisRange = "{0, 368}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* Golden_TriangleAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 546}}";
+			sepNavSelRange = "{875, 0}";
+			sepNavVisRange = "{59, 1130}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 76EDABBF128DFC900017BDF4 /* Golden Triangle */;
+		activeTarget = 8D1107260486CEB800E47090 /* Golden Triangle */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Golden Triangle */,
+		);
+		codeSenseManager = 76EDABCC128DFCB20017BDF4 /* Code sense */;
+		executables = (
+			76EDABBF128DFC900017BDF4 /* Golden Triangle */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					775,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 315778608;
+			PBXWorkspaceStateSaveDate = 315778608;
+		};
+		perUserProjectItems = {
+			76069F6712D2696D001EE322 /* PBXTextBookmark */ = 76069F6712D2696D001EE322 /* PBXTextBookmark */;
+			76069F6812D2696D001EE322 /* PBXTextBookmark */ = 76069F6812D2696D001EE322 /* PBXTextBookmark */;
+			76069F6912D2696D001EE322 /* PBXTextBookmark */ = 76069F6912D2696D001EE322 /* PBXTextBookmark */;
+			76EDAC09128F1AF70017BDF4 /* PBXTextBookmark */ = 76EDAC09128F1AF70017BDF4 /* PBXTextBookmark */;
+			76EDAC0A128F1AF70017BDF4 /* PBXTextBookmark */ = 76EDAC0A128F1AF70017BDF4 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 76EDABCB128DFCB20017BDF4 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	76069F6712D2696D001EE322 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* Golden_TriangleAppDelegate.m */;
+		name = "Golden_TriangleAppDelegate.m: 32";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1130;
+		vrLoc = 59;
+	};
+	76069F6812D2696D001EE322 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76EDABD6128DFDCB0017BDF4 /* MyOpenGLView.h */;
+		name = "MyOpenGLView.h: 12";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 0;
+	};
+	76069F6912D2696D001EE322 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76EDABD7128DFDCB0017BDF4 /* MyOpenGLView.m */;
+		name = "MyOpenGLView.m: 18";
+		rLen = 8;
+		rLoc = 302;
+		rType = 0;
+		vrLen = 572;
+		vrLoc = 0;
+	};
+	76EDABBF128DFC900017BDF4 /* Golden Triangle */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Golden Triangle";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	76EDABCB128DFCB20017BDF4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	76EDABCC128DFCB20017BDF4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	76EDABD6128DFDCB0017BDF4 /* MyOpenGLView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {953, 487}}";
+			sepNavSelRange = "{214, 0}";
+			sepNavVisRange = "{0, 262}";
+		};
+	};
+	76EDABD7128DFDCB0017BDF4 /* MyOpenGLView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {953, 507}}";
+			sepNavSelRange = "{302, 8}";
+			sepNavVisRange = "{0, 572}";
+			sepNavWindowFrame = "{{15, 600}, {1069, 273}}";
+		};
+	};
+	76EDAC09128F1AF70017BDF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76EDABD7128DFDCB0017BDF4 /* MyOpenGLView.m */;
+		name = "MyOpenGLView.m: 9";
+		rLen = 16;
+		rLoc = 158;
+		rType = 0;
+		vrLen = 555;
+		vrLoc = 0;
+	};
+	76EDAC0A128F1AF70017BDF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* Golden_TriangleAppDelegate.h */;
+		name = "Golden_TriangleAppDelegate.h: 10";
+		rLen = 0;
+		rLoc = 213;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
+	};
+	8D1107260486CEB800E47090 /* Golden Triangle */ = {
+		activeExec = 0;
+		executables = (
+			76EDABBF128DFC900017BDF4 /* Golden Triangle */,
+		);
+	};
+}

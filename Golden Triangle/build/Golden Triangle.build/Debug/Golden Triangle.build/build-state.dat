@@ -1,0 +1,259 @@
+TGolden Triangle
+v7
+r0
+t315778941.066767
+cCheck dependencies
+cProcessInfoPlistFile "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist" Golden_Triangle-Info.plist
+cCopyStringsFile "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+cCompileXIB "/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib"
+cProcessPCH /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch.gch Golden_Triangle_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/main.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden_TriangleAppDelegate.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/MyOpenGLView.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cLd "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle" normal x86_64
+cTouch "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app"
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004C5342BA00000000000000EE
+t1280524986
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
+c000000004C44D4240000000000025B59
+t1279579172
+s154457
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL
+c000000004C5342AD000000000000DB14
+t1280524973
+s56084
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/InfoPlist.strings
+c000000004CDDC50F000000000000002D
+t1289602319
+s45
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib
+c000000004CDE1DB7000000000002C34E
+t1289625015
+s181070
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.h
+c000000004CDE252A0000000000000170
+t1289626922
+s368
+i<Cocoa/Cocoa.h>
+i"MyOpenGLView.h"
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m
+c000000004CDE25FC00000000000004A5
+t1289627132
+s1189
+i"Golden_TriangleAppDelegate.h"
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle_Prefix.pch
+c000000004CDDC50F00000000000000A1
+t1289602319
+s161
+i<Cocoa/Cocoa.h>
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.h
+c000000004CDE1D320000000000000106
+t1289624882
+s262
+i<Cocoa/Cocoa.h>
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m
+c000000004D222FF9000000000000023C
+t1294086137
+s572
+i"MyOpenGLView.h"
+i<OpenGL/gl.h>
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app
+t1294086141
+s102
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist
+t1294085812
+s910
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle
+t1294086140
+s16640
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/PkgInfo
+t1294085812
+s8
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1289603517
+s92
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/MainMenu.nib
+t1294085814
+s35140
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden Triangle.LinkFileList
+c000000004CDDC9BC00000000000001CE
+t1289603516
+s462
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden_TriangleAppDelegate.o
+t1294085823
+s27356
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/MyOpenGLView.o
+t1294086140
+s14416
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/main.o
+t1294085823
+s5032
+
+N/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m
+c000000004CDDC50F0000000000000107
+t1289602319
+s263
+i<Cocoa/Cocoa.h>
+
+N/var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch.gch
+t1294085822
+s54265616
+
+N/var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-gzilblanqwemeudpskxbrgmpvbsr/Golden_Triangle_Prefix.pch.gch
+t1289603522
+s54212368
+
+NGolden_Triangle-Info.plist
+c000000004CDDC50F00000000000003EA
+t1289602319
+s1002
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies315778939#315778939#0(0"0(0#1#0"8618698592#0"0#
+
+CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden_TriangleAppDelegate.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s315778623.078776
+e315778623.669732
+r1
+xCompileC
+xbuild/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden_TriangleAppDelegate.o
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m315778623#315778623#0(0"0(0#0#87"/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m8603519776#1896"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/include" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_TriangleAppDelegate.m" -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden_TriangleAppDelegate.o"0#
+
+CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/MyOpenGLView.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s315778939.100419
+e315778940.424002
+r1
+xCompileC
+xbuild/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/MyOpenGLView.o
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@81"Compile /Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m315778939#315778940#0(0"0(0#0#73"/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m8615794784#1868"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/include" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/MyOpenGLView.m" -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/MyOpenGLView.o"0#
+
+CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/main.o" "/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s315778623.077737
+e315778623.462118
+r1
+xCompileC
+xbuild/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/main.o
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@73"Compile /Users/alexbullard/Programming/objective-c/Golden Triangle/main.m315778623#315778623#0(0"0(0#0#65"/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m8598779008#1852"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/include" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/main.m" -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/main.o"0#
+
+CCompileXIB "/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib"
+s315778612.614432
+e315778614.464510
+r1
+xCompileXIB
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib
+o2011-01-03 15:16:54.353 ibtool[17994:607] *** WARNING: Method attributes in class NSOpenGLPixelFormat is obsolete and will be removed in a future release. ***
+o2011-01-03 15:16:54.355 ibtool[17994:607] *** WARNING: Method setAttributes: in class NSOpenGLPixelFormat is obsolete and will be removed in a future release. ***
+o/* com.apple.ibtool.document.warnings */
+o/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib:535: warning: NSOpenGLViews are not supported in windows with "One Shot" memory enabled.
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib315778612#315778614#0(538"2011-01-03 15:16:54.353 ibtool[17994:607] *** WARNING: Method attributes in class NSOpenGLPixelFormat is obsolete and will be removed in a future release. ***2011-01-03 15:16:54.355 ibtool[17994:607] *** WARNING: Method setAttributes: in class NSOpenGLPixelFormat is obsolete and will be removed in a future release. ***/* com.apple.ibtool.document.warnings *//Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib:535: warning: NSOpenGLViews are not supported in windows with "One Shot" memory enabled.1(22@74"NSOpenGLViews are not supported in windows with "One Shot" memory enabled.315778614#18446744073709551615#0#0(6@85"/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib311317815#535#0#535#0#0"0(0#0#85"/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib8600010208#438"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/MainMenu.nib" "/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/MainMenu.xib" --sdk /Developer/SDKs/MacOSX10.6.sdk0#
+
+CCopyStringsFile "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+s311296316.554808
+e311296317.028022
+r1
+xCopyStringsFile
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings311296316#311296317#0(0"0(0#0#90"/Users/alexbullard/Programming/objective-c/Golden Triangle/English.lproj/InfoPlist.strings4300885448#417"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj"0#
+
+CLd "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle" normal x86_64
+s315778940.424095
+e315778941.063593
+r1
+xLd
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle
+xnormal
+xx86_64
+lSLF07#2@126"Link /Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle315778940#315778941#0(0"0(0#0#0"8618812832#710"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" -filelist "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden Triangle.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -framework OpenGL -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle"0#
+
+CProcessInfoPlistFile "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist" Golden_Triangle-Info.plist
+s315778612.554346
+e315778612.614240
+r1
+xProcessInfoPlistFile
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist
+xGolden_Triangle-Info.plist
+lSLF07#2@34"Process Golden_Triangle-Info.plist315778612#315778612#0(0"0(0#0#85"/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle-Info.plist7954874733706031104#400"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    builtin-infoPlistUtility Golden_Triangle-Info.plist -genpkginfo "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/PkgInfo" -expandbuildsettings -platform macosx -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist"0#
+
+CProcessPCH /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch.gch Golden_Triangle_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s315778614.464749
+e315778623.077518
+r1
+xProcessPCH
+x/var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch.gch
+xGolden_Triangle_Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile Golden_Triangle_Prefix.pch315778614#315778623#0(0"0(0#0#85"/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle_Prefix.pch7598228290178212864#1728"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/include" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle_Prefix.pch" -o /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-envqlpotjxgqyucjcxozccatsovh/Golden_Triangle_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-gzilblanqwemeudpskxbrgmpvbsr/Golden_Triangle_Prefix.pch.gch Golden_Triangle_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s311296317.690051
+e311296322.934671
+r1
+xProcessPCH
+x/var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-gzilblanqwemeudpskxbrgmpvbsr/Golden_Triangle_Prefix.pch.gch
+xGolden_Triangle_Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile Golden_Triangle_Prefix.pch311296317#311296322#0(0"0(0#0#85"/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle_Prefix.pch4300885448#1728"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/include" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/Golden_Triangle_Prefix.pch" -o /var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-gzilblanqwemeudpskxbrgmpvbsr/Golden_Triangle_Prefix.pch.gch0#
+
+CTouch "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app"
+s315778941.063749
+e315778941.066728
+r1
+xTouch
+x/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app
+lSLF07#2@96"Touch /Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app315778941#315778941#0(0"0(0#0#0"8618615712#183"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    /usr/bin/touch -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app"0#
+
