@@ -10,8 +10,15 @@
 
 
 @interface MyOpenGLView : NSOpenGLView {
-
+	bool movingLeft;
+	bool movingRight;
+	bool movingUp;
+	bool movingDown;
 }
 
+- (void) moveLeft:(bool)move;
+- (void) moveRight:(bool)move;
+- (void) moveUp:(bool)move;
+- (void) moveDown:(bool)move;
 - (void) drawRect: (NSRect) bounds;
 @end

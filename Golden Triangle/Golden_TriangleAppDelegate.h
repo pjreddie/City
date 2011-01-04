@@ -10,10 +10,15 @@
 #include "MyOpenGLView.h"
 
 
-@interface Golden_TriangleAppDelegate : NSObject <NSApplicationDelegate> {
+@interface Golden_TriangleAppDelegate : NSResponder {
     NSWindow *window;
+	NSTimer *renderTimer;
+	MyOpenGLView *glView;
+
 }
 
+
 @property (assign) IBOutlet NSWindow *window;
+- (void) keyDown:(NSEvent *)theEvent;
 
 @end
