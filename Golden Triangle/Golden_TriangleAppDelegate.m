@@ -37,6 +37,9 @@
 	NSOpenGLPixelFormatAttribute attrs[] =
 	{
 		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAAccelerated,
+		NSOpenGLPFAColorSize, 32,
+		NSOpenGLPFADepthSize, 16,
 		0
 	};
 	NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
@@ -47,7 +50,7 @@
 	[fullScreenWindow makeKeyAndOrderFront:self];
 	[ fullScreenWindow makeFirstResponder:self ];
 	if(glView != nil){
-		[glView initializeGL];
+		[glView initializeGL:mainDisplayRect];
 		[ self setupRenderTimer ];
 	}else {
 		NSLog(@"Error Initializing OpenGL -A");
@@ -87,49 +90,41 @@
 	unichar unicodeKey;
 	
 	unicodeKey = [ [ theEvent characters ] characterAtIndex:0 ];
-	switch( unicodeKey )
-	{
-		case NSRightArrowFunctionKey:
-			[ glView moveRight:true];
-			break;
-			
-		case NSLeftArrowFunctionKey:
-			[ glView moveLeft:true];
-			break;
-			
-		case NSDownArrowFunctionKey:
-			[ glView moveDown:true];
-			break;
-			
-		case NSUpArrowFunctionKey:
-			[ glView moveUp:true];
-			break;
+	if(unicodeKey == NSRightArrowFunctionKey || unicodeKey == 'd'){
+		[ glView moveRight:true];
+	}else if(unicodeKey == NSLeftArrowFunctionKey || unicodeKey == 'a'){
+		[ glView moveLeft:true];
+	}else if(unicodeKey == NSDownArrowFunctionKey || unicodeKey == 's'){
+		[ glView moveDown:true];
+	}else if(unicodeKey == NSUpArrowFunctionKey || unicodeKey == 'w'){
+		[ glView moveUp:true];
+	}else if(unicodeKey == 'q'){
+		[glView rotateScene:true direction:-1];
+	}else if(unicodeKey == 'e'){
+		[glView rotateScene:true direction:1];
 	}
 }
 - (void) keyUp:(NSEvent *)theEvent
 {
 	unichar unicodeKey;
-	
 	unicodeKey = [ [ theEvent characters ] characterAtIndex:0 ];
-	switch( unicodeKey )
-	{
-		case NSRightArrowFunctionKey:
-			[ glView moveRight:false];
-			break;
-			
-		case NSLeftArrowFunctionKey:
-			[ glView moveLeft:false];
-			break;
-			
-		case NSDownArrowFunctionKey:
-			[ glView moveDown:false];
-			break;
-			
-		case NSUpArrowFunctionKey:
-			[ glView moveUp:false];
-			break;
+	if(unicodeKey == NSRightArrowFunctionKey  || unicodeKey == 'd'){
+		[ glView moveRight:false];
+	}else if(unicodeKey == NSLeftArrowFunctionKey  || unicodeKey == 'a'){
+		[ glView moveLeft:false];
+	}else if(unicodeKey == NSDownArrowFunctionKey  || unicodeKey == 's'){
+		[ glView moveDown:false];
+	}else if(unicodeKey == NSUpArrowFunctionKey  || unicodeKey == 'w'){
+		[ glView moveUp:false];
+	}else if(unicodeKey == 'q'){
+		[glView rotateScene:false direction:-1];
+	}else if(unicodeKey == 'e'){
+		[glView rotateScene:false direction:1];
 	}
 }
 
-
+- (void) mouseMoved:(NSEvent *)theEvent {
+	NSLog(@"mouse is moving");
+	//[glView rotateScene:10 y:10];
+}
 @end
