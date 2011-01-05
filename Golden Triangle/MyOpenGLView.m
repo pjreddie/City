@@ -121,7 +121,8 @@
 		dRotated += 0.5*rotateDirection;
 	}
 	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glTranslated(xTranslate,yTranslate,zTranslate);				
+	glRotated(xRotated, 1.0, 0.0, 0.0);
+	glTranslated(xTranslate,yTranslate,zTranslate);
 	
 	[self drawAnObject];
 
@@ -145,6 +146,10 @@
 - (void) rotateScene:(bool)rotate direction:(int)dir{
 	rotating = rotate;
 	rotateDirection = dir;
+}
+- (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY {
+	dRotated+=deltaX/6.0;
+	//xRotated+=deltaY/6.0;
 }
 
 @end

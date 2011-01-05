@@ -21,6 +21,7 @@
 	double yTranslate;
 	double zTranslate;
 	double dRotated;
+	double xRotated;
 	int rotateDirection;
 }
 
@@ -29,6 +30,7 @@
 - (void) moveUp:(bool)move;
 - (void) moveDown:(bool)move;
 - (void) rotateScene:(bool)rotate direction:(int)dir;
+- (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY;
 - (void) drawRect: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
 - (NSOpenGLPixelFormat *) createPixelFormat:(NSRect)frame;

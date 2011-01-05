@@ -31,8 +31,14 @@
 	// Set and activate full screen
 	NSRect mainDisplayRect = [[NSScreen mainScreen] frame];
 	NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
-
 	[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
+	
+//	centerCoordinates.x = mainDisplayRect.size.width/2;
+//	centerCoordinates.y = mainDisplayRect.size.height/2;
+	//CGWarpMouseCursorPosition(centerCoordinates);
+	//CGEventSourceSetLocalEventsSuppressionInterval(0.0f);
+	CGAssociateMouseAndMouseCursorPosition(FALSE);
+	CGDisplayHideCursor(NULL);
 	
 	NSOpenGLPixelFormatAttribute attrs[] =
 	{
@@ -48,7 +54,11 @@
 	glView = [[MyOpenGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
 	[fullScreenWindow setContentView: glView];
 	[fullScreenWindow makeKeyAndOrderFront:self];
-	[ fullScreenWindow makeFirstResponder:self ];
+	//[fullScreenWindow makeFirstResponder:self ];
+	
+	[window setAcceptsMouseMovedEvents:YES];
+	//[fullScreenWindow setAcceptsMouseMovedEvents:YES];
+	
 	if(glView != nil){
 		[glView initializeGL:mainDisplayRect];
 		[ self setupRenderTimer ];
@@ -124,7 +134,8 @@
 }
 
 - (void) mouseMoved:(NSEvent *)theEvent {
-	NSLog(@"mouse is moving");
-	//[glView rotateScene:10 y:10];
+	[glView	rotateFromMouse:[theEvent deltaX] deltaY:[theEvent deltaY]];
 }
+
+//CGWarpMouseCursorPosition
 @end

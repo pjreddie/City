@@ -14,11 +14,11 @@
     NSWindow *window;
 	NSTimer *renderTimer;
 	MyOpenGLView *glView;
-
 }
 
 
 @property (assign) IBOutlet NSWindow *window;
 - (void) keyDown:(NSEvent *)theEvent;
-
+- (void) keyUp:(NSEvent *)theEvent;
+- (void) mouseMoved:(NSEvent *)theEvent;
 @end
