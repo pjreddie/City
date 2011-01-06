@@ -8,10 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import	<math.h>
+#include "CityGen.h"
 
 
-
-@interface MyOpenGLView : NSOpenGLView {
+@interface CityGLView : NSOpenGLView {
+	// Polygon array
+	NSMutableArray * polygonsToDraw;
+	//Movement Vars
 	bool movingLeft;
 	bool movingRight;
 	bool movingUp;
@@ -31,7 +34,7 @@
 - (void) moveDown:(bool)move;
 - (void) rotateScene:(bool)rotate direction:(int)dir;
 - (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY;
-- (void) drawRect: (NSRect) bounds;
+- (void) drawPolygons;
+- (void) draw: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
-- (NSOpenGLPixelFormat *) createPixelFormat:(NSRect)frame;
 @end

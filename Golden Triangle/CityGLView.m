@@ -6,62 +6,27 @@
 //  Copyright 2010 Middlebury College. All rights reserved.
 //
 
-#import "MyOpenGLView.h"
+#import "CityGLView.h"
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
 
-@implementation MyOpenGLView
+@implementation CityGLView
 
 
-- (void) drawBuilding:(double)height x:(double)xCord z:(double)zCord r:(double)radius {
-	glBegin(GL_QUADS);
-	glColor3f( 0, 1, 0);
-	
-	//Far face
-	glVertex3f(xCord-radius, height, zCord-radius);
-	glVertex3f(xCord+radius, height, zCord-radius);
-	glVertex3f(xCord+radius, -1, zCord-radius);
-	glVertex3f(xCord-radius, -1, zCord-radius);
-    glEnd();
-	//Near Face
-	glBegin(GL_QUADS);
-	glColor3f( 1, 0, 0);
-	glVertex3f(xCord-radius, height, zCord+radius);
-	glVertex3f(xCord+radius, height, zCord+radius);
-	glVertex3f(xCord+radius, -1, zCord+radius);
-	glVertex3f(xCord-radius, -1, zCord+radius);
-	glEnd();
-	//Left face
-	glBegin(GL_QUADS);
-	glColor3f( 0, 0, 1);
-	glVertex3f(xCord-radius, height, zCord-radius);
-	glVertex3f(xCord-radius, height, zCord+radius);
-	glVertex3f(xCord-radius, -1, zCord+radius);
-	glVertex3f(xCord-radius, -1, zCord-radius);
-	glEnd();
-	//Right Face
-	glBegin(GL_QUADS);
-	glColor3f( 0, 0, 1);
-	glVertex3f(xCord+radius, height, zCord-radius);
-	glVertex3f(xCord+radius, height, zCord+radius);
-	glVertex3f(xCord+radius, -1, zCord+radius);
-	glVertex3f(xCord+radius, -1, zCord-radius);
-	glEnd();
-	
-	
-}
-
-- (void) drawAnObject 
+// Draw from polygonList
+- (void) drawPolygons 
 {
-	glBegin(GL_POLYGON);
-	glColor3f( 1, 1, 1 );
-	glVertex3f(-20.0, -1.0, -500.0);
-	glVertex3f(-20.0, -1.0, -1.0);
-	glVertex3f(20.0, -1.0, -1.0);
-	glVertex3f(20.0, -1.0, -500.0);
-    glEnd();
-	[self drawBuilding:5 x:2 z:-40 r:1];
+	NSArray * polygon;
+	CityPoint * pt;
+	for(polygon in polygonsToDraw){
+		glBegin(GL_POLYGON);
+		glColor3f( 1, 1, 1 );
+		for(pt in polygon){
+			glVertex3f([pt x], [pt y], [pt z]);
+		}
+		glEnd();
+	}
 }
 
 /*
@@ -89,6 +54,10 @@
 	yTranslate = 0.0;
 	zTranslate = 0.0;
 	dRotated = 0.0;
+	
+	// Populates polygonsToDraw with all generated polygons
+	polygonsToDraw = [CityGen masterGenerate];
+	
 	[self reshape:frame];
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );   // Black background
@@ -101,7 +70,7 @@
 
 /*  Draw Method - 
 	Called every 0.005 seconds */
--(void) drawRect:(NSRect) bounds {
+-(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 	double t = (3.14159265*dRotated)/180;
@@ -124,7 +93,7 @@
 	glRotated(xRotated, 1.0, 0.0, 0.0);
 	glTranslated(xTranslate,yTranslate,zTranslate);
 	
-	[self drawAnObject];
+	[self drawPolygons];
 
 	[ [ self openGLContext ] flushBuffer ];
 	[ self setNeedsDisplay: YES ] ;

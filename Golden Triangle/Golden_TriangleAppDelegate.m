@@ -51,7 +51,7 @@
 	NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 	
 	NSRect viewRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
-	glView = [[MyOpenGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
+	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
 	[fullScreenWindow setContentView: glView];
 	[fullScreenWindow makeKeyAndOrderFront:self];
 	//[fullScreenWindow makeFirstResponder:self ];
@@ -73,7 +73,7 @@
  */
 - (void) setupRenderTimer
 {
-	NSTimeInterval timeInterval = 0.005;
+	NSTimeInterval timeInterval = 0.015;
 	
 	renderTimer = [ [ NSTimer scheduledTimerWithTimeInterval:timeInterval
 													  target:self
@@ -92,7 +92,7 @@
 - (void) updateGLView:(NSTimer *)timer
 {
 	if( glView != nil )
-		[ glView drawRect:[ glView frame ] ];
+		[ glView draw:[ glView frame ] ];
 } 
 
 - (void) keyDown:(NSEvent *)theEvent
