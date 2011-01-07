@@ -10,12 +10,23 @@
 
 
 @implementation BoundingPolygon
--(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b{
+-(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b {
 	self = [super init];
 	coordinates = coord;
 	red = r;
 	green = g;
 	blue = b;
+	border = false;
+	return self;
+}
+
+-(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b border:(bool)bor{
+	self = [super init];
+	coordinates = coord;
+	red = r;
+	green = g;
+	blue = b;
+	border = bor;
 	return self;
 }
 
@@ -31,9 +42,13 @@
 -(float) blue{
 	return blue;
 }
+-(bool) border {
+	return border;
+}
 -(void) dealloc{
 	[coordinates release];
 	[super release];
+	[super dealloc];
 }
 
 @end

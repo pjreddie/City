@@ -20,13 +20,26 @@
 	BoundingPolygon * polygon;
 	CityPoint * pt;
 	for(polygon in polygonsToDraw){
-		glBegin(GL_POLYGON);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		//glColor3f(1, 1, 1);
 		glColor3f( [polygon red], [polygon blue], [polygon green] );
+		glBegin(GL_POLYGON);
 		for(pt in [polygon coordinates]){
 			glVertex3f([pt x], [pt y], [pt z]);
 		}
 		glEnd();
+		if([polygon border]){ //Draw border
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			glColor3f( 0, 0, 0);
+			glBegin(GL_POLYGON);
+			for(pt in [polygon coordinates]){
+				glVertex3f([pt x], [pt y], [pt z]);
+			}
+			glEnd();
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}
 	}
+	
 }
 
 - (void) drawSkybox {
@@ -192,7 +205,7 @@
 }
 
 /*  Draw Method - 
-	Called every 0.005 seconds */
+	Called every 0.015 seconds */
 -(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 

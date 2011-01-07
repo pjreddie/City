@@ -14,13 +14,16 @@
 	float red;
 	float green;
 	float blue;
+	bool border;
 }
 
+-(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b border:(bool)bor;
 -(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b;
 -(NSArray *) coordinates;
 -(float) red;
 -(float) green;
 -(float) blue;
+-(bool) border;
 -(void) dealloc;
 
 @end
