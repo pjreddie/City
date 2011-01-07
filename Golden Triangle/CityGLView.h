@@ -35,6 +35,7 @@
 - (void) rotateScene:(bool)rotate direction:(int)dir;
 - (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY;
 - (void) drawPolygons;
+- (void) drawSkybox;
 - (void) draw: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
 @end

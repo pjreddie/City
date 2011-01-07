@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #include "CityPoint.h"
+#include "BoundingPolygon.h"
 
 #include "CityMath.h"
 
@@ -17,5 +18,7 @@
 }
 
 + (NSMutableArray *) masterGenerate;
-+ (void) drawPlane:(NSMutableArray *)polygons;
++ (void) addPlane:(NSMutableArray *)polygons;
++ (void) addBuilding:(NSMutableArray *)polygons bPolygon:(BoundingPolygon *)boundingPoly height:(float)height;
++ (void) addCityBuildings:(NSMutableArray *) polygons;
 @end

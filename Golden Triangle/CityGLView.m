@@ -17,16 +17,92 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	NSArray * polygon;
+	BoundingPolygon * polygon;
 	CityPoint * pt;
 	for(polygon in polygonsToDraw){
 		glBegin(GL_POLYGON);
-		glColor3f( 1, 1, 1 );
-		for(pt in polygon){
+		glColor3f( [polygon red], [polygon blue], [polygon green] );
+		for(pt in [polygon coordinates]){
 			glVertex3f([pt x], [pt y], [pt z]);
 		}
 		glEnd();
 	}
+}
+
+- (void) drawSkybox {
+	glPushMatrix();
+	
+    // Reset and transform the matrix.
+    glLoadIdentity();
+   /* gluLookAt(
+			  0,0,0,
+			  camera->x(),camera->y(),camera->z(),
+			  0,1,0);*/
+	
+    // Enable/Disable features
+    //glPushAttrib(GL_ENABLE_BIT);
+    glDisable(GL_DEPTH_TEST);
+    //glDisable(GL_LIGHTING);
+    //glDisable(GL_BLEND);
+	
+    // Just in case we set all vertices to white.
+    glColor3f(0,1,0);
+	
+    // Render the front quad
+    glBegin(GL_POLYGON);
+	 glVertex3f(  1.5f, -1.5f, -1.5f );
+	 glVertex3f( -1.5f, -1.5f, -1.5f );
+	 glVertex3f( -1.5f,  1.5f, -1.5f );
+	 glVertex3f(  1.5f,  1.5f, -1.5f );
+    glEnd();
+	
+    // Render the left quad
+    glBegin(GL_QUADS);
+	 glVertex3f(  1.5f, -1.5f,  1.5f );
+	 glVertex3f(  1.5f, -1.5f, -1.5f );
+	 glVertex3f(  1.5f,  1.5f, -1.5f );
+	 glVertex3f(  1.5f,  1.5f,  1.5f );
+    glEnd();
+	
+    // Render the back quad
+    glBegin(GL_QUADS);
+	glVertex3f( -1.5f, -1.5f,  1.5f );
+	glVertex3f(  1.5f, -1.5f,  1.5f );
+	glVertex3f(  1.5f,  1.5f,  1.5f );
+	glVertex3f( -1.5f,  1.5f,  1.5f );
+	
+    glEnd();
+	
+    // Render the right quad
+    glBegin(GL_QUADS);
+	 glVertex3f( -1.5f, -1.5f, -1.5f );
+	 glVertex3f( -1.5f, -1.5f,  1.5f );
+	 glVertex3f( -1.5f,  1.5f,  1.5f );
+	 glVertex3f( -1.5f,  1.5f, -1.5f );
+    glEnd();
+	
+    // Render the top quad
+    glBegin(GL_QUADS);
+	glVertex3f( -1.5f,  1.5f, -1.5f );
+	glVertex3f( -1.5f,  1.5f,  1.5f );
+	glVertex3f(  1.5f,  1.5f,  1.5f );
+	glVertex3f(  1.5f,  1.5f, -1.5f );
+    glEnd();
+	
+    // Render the bottom quad
+    glBegin(GL_QUADS);
+	glVertex3f( -1.5f, -1.5f, -1.5f );
+	glVertex3f( -1.5f, -1.5f,  1.5f );
+	glVertex3f(  1.5f, -1.5f,  1.5f );
+	glVertex3f(  1.5f, -1.5f, -1.5f );
+    glEnd();
+	
+    // Restore enable bits and matrix
+    //glPopAttrib();
+	glEnable(GL_DEPTH_TEST);
+
+    glPopMatrix();
+	
 }
 
 /*
@@ -72,6 +148,7 @@
 	Called every 0.005 seconds */
 -(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
 	glLoadIdentity();
 	double t = (3.14159265*dRotated)/180;
 	if(movingLeft == true){
@@ -92,7 +169,8 @@
 	glRotated(dRotated, 0.0, 1.0, 0.0);
 	glRotated(xRotated, 1.0, 0.0, 0.0);
 	glTranslated(xTranslate,yTranslate,zTranslate);
-	
+	[self drawSkybox];
+
 	[self drawPolygons];
 
 	[ [ self openGLContext ] flushBuffer ];
