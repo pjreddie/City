@@ -366,7 +366,7 @@
 }
 - (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY {
 	dRotated+=deltaX/6.0;
-	//xRotated+=deltaY/6.0;
+	xRotated+=deltaY/6.0;
 }
 
 @end
