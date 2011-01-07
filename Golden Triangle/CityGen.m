@@ -27,26 +27,26 @@
 
 + (void) addCityBuildings:(NSMutableArray *) polygons {
 	// For each polygon call addBuilding w/ height generated from gausian
-	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:-1.0 y:-1.0 z:-20.0],
-																 [[CityPoint alloc] initWithX:-1.0 y:-1.0 z:-17.0],
-																 [[CityPoint alloc] initWithX:0.0 y:-1.0 z:-17.0],
-																 [[CityPoint alloc] initWithX:0.0 y:-1.0 z:-20.0], nil] andColorRed:0.99 green:0.99 blue:0.99]
+	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:-1.0 y:-0.9 z:-20.0],
+																 [[CityPoint alloc] initWithX:-1.0 y:-0.9 z:-17.0],
+																 [[CityPoint alloc] initWithX:0.0 y:-0.9 z:-17.0],
+																 [[CityPoint alloc] initWithX:0.0 y:-0.9 z:-20.0], nil] andColorRed:0.99 green:0.99 blue:0.99]
 	  height:5.0f];
 	
-	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:-3.0 y:-1.0 z:-20.0],
-																				   [[CityPoint alloc] initWithX:-3.0 y:-1.0 z:-17.0],
-																				   [[CityPoint alloc] initWithX:-2.0 y:-1.0 z:-17.0],
-																				   [[CityPoint alloc] initWithX:-2.0 y:-1.0 z:-20.0], nil] andColorRed:1.0 green:1.0 blue:1.0]
+	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:-3.0 y:-0.9 z:-20.0],
+																				   [[CityPoint alloc] initWithX:-3.0 y:-0.9 z:-17.0],
+																				   [[CityPoint alloc] initWithX:-2.0 y:-0.9 z:-17.0],
+																				   [[CityPoint alloc] initWithX:-2.0 y:-0.9 z:-20.0], nil] andColorRed:1.0 green:1.0 blue:1.0]
 				  height:5.0f];
 	
-	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:1.0 y:-1.0 z:-20.0],
-																				   [[CityPoint alloc] initWithX:1.0 y:-1.0 z:-17.0],
-																				   [[CityPoint alloc] initWithX:2.0 y:-1.0 z:-17.0],
-																				   [[CityPoint alloc] initWithX:2.0 y:-1.0 z:-20.0], nil] andColorRed:1.0 green:1.0 blue:1.0]
+	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:1.0 y:-0.9 z:-20.0],
+																				   [[CityPoint alloc] initWithX:1.0 y:-0.9 z:-17.0],
+																				   [[CityPoint alloc] initWithX:2.0 y:-0.9 z:-17.0],
+																				   [[CityPoint alloc] initWithX:2.0 y:-0.9 z:-20.0], nil] andColorRed:1.0 green:1.0 blue:1.0]
 				  height:5.0f];
-	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:5.0 y:-1.0 z:-20.0],
-																				   [[CityPoint alloc] initWithX:5.0 y:-1.0 z:-17.0],
-																				   [[CityPoint alloc] initWithX:6.0 y:-1.0 z:-20.0], nil] andColorRed:1.0 green:0.0 blue:0.0]
+	[CityGen addBuilding:polygons bPolygon:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:5.0 y:-0.9 z:-20.0],
+																				   [[CityPoint alloc] initWithX:5.0 y:-0.9 z:-17.0],
+																				   [[CityPoint alloc] initWithX:6.0 y:-0.9 z:-20.0], nil] andColorRed:1.0 green:0.0 blue:0.0]
 				  height:5.0f];
 	
 }
@@ -79,8 +79,10 @@
 		[polygons addObject:[[BoundingPolygon alloc] initWithCoord:roofPolygon andColorRed:[boundingPoly red] green:[boundingPoly green] blue:[boundingPoly blue] border:true]];
 	}//else { // Build a circular building
 		// NEED A CENTER POINT AND A RADIUS - obtain from passed in polygon
-		float x=3.0, y=-1.0, z=-2.0, r = 3.0;
+		float x=3.0, y=-0.9, z=-2.0, r = 3.0;
 		float panelSize = 0.01;
+		NSMutableArray * bottom = [[NSMutableArray alloc] init];
+		NSMutableArray * top = [[NSMutableArray alloc] init];
 		for(float i=0; i<2*3.14159265; i+=panelSize){
 			[polygons addObject:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:
 																		[[CityPoint alloc] initWithX:x+cos(i)*r y:y+buildingHeight z:z+sin(i)*r],
@@ -88,7 +90,12 @@
 																		[[CityPoint alloc] initWithX:x+cos(i+panelSize)*r y:y z:z+sin(i+panelSize)*r],
 																		[[CityPoint alloc] initWithX:x+cos(i)*r y:y z:z+sin(i)*r], nil]
 																		andColorRed:0.0 green:1.0 blue:0.0 border:false]];
+			[bottom addObject:[[CityPoint alloc] initWithX:x+cos(i)*r y:y z:z+sin(i)*r]];
+			[top addObject:[[CityPoint alloc] initWithX:x+cos(i)*r y:y z:z+sin(i)*r]];
 		}
+		[polygons addObject:[[BoundingPolygon alloc] initWithCoord:bottom andColorRed:0.0 green:1.0 blue:0.0 border:true]];
+		[polygons addObject:[[BoundingPolygon alloc] initWithCoord:top andColorRed:0.0 green:1.0 blue:0.0 border:true]];
+
 	//}
 }
 

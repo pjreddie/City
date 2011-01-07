@@ -30,6 +30,7 @@
 		glEnd();
 		if([polygon border]){ //Draw border
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			glLineWidth(3.0f);
 			glColor3f( 0, 0, 0);
 			glBegin(GL_POLYGON);
 			for(pt in [polygon coordinates]){
@@ -179,6 +180,27 @@
 	glLoadIdentity();                // and reset it
 }
 
+- (void) initLighting {
+	GLfloat specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	GLfloat diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	GLfloat ambient[] = {0.1f, 0.1f, 0.1f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	GLint position[] = {0, 1, 0, 0}; //1?
+	glLightiv(GL_LIGHT0, GL_POSITION, position);
+	glEnable ( GL_LIGHTING ) ;
+	glEnable(GL_LIGHT0);
+	glEnable(GL_COLOR_MATERIAL);
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+	GLfloat matSpec[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
+	GLfloat matEm[] = {0.0f, 0.0f, 0.0f, 1.0f};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
+	
+}
+
+
 /*
  * Initial OpenGL setup
  */
@@ -196,12 +218,14 @@
 	}
 	[self reshape:frame];
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
+	glEnable(GL_LINE_SMOOTH);
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );   // Black background
 	glEnable( GL_DEPTH_TEST );                // Enable depth testing
 	glDepthFunc( GL_LEQUAL );                 // Type of depth test to do
 	glClearDepth( 1.0f );                     // Depth buffer setup
 	// Really nice perspective calculations
 	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
+	//[self initLighting];
 }
 
 /*  Draw Method - 
