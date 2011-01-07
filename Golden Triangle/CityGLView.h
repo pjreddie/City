@@ -14,6 +14,12 @@
 @interface CityGLView : NSOpenGLView {
 	// Polygon array
 	NSMutableArray * polygonsToDraw;
+	// Texture Data
+	GLenum texFormat[ 6 ];   // Format of texture (GL_RGB, GL_RGBA)
+	NSSize texSize[ 6 ];     // Width and height
+	char *texBytes[ 6 ];     // Texture data
+	GLuint texture[ 6 ];     // Storage for one texture
+
 	//Movement Vars
 	bool movingLeft;
 	bool movingRight;
@@ -38,4 +44,6 @@
 - (void) drawSkybox;
 - (void) draw: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
+- (BOOL) loadGLTextures;
+- (BOOL) loadBitmap:(NSString *)filename intoIndex:(int)texIndex;
 @end
