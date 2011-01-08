@@ -20,6 +20,9 @@
 		7680668C12D6A7FB001FC31E /* alpine_south.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668612D6A7F9001FC31E /* alpine_south.bmp */; };
 		7680668D12D6A7FB001FC31E /* alpine_up.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668712D6A7FA001FC31E /* alpine_up.bmp */; };
 		7680668E12D6A7FB001FC31E /* alpine_west.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668812D6A7FB001FC31E /* alpine_west.bmp */; };
+		76DF8D5812D7C53D0090AC9B /* CityObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D5712D7C53D0090AC9B /* CityObject.m */; };
+		76DF8D6512D7C7320090AC9B /* BuildingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.m */; };
+		76DF8D8512D7CEC40090AC9B /* PlaneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D8412D7CEC40090AC9B /* PlaneObject.m */; };
 		76EDABD1128DFD5D0017BDF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -53,6 +56,12 @@
 		7680668612D6A7F9001FC31E /* alpine_south.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_south.bmp; path = Skybox/alpine_south.bmp; sourceTree = "<group>"; };
 		7680668712D6A7FA001FC31E /* alpine_up.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_up.bmp; path = Skybox/alpine_up.bmp; sourceTree = "<group>"; };
 		7680668812D6A7FB001FC31E /* alpine_west.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_west.bmp; path = Skybox/alpine_west.bmp; sourceTree = "<group>"; };
+		76DF8D5612D7C53D0090AC9B /* CityObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityObject.h; sourceTree = "<group>"; };
+		76DF8D5712D7C53D0090AC9B /* CityObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityObject.m; sourceTree = "<group>"; };
+		76DF8D6312D7C7320090AC9B /* BuildingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingObject.h; sourceTree = "<group>"; };
+		76DF8D6412D7C7320090AC9B /* BuildingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingObject.m; sourceTree = "<group>"; };
+		76DF8D8312D7CEC40090AC9B /* PlaneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneObject.h; sourceTree = "<group>"; };
+		76DF8D8412D7CEC40090AC9B /* PlaneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaneObject.m; sourceTree = "<group>"; };
 		76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Golden_Triangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Golden_Triangle-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Golden Triangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golden Triangle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +83,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				76DF8D5612D7C53D0090AC9B /* CityObject.h */,
+				76DF8D5712D7C53D0090AC9B /* CityObject.m */,
+				76DF8D6312D7C7320090AC9B /* BuildingObject.h */,
+				76DF8D6412D7C7320090AC9B /* BuildingObject.m */,
+				76DF8D8312D7CEC40090AC9B /* PlaneObject.h */,
+				76DF8D8412D7CEC40090AC9B /* PlaneObject.m */,
 				768064E812D680F8001FC31E /* BoundingPolygon.h */,
 				768064E912D680F8001FC31E /* BoundingPolygon.m */,
 				7680643012D664E2001FC31E /* CityPoint.h */,
@@ -238,6 +253,9 @@
 				768064BF12D67C86001FC31E /* CityGLView.m in Sources */,
 				768064E312D67DD2001FC31E /* Golden_TriangleAppDelegate.m in Sources */,
 				768064EA12D680F8001FC31E /* BoundingPolygon.m in Sources */,
+				76DF8D5812D7C53D0090AC9B /* CityObject.m in Sources */,
+				76DF8D6512D7C7320090AC9B /* BuildingObject.m in Sources */,
+				76DF8D8512D7CEC40090AC9B /* PlaneObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

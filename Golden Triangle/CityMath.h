@@ -13,4 +13,5 @@
 
 }
 + (float) gausian:(float)median deviation:(float)dev;
++ (int) poisson:(float)lambda;
 @end

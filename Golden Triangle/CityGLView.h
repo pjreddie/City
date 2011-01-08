@@ -11,9 +11,13 @@
 #include "CityGen.h"
 
 
+#define MAX_DISPLAY_LISTS 10024
+
+
 @interface CityGLView : NSOpenGLView {
-	// Polygon array
-	NSMutableArray * polygonsToDraw;
+	// Polygon data
+	int polygonsToDrawCount;
+	GLuint displayLists[MAX_DISPLAY_LISTS];
 	// Texture Data
 	GLenum texFormat[ 6 ];   // Format of texture (GL_RGB, GL_RGBA)
 	NSSize texSize[ 6 ];     // Width and height
@@ -44,6 +48,7 @@
 - (void) drawSkybox;
 - (void) draw: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
+- (void) initDisplayLists;
 - (BOOL) loadGLTextures;
 - (BOOL) loadBitmap:(NSString *)filename intoIndex:(int)texIndex;
 @end

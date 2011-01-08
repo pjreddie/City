@@ -13,9 +13,7 @@
 
 // Box-Muller Polar Transform
 + (float) gausian:(float)mean deviation:(float)dev {
-	float x1, x2, w, y1;
-	//NSLog(@"here: %f", ((arc4random()%100000)/100000.0f));
-	
+	float x1, x2, w, y1;	
 	do {
 		x1 = 2.0 * ((arc4random()%100000)/100000.0f) - 1.0;
 		x2 = 2.0 * ((arc4random()%100000)/100000.0f) - 1.0;
@@ -28,6 +26,15 @@
 	return (mean + y1 * dev);
 }
 
-
+// Poisson generation from uniform distribution Donald Knuth
++ (int) poisson:(float)lambda{
+	float l = pow(2.71828183, -lambda),p = 1;
+	int k = 0;
+	do {
+		k += 1;
+		p = p*((arc4random()%100000)/100000.0f);
+	} while (p>l);
+	return k-1;
+}
 
 @end

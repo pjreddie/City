@@ -7,10 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "CityPoint.h"
-#include "BoundingPolygon.h"
-
-#include "CityMath.h"
+#include "BuildingObject.h"
+#include "PlaneObject.h"
 
 
 @interface CityGen : NSObject {
@@ -19,6 +17,5 @@
 
 + (NSMutableArray *) masterGenerate;
 + (void) addPlane:(NSMutableArray *)polygons;
-+ (void) addBuilding:(NSMutableArray *)polygons bPolygon:(BoundingPolygon *)boundingPoly height:(float)height;
 + (void) addCityBuildings:(NSMutableArray *) polygons;
 @end

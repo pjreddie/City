@@ -17,30 +17,9 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	BoundingPolygon * polygon;
-	CityPoint * pt;
-	for(polygon in polygonsToDraw){
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		//glColor3f(1, 1, 1);
-		glColor3f( [polygon red], [polygon blue], [polygon green] );
-		glBegin(GL_POLYGON);
-		for(pt in [polygon coordinates]){
-			glVertex3f([pt x], [pt y], [pt z]);
-		}
-		glEnd();
-		if([polygon border]){ //Draw border
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-			glLineWidth(3.0f);
-			glColor3f( 0, 0, 0);
-			glBegin(GL_POLYGON);
-			for(pt in [polygon coordinates]){
-				glVertex3f([pt x], [pt y], [pt z]);
-			}
-			glEnd();
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		}
+	for(int i=0; i<polygonsToDrawCount&&i<MAX_DISPLAY_LISTS; i++){
+		glCallList(displayLists[i]);
 	}
-	
 }
 
 - (void) drawSkybox {
@@ -85,14 +64,14 @@
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
 
-	 glVertex3f(  1.5f, -1.5f,  1.5f );
+	 glVertex3f(  1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 0.0f );
 
-	 glVertex3f(  1.5f, -1.5f, -1.5f );
+	 glVertex3f(  1.0f, -1.0f, -1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	 glVertex3f(  1.5f,  1.5f, -1.5f );
+	 glVertex3f(  1.0f,  1.0f, -1.0f );
 	glTexCoord2f( 0.0f, 1.0f );
-	 glVertex3f(  1.5f,  1.5f,  1.5f );
+	 glVertex3f(  1.0f,  1.0f,  1.0f );
     glEnd();
 	
     // Render the back quad
@@ -100,14 +79,14 @@
 
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
-	glVertex3f( -1.5f, -1.5f,  1.5f );
+	glVertex3f( -1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 0.0f );
 
-	glVertex3f(  1.5f, -1.5f,  1.5f );
+	glVertex3f(  1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	glVertex3f(  1.5f,  1.5f,  1.5f );
+	glVertex3f(  1.0f,  1.0f,  1.0f );
 	glTexCoord2f( 0.0f, 1.0f );
-	glVertex3f( -1.5f,  1.5f,  1.5f );
+	glVertex3f( -1.0f,  1.0f,  1.0f );
 	
     glEnd();
 	
@@ -117,29 +96,33 @@
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
 
-	 glVertex3f( -1.5f, -1.5f, -1.5f );
+	 glVertex3f( -1.0f, -1.0f, -1.0f );
 	glTexCoord2f( 1.0f, 0.0f );
-	glVertex3f( -1.5f, -1.5f,  1.5f );
+	glVertex3f( -1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	 glVertex3f( -1.5f,  1.5f,  1.5f );
+	 glVertex3f( -1.0f,  1.0f,  1.0f );
 	glTexCoord2f( 0.0f, 1.0f );
-	 glVertex3f( -1.5f,  1.5f, -1.5f );
+	 glVertex3f( -1.0f,  1.0f, -1.0f );
     glEnd();
 	
     // Render the top quad
 	glBindTexture( GL_TEXTURE_2D, texture[ 4 ] ); 
 
     glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 1.0f );
+
+	glVertex3f( -1.0f,  1.0f, -1.0f );
 	glTexCoord2f( 0.0f, 0.0f );
 
-	glVertex3f( -1.5f,  1.5f, -1.5f );
+
+	glVertex3f( -1.0f,  1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 0.0f );
 
-	glVertex3f( -1.5f,  1.5f,  1.5f );
+	glVertex3f(  1.0f,  1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	glVertex3f(  1.5f,  1.5f,  1.5f );
-	glTexCoord2f( 0.0f, 1.0f );
-	glVertex3f(  1.5f,  1.5f, -1.5f );
+
+	glVertex3f(  1.0f,  1.0f, -1.0f );
+	
     glEnd();
 	
     // Render the bottom quad
@@ -148,14 +131,16 @@
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
 
-	glVertex3f( -1.5f, -1.5f, -1.5f );
+	glVertex3f( -1.0f, -1.0f, -1.0f );
 	glTexCoord2f( 1.0f, 0.0f );
 
-	glVertex3f( -1.5f, -1.5f,  1.5f );
+	glVertex3f( -1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	glVertex3f(  1.5f, -1.5f,  1.5f );
+
+	glVertex3f(  1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 0.0f, 1.0f );
-	glVertex3f(  1.5f, -1.5f, -1.5f );
+
+	glVertex3f(  1.0f, -1.0f, -1.0f );
     glEnd();
 	
     // Restore enable bits and matrix
@@ -175,29 +160,85 @@
 	glMatrixMode( GL_PROJECTION );   // Select the projection matrix
 	glLoadIdentity();                // and reset it
 	// Calculate the aspect ratio of the view
-	gluPerspective( 45.0f, frame.size.width / frame.size.height, 1.0f, 100.0f );
+	gluPerspective( 45.0f, frame.size.width / frame.size.height, 0.5f, 100.0f );
 	glMatrixMode( GL_MODELVIEW );    // Select the modelview matrix
 	glLoadIdentity();                // and reset it
 }
 
 - (void) initLighting {
+	
+	glEnable(GL_FOG);
+	glFogi(GL_FOG_MODE, GL_LINEAR);
+	glFogf(GL_FOG_START, 3.0f);
+	glFogf(GL_FOG_END, 15.0f);
+	
+	/*
+	glEnable ( GL_LIGHTING ) ;
+	glEnable(GL_LIGHT0);
+
+	
+	GLfloat ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	GLint position[] = {-5.0f,5.0f,10.0f,0.0f};//1?
+	glLightiv(GL_LIGHT0, GL_POSITION, position);
+	
 	GLfloat specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	GLfloat diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	GLfloat ambient[] = {0.1f, 0.1f, 0.1f, 1.0f};
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {0, 1, 0, 0}; //1?
-	glLightiv(GL_LIGHT0, GL_POSITION, position);
-	glEnable ( GL_LIGHTING ) ;
-	glEnable(GL_LIGHT0);
+	
+	//glColor3f(1.0, 0.0, 0.0);
 	glEnable(GL_COLOR_MATERIAL);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	GLfloat matSpec[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
 	GLfloat matEm[] = {0.0f, 0.0f, 0.0f, 1.0f};
-	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);*/
 	
+}
+
+- (void) initDisplayLists {	
+	// Populates polygonsToDraw with all generated polygons
+	NSArray * polygonsToDraw = [CityGen masterGenerate];
+	polygonsToDrawCount = [polygonsToDraw count];
+	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
+	CityPoint * pt;
+	BoundingPolygon * polygon;
+	for(int i=0; i<polygonsToDrawCount&&i<MAX_DISPLAY_LISTS; i++){
+		glNewList(displayLists[i], GL_COMPILE);
+		for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			glColor3f( [polygon red], [polygon blue], [polygon green] );
+			
+			glBegin(GL_POLYGON);
+			glNormal3d(0.0, 0.0, 1.0);
+			//GLfloat cyan[] = {0.f, .8f, .8f, 1.f};
+			//glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, cyan);
+			
+			// Draw polygon
+			for(pt in [polygon coordinates]){
+				glVertex3f([pt x], [pt y], [pt z]);
+			}
+			glEnd();
+			// Draw border
+			if([polygon border]){
+				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+				glLineWidth(3.0f);
+				glColor3f( 0, 0, 0);
+				glBegin(GL_POLYGON);
+				for(pt in [polygon coordinates]){
+					glVertex3f([pt x], [pt y], [pt z]);
+				}
+				glEnd();
+			}
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		}
+		polygon = [polygonsToDraw objectAtIndex:i];
+		glEndList();
+		displayLists[i+1]= displayLists[i]+1;
+	}
+	[polygonsToDraw release]; //IS this enough?
 }
 
 
@@ -210,13 +251,11 @@
 	yTranslate = 0.0;
 	zTranslate = 0.0;
 	dRotated = 0.0;
-	
-	// Populates polygonsToDraw with all generated polygons
-	polygonsToDraw = [CityGen masterGenerate];
+	[self reshape:frame];
 	if( ![ self loadGLTextures ] ){
 		NSLog(@"Error loading textures");
 	}
-	[self reshape:frame];
+	[self initDisplayLists];
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glEnable(GL_LINE_SMOOTH);
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );   // Black background
@@ -225,7 +264,7 @@
 	glClearDepth( 1.0f );                     // Depth buffer setup
 	// Really nice perspective calculations
 	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
-	//[self initLighting];
+	[self initLighting];
 }
 
 /*  Draw Method - 
