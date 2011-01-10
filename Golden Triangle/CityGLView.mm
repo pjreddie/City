@@ -164,11 +164,11 @@
 
 - (void) initLighting {
 	
-	glEnable(GL_FOG);
+	/*glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
 	glFogf(GL_FOG_START, 3.0f);
 	glFogf(GL_FOG_END, 15.0f);
-	
+	*/
 	/*
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);

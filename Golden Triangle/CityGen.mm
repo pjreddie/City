@@ -13,8 +13,7 @@
 + (NSMutableArray *) masterGenerate {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	[CityGen addPlane:polygons3D];
-	Voronoi d = GenerateVoronoi(1, 2, -20, 20, -50, 0);
-	std::list<std::list<JPoint> > polys = d.getPolygons();
+	std::list<std::list<JPoint> > polys = GenerateVoronoi(1, 20, -5, 5, -10, 0);
 	//[CityGen addCityBuildings:polygons3D diagram:polys];
 	return polygons3D;
 }

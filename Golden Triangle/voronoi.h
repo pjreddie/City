@@ -16,6 +16,7 @@
 #import <set>
 #import <iostream>
 #import <fstream>
+#import "CityMath.h"
 
 using namespace std;
 
@@ -162,6 +163,10 @@ struct Segment{
 	}	
 };
 
+bool isIn(JPoint p, list<Segment> poly);
+
+list<JPoint> Shrink(list<JPoint> poly, double s);
+
 struct Voronoi{
 	list<Segment> bounds;
 	list<JPoint> controlPoints;
@@ -189,8 +194,8 @@ struct Voronoi{
 		}
 	}
 	
-	void draw2(){
-		list<list<JPoint> > pts = getPolygons();
+	void draw2(double shrink){
+		list<list<JPoint> > pts = getPolygons(shrink);
 		for(list<list<JPoint> >::iterator ptsi = pts.begin(); ptsi != pts.end(); ++ptsi){
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			glBegin(GL_POLYGON);
@@ -224,37 +229,29 @@ struct Voronoi{
 		bounds = _bounds;		
 	}
 	
-	list<list<JPoint> > getPolygons(){
-		cout << "hey\n";
+	list<list<JPoint> > getPolygons(double shrink){
 		list<list<JPoint> > polys;
+		if(controlPoints.size() <= 1){
+			list<JPoint> poly;
+			for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
+				poly.push_back((*sit).p);
+			}
+			polys.push_back(poly);
+			return polys;
+		}
 		for(list<JPoint>::iterator pit = controlPoints.begin(); pit != controlPoints.end(); ++pit){
-			cout << 1 << endl;
 			list<Segment> s;
-			cout << "*************\n";
-			(*pit).print();
-			cout << "*************\n";
-			cout << diagram.size() << endl;
 			for (list<Segment>::iterator sit = diagram.begin(); sit != diagram.end(); ++sit){
-				sit->control.first.print();
-				sit->control.second.print();
-				cout << endl;
 				if (sit->control.first == *pit || sit->control.second == *pit){
-					cout << 2<<endl;
-					
 					s.push_back(*sit);
 				}
 			}
-			cout << 2.5<< endl;
 			list<JPoint> poly;
 			Segment f = s.front();
-			cout << 2.6 << endl;
 			s.pop_front();
-			cout << 2.7 << endl;
 			poly.push_front(f.p);
 			poly.push_front(f.q);
-			cout << 2.8<< endl;
 			for(list<Segment>::iterator sit = s.begin(); sit != s.end();){
-				cout << 3 << endl;
 				if(sit->p == poly.front()){
 					poly.push_front(sit->q);
 					s.erase(sit);
@@ -278,9 +275,8 @@ struct Voronoi{
 			if(poly.front() == poly.back()){
 				poly.pop_front();
 			}
-			polys.push_back(poly);
+			polys.push_back(Shrink(poly,shrink));
 		}
-		cout << 4 << endl;
 		return polys;
 	}
 	
@@ -296,6 +292,9 @@ struct Voronoi{
 		return minPoint;
 	}
 	void addPoint(JPoint a){
+		if(!isIn(a, bounds)){
+			return;
+		}
 		for(list<JPoint>::iterator  pit = controlPoints.begin(); pit != controlPoints.end(); ++pit){
 			Line bi = Segment(a, *pit).Bisector();
 			JPoint p = pinf, q = pinf;
@@ -313,7 +312,8 @@ struct Voronoi{
 			for(list<Segment>::iterator dit = diagram.begin(); dit != diagram.end();){
 				JPoint c = (*dit).Intersection(bis);
 				if (c != pinf && ((*dit).control.first == *pit || (*dit).control.second == *pit)){
-					if((*dit).q != c && ((*dit).p.distance(a)+FUDGE < (*dit).p.distance((*dit).control.first) || (*dit).p == c)){
+					if((*dit).q != c && (((*dit).p.distance(a)+FUDGE < (*dit).p.distance((*dit).control.first) && (*dit).p != c) || 
+										 ((*dit).p == c && (*dit).q.distance(a)-FUDGE > (*dit).q.distance((*dit).control.first)))){
 						diagram.push_front(Segment(c,(*dit).q,(*dit).control));
 					}else if((*dit).p != c){
 						diagram.push_front(Segment(c,(*dit).p,(*dit).control));
@@ -343,6 +343,8 @@ struct Voronoi{
 	}
 };
 
+Voronoi GenerateRoads(list<JPoint> points);
 
+list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
 
-Voronoi GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
+void testdraw();

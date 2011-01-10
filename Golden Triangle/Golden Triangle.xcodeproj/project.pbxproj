@@ -24,7 +24,7 @@
 		76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */; };
 		76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */; };
 		76EDABD1128DFD5D0017BDF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */; };
-		7CEDAFA312DA9A2D00DEDBDA /* voronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */; };
+		7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -64,7 +64,7 @@
 		76DF8D8312D7CEC40090AC9B /* PlaneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneObject.h; sourceTree = "<group>"; };
 		76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlaneObject.mm; sourceTree = "<group>"; };
 		76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = voronoi.cpp; sourceTree = "<group>"; };
+		7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = voronoi.mm; sourceTree = "<group>"; };
 		7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voronoi.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Golden_Triangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Golden_Triangle-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Golden Triangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golden Triangle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +86,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */,
+				7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */,
 				7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */,
 				76DF8D5612D7C53D0090AC9B /* CityObject.h */,
 				76DF8D5712D7C53D0090AC9B /* CityObject.mm */,
@@ -261,7 +261,7 @@
 				76DF8D5812D7C53D0090AC9B /* CityObject.mm in Sources */,
 				76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */,
 				76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */,
-				7CEDAFA312DA9A2D00DEDBDA /* voronoi.cpp in Sources */,
+				7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
