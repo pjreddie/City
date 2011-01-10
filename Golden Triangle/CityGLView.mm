@@ -249,9 +249,9 @@
 	zTranslate = 0.0;
 	dRotated = 0.0;
 	[self reshape:frame];
-	if( ![ self loadGLTextures ] ){
+	/*if( ![ self loadGLTextures ] ){
 		NSLog(@"Error loading textures");
-	}
+	}*/
 	[self initDisplayLists];
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glEnable(GL_LINE_SMOOTH);

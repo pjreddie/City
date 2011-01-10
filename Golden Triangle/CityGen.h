@@ -10,7 +10,6 @@
 #import "BuildingObject.h"
 #import "PlaneObject.h"
 #import "voronoi.h"
-#import <list>
 
 
 @interface CityGen : NSObject {

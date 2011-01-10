@@ -6,16 +6,16 @@
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
-#include <cmath>
-#include <OpenGL/OpenGL.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <vector>
-#include <queue>
-#include <list>
-#include <set>
-#include <iostream>
-#include <fstream>
+#import <cmath>
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl.h>
+#import <OpenGL/glu.h>
+#import <vector>
+#import <queue>
+#import <list>
+#import <set>
+#import <iostream>
+#import <fstream>
 
 using namespace std;
 
@@ -24,15 +24,10 @@ using namespace std;
 #define INF 9999999.9
 
 #define FUDGE 0.0001
+#define pinf JPoint(INF, INF)
 
 
-double randf(double high, double low){
-	int r = rand();
-	r = r%10000;
-	double f = r/10000.0;
-	double dist = high-low;
-	return f*dist + low;
-}
+double randf(double high, double low);
 
 struct JPoint{
 	double x,y;
@@ -68,8 +63,6 @@ struct JPoint{
 		y = newy;
 	}	
 };
-JPoint pinf(INF,INF);
-
 struct Line{
 	
 	JPoint p,q;
@@ -352,13 +345,4 @@ struct Voronoi{
 
 
 
-Voronoi GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy){
-	
-	srand(seed);
-	Voronoi d;
-	for(int i = 0; i < numControl; ++i){
-		d.addPoint(JPoint(randf(minx,maxx),randf(miny,maxy)));
-	}
-	return d;
-	
-}
+Voronoi GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
