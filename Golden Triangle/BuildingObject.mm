@@ -46,7 +46,7 @@
 																			pointb,
 																			nil] andColorRed:[basePolygon red] green:[basePolygon green] blue:[basePolygon blue] border:true]];
 			[roofPolygon addObject:[[CityPoint alloc] initWithX:[pointa x] y:[pointa y]+tierHeight z:[pointa z]]];
-			//[self addWindowsToFace:pointa pt2:pointb h:tierHeight];
+			[self addWindowsToFace:pointa pt2:pointb h:tierHeight];
 		}
 		//Update basePolygon
 		if (t+1<numberOfTiers) {
