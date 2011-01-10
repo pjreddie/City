@@ -14,14 +14,14 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	for(int i=0; i<2; i++){
+	for(int i=0; i<1; i++){
 		glCallList(displayLists[i]);
 	}
 }
 
 - (void) drawSkybox {
 	glPushMatrix();
-	
+
     // Reset and transform the matrix.
     glLoadIdentity();
 	glRotated(dRotated, 0.0, 1.0, 0.0);
@@ -41,7 +41,8 @@
 	
     // Just in case we set all vertices to white.
     glColor3f(1,1,1);
-	
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
     // Render the front quad
 	glBindTexture( GL_TEXTURE_2D, texture[ 0 ] ); 
     glBegin(GL_POLYGON);
@@ -204,43 +205,46 @@
 	CityPoint * pt;
 	BoundingPolygon * polygon;
 	glNewList(displayLists[0], GL_COMPILE);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	for(int i=0; i<polygonsToDrawCount; i++){
-		for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-			glColor3f( [polygon red], [polygon blue], [polygon green] );
-			glBegin(GL_POLYGON);
-			for(pt in [polygon coordinates]){
-				glVertex3f([pt x], [pt y], [pt z]);
+
+	//Loop around drawing polygons and outlines
+	for(int l=0; l<2; l++){
+		if (l==0) {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}else {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		}
+		glColor3f( 0.0, 0.0, 0.0 ); //define default color
+		// Loop around drawing constructs
+		for (int j=3; j<6; j++) {
+			switch (j) {
+				case 3: glBegin(GL_TRIANGLES); break;
+				case 4: glBegin(GL_QUADS); break;
+				default: break;			
 			}
-			glEnd();
+			for(int i=0; i<polygonsToDrawCount; i++){
+				for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
+					if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
+						if(l==0){ //Draw with defined color
+							glColor3f( [polygon red], [polygon blue], [polygon green] );
+						}
+						if(j>4){ // Polygons must be defined independantly
+							glBegin(GL_POLYGON);
+						}
+						for(pt in [polygon coordinates]){
+							glVertex3f([pt x], [pt y], [pt z]);
+						}
+						if(j>4){ // Polygons must be defined independantly
+							glEnd();
+						}
+					}
+				}				
+			}
+			if (j<5) {
+				glEnd();
+			}
 		}
 	}
 	glEndList();
-	
-	// Draw line polygons
-	displayLists[1]= displayLists[0]+1;
-	glNewList(displayLists[1], GL_COMPILE);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glLineWidth(3.0f);
-	glColor3f( 0.0, 0.0, 0.0 );
-	for(int i=0; i<polygonsToDrawCount; i++){
-		glBegin(GL_QUADS);
-
-		for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-			if([polygon border]){
-				for(pt in [polygon coordinates]){
-					glVertex3f([pt x], [pt y], [pt z]);
-				}
-			}
-		}
-		glEnd();			
-
-	}
-
-	glEndList();
-	
-	//displayLists[i+1]= displayLists[i]+1;
-
 	[polygonsToDraw release]; //IS this enough?
 }
 
@@ -255,9 +259,9 @@
 	zTranslate = 0.0;
 	dRotated = 0.0;
 	[self reshape:frame];
-	/*if( ![ self loadGLTextures ] ){
+	if( ![ self loadGLTextures ] ){
 		NSLog(@"Error loading textures");
-	}*/
+	}
 	[self initDisplayLists];
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glEnable(GL_LINE_SMOOTH);
@@ -294,7 +298,7 @@
 	glRotated(dRotated, 0.0, 1.0, 0.0);
 	glRotated(xRotated, 1.0, 0.0, 0.0);
 	glTranslated(xTranslate,yTranslate,zTranslate);
-	//[self drawSkybox];
+	[self drawSkybox];
 
 	[self drawPolygons];
 
@@ -305,7 +309,7 @@
 /*
  * Setup a texture from our model
  */
-/*
+
 - (BOOL) loadGLTextures
 {
 	BOOL status = FALSE;
@@ -340,14 +344,13 @@
 	}
 	
 	return status;
-}*/
+}
 
 /*
  * The NSBitmapImageRep is going to load the bitmap, but it will be
  * setup for the opposite coordinate system than what OpenGL uses, so
  * we copy things around.
  */
-/*
 - (BOOL) loadBitmap:(NSString *)filename intoIndex:(int)texIndex
 {
 	BOOL success = FALSE;
@@ -367,8 +370,8 @@
 			texFormat[ texIndex ] = GL_RGBA;
 		texSize[ texIndex ].width = [ theImage pixelsWide ];
 		texSize[ texIndex ].height = [ theImage pixelsHigh ];
-		texBytes[ texIndex ] = calloc( bytesPRow * texSize[ texIndex ].height,
-									  1 );
+		texBytes[ texIndex ] = (char*)calloc( bytesPRow * texSize[ texIndex ].height, 
+								  1 );
 		if( texBytes[ texIndex ] != NULL )
 		{
 			success = TRUE;
@@ -386,7 +389,7 @@
 	}
 	
 	return success;
-}*/
+}
 
 
 
