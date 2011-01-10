@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include <stdlib.h>
+#import <stdlib.h>
 
 @interface CityMath : NSObject {
 

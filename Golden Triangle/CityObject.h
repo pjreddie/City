@@ -3,9 +3,9 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#include "CityPoint.h"
-#include "BoundingPolygon.h"
-#include "CityMath.h"
+#import "CityPoint.h"
+#import "BoundingPolygon.h"
+#import "CityMath.h"
 
 @interface CityObject : NSObject {
 	NSMutableArray * polygonList;

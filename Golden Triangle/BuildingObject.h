@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "CityObject.h"
+#import "CityObject.h"
 
 @interface BuildingObject : CityObject {
 	// Building Vars

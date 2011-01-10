@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import	<math.h>
-#include "CityGen.h"
+#import "CityGen.h"
 
 
 #define MAX_DISPLAY_LISTS 10024
@@ -49,6 +49,6 @@
 - (void) draw: (NSRect) bounds;
 - (void) initializeGL:(NSRect)frame;
 - (void) initDisplayLists;
-- (BOOL) loadGLTextures;
-- (BOOL) loadBitmap:(NSString *)filename intoIndex:(int)texIndex;
+//- (BOOL) loadGLTextures;
+//- (BOOL) loadBitmap:(NSString *)filename intoIndex:(int)texIndex;
 @end

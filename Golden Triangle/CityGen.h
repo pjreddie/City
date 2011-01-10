@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "BuildingObject.h"
-#include "PlaneObject.h"
+#import "BuildingObject.h"
+#import "PlaneObject.h"
+#import "voronoi.h"
+#import <list>
 
 
 @interface CityGen : NSObject {
@@ -17,5 +19,5 @@
 
 + (NSMutableArray *) masterGenerate;
 + (void) addPlane:(NSMutableArray *)polygons;
-+ (void) addCityBuildings:(NSMutableArray *) polygons;
++ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram: (std::list<std::list<JPoint> > ) polys;
 @end

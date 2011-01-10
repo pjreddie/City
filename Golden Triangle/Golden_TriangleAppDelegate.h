@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "CityGLView.h"
+#import "CityGLView.h"
 
 @interface Golden_TriangleAppDelegate : NSResponder {
     NSWindow *window;
