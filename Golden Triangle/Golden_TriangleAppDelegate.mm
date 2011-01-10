@@ -33,10 +33,6 @@
 	NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
 	[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
 	
-//	centerCoordinates.x = mainDisplayRect.size.width/2;
-//	centerCoordinates.y = mainDisplayRect.size.height/2;
-	//CGWarpMouseCursorPosition(centerCoordinates);
-	//CGEventSourceSetLocalEventsSuppressionInterval(0.0f);
 	CGAssociateMouseAndMouseCursorPosition(FALSE);
 	CGDisplayHideCursor(NULL);
 	
