@@ -233,7 +233,7 @@ struct Voronoi{
 			cout << "*************\n";
 			(*pit).print();
 			cout << "*************\n";
-			
+			cout << diagram.size() << endl;
 			for (list<Segment>::iterator sit = diagram.begin(); sit != diagram.end(); ++sit){
 				sit->control.first.print();
 				sit->control.second.print();
