@@ -14,7 +14,7 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	for(int i=0; i<polygonsToDrawCount&&i<MAX_DISPLAY_LISTS; i++){
+	for(int i=0; i<2; i++){
 		glCallList(displayLists[i]);
 	}
 }
@@ -157,18 +157,18 @@
 	glMatrixMode( GL_PROJECTION );   // Select the projection matrix
 	glLoadIdentity();                // and reset it
 	// Calculate the aspect ratio of the view
-	gluPerspective( 45.0f, frame.size.width / frame.size.height, 0.5f, 100.0f );
+	gluPerspective( 45.0f, frame.size.width / frame.size.height, 0.5f, 85.0f );
 	glMatrixMode( GL_MODELVIEW );    // Select the modelview matrix
 	glLoadIdentity();                // and reset it
 }
 
 - (void) initLighting {
-	
+	/*
 	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
 	glFogf(GL_FOG_START, 3.0f);
 	glFogf(GL_FOG_END, 15.0f);
-	
+	*/
 	/*
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);
@@ -198,43 +198,49 @@
 	// Populates polygonsToDraw with all generated polygons
 	NSArray * polygonsToDraw = [CityGen masterGenerate];
 	polygonsToDrawCount = [polygonsToDraw count];
+
+	//Draw polygons
 	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
 	CityPoint * pt;
 	BoundingPolygon * polygon;
-	for(int i=0; i<polygonsToDrawCount&&i<MAX_DISPLAY_LISTS; i++){
-		glNewList(displayLists[i], GL_COMPILE);
+	glNewList(displayLists[0], GL_COMPILE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	for(int i=0; i<polygonsToDrawCount; i++){
 		for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			glColor3f( [polygon red], [polygon blue], [polygon green] );
-			
 			glBegin(GL_POLYGON);
-			glNormal3d(0.0, 0.0, 1.0);
-			//GLfloat cyan[] = {0.f, .8f, .8f, 1.f};
-			//glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, cyan);
-			
-			// Draw polygon
 			for(pt in [polygon coordinates]){
 				glVertex3f([pt x], [pt y], [pt z]);
 			}
 			glEnd();
-			// Draw border
+		}
+	}
+	glEndList();
+	
+	// Draw line polygons
+	displayLists[1]= displayLists[0]+1;
+	glNewList(displayLists[1], GL_COMPILE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glLineWidth(3.0f);
+	glColor3f( 0.0, 0.0, 0.0 );
+	for(int i=0; i<polygonsToDrawCount; i++){
+		glBegin(GL_QUADS);
+
+		for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
 			if([polygon border]){
-				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-				glLineWidth(3.0f);
-				glColor3f( 0, 0, 0);
-				glBegin(GL_POLYGON);
 				for(pt in [polygon coordinates]){
 					glVertex3f([pt x], [pt y], [pt z]);
 				}
-				glEnd();
 			}
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
 		}
-		polygon = [polygonsToDraw objectAtIndex:i];
-		glEndList();
-		displayLists[i+1]= displayLists[i]+1;
+		glEnd();			
+
 	}
+
+	glEndList();
+	
+	//displayLists[i+1]= displayLists[i]+1;
+
 	[polygonsToDraw release]; //IS this enough?
 }
 
@@ -268,7 +274,6 @@
 	Called every 0.015 seconds */
 -(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
 	glLoadIdentity();
 	double t = (3.14159265*dRotated)/180;
 	if(movingLeft == true){

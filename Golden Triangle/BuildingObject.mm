@@ -11,7 +11,7 @@
 	basePolygon = bounds;
 	numberOfTiers = [CityMath poisson:0.5]+1;
 	buildingHeight = [CityMath gausian:height deviation:0.5];
-	windowSizeX = [CityMath gausian:0.1 deviation:0.05];
+	windowSizeX = [CityMath gausian:0.2 deviation:0.05];
 	windowSizeY = [CityMath gausian:0.2 deviation:0.05];
 	windowSeperationX = [CityMath gausian:0.1 deviation:0.05];
 	windowSeperationY = [CityMath gausian:0.1 deviation:0.1];
@@ -46,7 +46,7 @@
 																			pointb,
 																			nil] andColorRed:[basePolygon red] green:[basePolygon green] blue:[basePolygon blue] border:true]];
 			[roofPolygon addObject:[[CityPoint alloc] initWithX:[pointa x] y:[pointa y]+tierHeight z:[pointa z]]];
-			//[self addWindowsToFace:pointa pt2:pointb h:tierHeight];
+			[self addWindowsToFace:pointa pt2:pointb h:tierHeight];
 		}
 		//Update basePolygon
 		if (t+1<numberOfTiers) {
@@ -116,6 +116,7 @@
 	
 	yAccum = topWindowBufferY;
 	// Loop through the plane and make windows
+	NSLog(@"%i",numOfWindowsY*numOfWindowsX);
 	for(int i=0; i<numOfWindowsY; i++) {
 		xAccum = xInit+directionAdjustX*(deltaX*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerX);
 		zAccum = zInit+(deltaZ*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerZ);
