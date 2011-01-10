@@ -9,6 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import	<math.h>
 #import "CityGen.h"
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl.h>
+#import <OpenGL/glu.h>
 
 
 #define MAX_DISPLAY_LISTS 10024
