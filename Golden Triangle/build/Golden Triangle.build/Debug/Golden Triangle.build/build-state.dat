@@ -1,7 +1,7 @@
 TGolden Triangle
 v7
 r0
-t316404521.585035
+t316416292.256545
 cCheck dependencies
 cProcessInfoPlistFile "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist" Golden_Triangle-Info.plist
 cCopyStringsFile "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
@@ -634,9 +634,9 @@ i"CityGen.h"
 i"voronoi.h"
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm
-c000000004D2BBA200000000000000DBD
-t1294711328
-s3517
+c000000004D2BE99F0000000000000DBA
+t1294723487
+s3514
 i"CityGen.h"
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/CityMath.h
@@ -782,7 +782,7 @@ t1294623104
 s3145782
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app
-t1294711721
+t1294723492
 s102
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist
@@ -790,7 +790,7 @@ t1294630144
 s910
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle
-t1294711721
+t1294723492
 s149896
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/PkgInfo
@@ -842,7 +842,7 @@ t1294709397
 s108312
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityGen.o
-t1294711332
+t1294723491
 s158852
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityMath.o
@@ -875,7 +875,7 @@ t1294630155
 s5188
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o
-t1294711721
+t1294713209
 s255564
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/main.m
@@ -913,9 +913,9 @@ i<fstream>
 i"CityMath.h"
 
 N/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm
-c000000004D2BBB9D00000000000011CC
-t1294711709
-s4556
+c000000004D2BC17600000000000011CA
+t1294713206
+s4554
 i"voronoi.h"
 
 N/var/folders/n2/n2zI92DDGWW7DETiICb5oE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-csutsliisxqfpxgbdxngvefbxtwk/Golden_Triangle_Prefix.pch.gch
@@ -953,7 +953,7 @@ s1002
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies316404520#316404520#0(0"0(0#1#0"8618887168#0"0#
+lSLF07#2@18"Check dependencies316416290#316416291#0(0"0(0#1#0"31244212048494624#0"0#
 
 CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/BoundingPolygon.o" "/Users/alexbullard/Programming/objective-c/City/Golden Triangle/BoundingPolygon.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s316126255.038193
@@ -1181,8 +1181,8 @@ CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-norma
 r0
 
 CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityGen.o" "/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm" normal x86_64 objective-c++ com.apple.compilers.gcc.4_2
-s316404131.317670
-e316404132.360348
+s316416290.998771
+e316416291.887856
 r1
 xCompileC
 xbuild/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityGen.o
@@ -1191,7 +1191,7 @@ xnormal
 xx86_64
 xobjective-c++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@63"Compile /Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm316404131#316404132#0(0"0(0#0#55"/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm7954874733706031104#1724"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/include" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/tS/tSSllAiTF1KfulqfSyBhGk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-cuotojdhcidwshfoyygbfnjhmptu/Golden_Triangle_Prefix.pch -c "/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm" -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityGen.o"0#
+lSLF07#2@63"Compile /Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm316416291#316416291#0(0"0(0#0#55"/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm7954874733706031104#1724"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/include" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/tS/tSSllAiTF1KfulqfSyBhGk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-cuotojdhcidwshfoyygbfnjhmptu/Golden_Triangle_Prefix.pch -c "/Users/pjreddie/Desktop/City/Golden Triangle/CityGen.mm" -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityGen.o"0#
 
 CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/CityMath.o" "/Users/alexbullard/Programming/objective-c/City/Golden Triangle/CityMath.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s316145053.439088
@@ -1593,8 +1593,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@64"Compile /Users/pjreddie/Desktop/City/Golden Triangle/voronoi.cpp316365634#316365634#0(0"0(0#0#56"/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.cpp8616531392#1715"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/include" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/tS/tSSllAiTF1KfulqfSyBhGk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-ffbgyduhttpyoaexpeckffrdclie/Golden_Triangle_Prefix.pch -c "/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.cpp" -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o"0#
 
 CCompileC "build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o" "/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm" normal x86_64 objective-c++ com.apple.compilers.gcc.4_2
-s316404520.500196
-e316404521.524360
+s316406008.273883
+e316406009.311145
 r1
 xCompileC
 xbuild/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o
@@ -1603,7 +1603,7 @@ xnormal
 xx86_64
 xobjective-c++
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@63"Compile /Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm316404520#316404521#0(0"0(0#0#55"/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm8616656256#1724"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/include" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/tS/tSSllAiTF1KfulqfSyBhGk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-cuotojdhcidwshfoyygbfnjhmptu/Golden_Triangle_Prefix.pch -c "/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm" -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o"0#
+lSLF07#2@63"Compile /Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm316406008#316406009#0(0"0(0#0#55"/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm8605856320#1724"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-generated-files.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-own-target-headers.hmap" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-all-target-headers.hmap" -iquote "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Golden Triangle-project-headers.hmap" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/include" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources/x86_64" "-I/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/DerivedSources" -include /var/folders/tS/tSSllAiTF1KfulqfSyBhGk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Golden_Triangle_Prefix-cuotojdhcidwshfoyygbfnjhmptu/Golden_Triangle_Prefix.pch -c "/Users/pjreddie/Desktop/City/Golden Triangle/voronoi.mm" -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/voronoi.o"0#
 
 CCompileXIB "/Users/alexbullard/Programming/objective-c/City/Golden Triangle/English.lproj/MainMenu.xib"
 s316124206.379606
@@ -1752,14 +1752,14 @@ xx86_64
 lSLF07#2@126"Link /Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle315778940#315778941#0(0"0(0#0#0"8618812832#710"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" "-F/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug" -filelist "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden Triangle.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -framework OpenGL -o "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle"0#
 
 CLd "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle" normal x86_64
-s316404521.524443
-e316404521.582139
+s316416291.887959
+e316416292.253672
 r1
 xLd
 x/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle
 xnormal
 xx86_64
-lSLF07#2@112"Link /Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle316404521#316404521#0(0"0(0#0#0"8603806400#640"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" -filelist "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden Triangle.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -framework OpenGL -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle"0#
+lSLF07#2@112"Link /Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle316416291#316416292#0(0"0(0#0#0"8604357632#640"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" "-F/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug" -filelist "/Users/pjreddie/Desktop/City/Golden Triangle/build/Golden Triangle.build/Debug/Golden Triangle.build/Objects-normal/x86_64/Golden Triangle.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -framework OpenGL -o "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/MacOS/Golden Triangle"0#
 
 CProcessInfoPlistFile "/Users/alexbullard/Programming/objective-c/City/Golden Triangle/build/Debug/Golden Triangle.app/Contents/Info.plist" Golden_Triangle-Info.plist
 s316124136.298896
@@ -1896,10 +1896,10 @@ x/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden T
 lSLF07#2@96"Touch /Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app315778941#315778941#0(0"0(0#0#0"8618615712#183"    cd "/Users/alexbullard/Programming/objective-c/Golden Triangle"    /usr/bin/touch -c "/Users/alexbullard/Programming/objective-c/Golden Triangle/build/Debug/Golden Triangle.app"0#
 
 CTouch "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app"
-s316404521.582236
-e316404521.584993
+s316416292.253766
+e316416292.256496
 r1
 xTouch
 x/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app
-lSLF07#2@82"Touch /Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app316404521#316404521#0(0"0(0#0#0"8613395744#155"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    /usr/bin/touch -c "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app"0#
+lSLF07#2@82"Touch /Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app316416292#316416292#0(0"0(0#0#0"8605728000#155"    cd "/Users/pjreddie/Desktop/City/Golden Triangle"    /usr/bin/touch -c "/Users/pjreddie/Desktop/City/Golden Triangle/build/Debug/Golden Triangle.app"0#
 
