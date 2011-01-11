@@ -37,4 +37,9 @@
 	return k-1;
 }
 
+// Returns true if (x3,y3) is left of the line from (x1,y1) to (x2,y2)
++(bool) isLeftOf:(float)x_1 y1:(float)y_1 toX2:(float)x_2 y2:(float)y_2 x3:(float)x_3 y3:(float)y_3 {
+	return ((x_2-x_1) * (y_3-y_1) - (y_2-y_1)*(x_3-x_1)) >= 0;
+}
+
 @end

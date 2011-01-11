@@ -8,10 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import <stdlib.h>
+#import <algorithm>
 
 @interface CityMath : NSObject {
 
 }
 + (float) gausian:(float)median deviation:(float)dev;
 + (int) poisson:(float)lambda;
++(bool) isLeftOf:(float)x_1 y1:(float)y_1 toX2:(float)x_2 y2:(float)y_2 x3:(float)x_3 y3:(float)y_3;
 @end

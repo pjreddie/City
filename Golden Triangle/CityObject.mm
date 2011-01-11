@@ -10,6 +10,7 @@
 
 
 @implementation CityObject
+
 -(CityObject *) initWithPolygons:(NSArray *)poly{
 	self = [super init];
 	polygonList = [[NSArray alloc] initWithArray:poly];

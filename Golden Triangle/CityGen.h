@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BuildingObject.h"
 #import "PlaneObject.h"
+#import "RoadObject.h"
 #import "voronoi.h"
 
 
