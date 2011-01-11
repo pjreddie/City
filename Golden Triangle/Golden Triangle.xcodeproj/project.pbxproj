@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		7619E23012D647ED00CA244D /* CityMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7619E22F12D647ED00CA244D /* CityMath.mm */; };
+		7680641612D65B2B001FC31E /* CityGen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7680641512D65B2B001FC31E /* CityGen.mm */; };
+		7680643212D664E2001FC31E /* CityPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7680643112D664E2001FC31E /* CityPoint.mm */; };
+		768064BF12D67C86001FC31E /* CityGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 768064BE12D67C86001FC31E /* CityGLView.mm */; };
+		768064E312D67DD2001FC31E /* Golden_TriangleAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 768064E212D67DD2001FC31E /* Golden_TriangleAppDelegate.mm */; };
+		768064EA12D680F8001FC31E /* BoundingPolygon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 768064E912D680F8001FC31E /* BoundingPolygon.mm */; };
+		7680668912D6A7FB001FC31E /* alpine_down.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668312D6A7F6001FC31E /* alpine_down.bmp */; };
+		7680668A12D6A7FB001FC31E /* alpine_east.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668412D6A7F8001FC31E /* alpine_east.bmp */; };
+		7680668B12D6A7FB001FC31E /* alpine_north.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668512D6A7F9001FC31E /* alpine_north.bmp */; };
+		7680668C12D6A7FB001FC31E /* alpine_south.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668612D6A7F9001FC31E /* alpine_south.bmp */; };
+		7680668D12D6A7FB001FC31E /* alpine_up.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668712D6A7FA001FC31E /* alpine_up.bmp */; };
+		7680668E12D6A7FB001FC31E /* alpine_west.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7680668812D6A7FB001FC31E /* alpine_west.bmp */; };
+		76DF8D5812D7C53D0090AC9B /* CityObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D5712D7C53D0090AC9B /* CityObject.mm */; };
+		76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */; };
+		76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */; };
+		76EDABD1128DFD5D0017BDF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */; };
+		7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* Golden_Triangle_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Golden_Triangle_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		7619E22E12D647ED00CA244D /* CityMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityMath.h; sourceTree = "<group>"; };
+		7619E22F12D647ED00CA244D /* CityMath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityMath.mm; sourceTree = "<group>"; };
+		7680641412D65B2B001FC31E /* CityGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityGen.h; sourceTree = "<group>"; };
+		7680641512D65B2B001FC31E /* CityGen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityGen.mm; sourceTree = "<group>"; };
+		7680643012D664E2001FC31E /* CityPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityPoint.h; sourceTree = "<group>"; };
+		7680643112D664E2001FC31E /* CityPoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityPoint.mm; sourceTree = "<group>"; };
+		768064BD12D67C86001FC31E /* CityGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityGLView.h; sourceTree = "<group>"; };
+		768064BE12D67C86001FC31E /* CityGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityGLView.mm; sourceTree = "<group>"; };
+		768064E112D67DD2001FC31E /* Golden_TriangleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Golden_TriangleAppDelegate.h; sourceTree = "<group>"; };
+		768064E212D67DD2001FC31E /* Golden_TriangleAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Golden_TriangleAppDelegate.mm; sourceTree = "<group>"; };
+		768064E812D680F8001FC31E /* BoundingPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingPolygon.h; sourceTree = "<group>"; };
+		768064E912D680F8001FC31E /* BoundingPolygon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BoundingPolygon.mm; sourceTree = "<group>"; };
+		7680668312D6A7F6001FC31E /* alpine_down.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_down.bmp; path = Skybox/alpine_down.bmp; sourceTree = "<group>"; };
+		7680668412D6A7F8001FC31E /* alpine_east.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_east.bmp; path = Skybox/alpine_east.bmp; sourceTree = "<group>"; };
+		7680668512D6A7F9001FC31E /* alpine_north.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_north.bmp; path = Skybox/alpine_north.bmp; sourceTree = "<group>"; };
+		7680668612D6A7F9001FC31E /* alpine_south.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_south.bmp; path = Skybox/alpine_south.bmp; sourceTree = "<group>"; };
+		7680668712D6A7FA001FC31E /* alpine_up.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_up.bmp; path = Skybox/alpine_up.bmp; sourceTree = "<group>"; };
+		7680668812D6A7FB001FC31E /* alpine_west.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = alpine_west.bmp; path = Skybox/alpine_west.bmp; sourceTree = "<group>"; };
+		76DF8D5612D7C53D0090AC9B /* CityObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityObject.h; sourceTree = "<group>"; };
+		76DF8D5712D7C53D0090AC9B /* CityObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityObject.mm; sourceTree = "<group>"; };
+		76DF8D6312D7C7320090AC9B /* BuildingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingObject.h; sourceTree = "<group>"; };
+		76DF8D6412D7C7320090AC9B /* BuildingObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BuildingObject.mm; sourceTree = "<group>"; };
+		76DF8D8312D7CEC40090AC9B /* PlaneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneObject.h; sourceTree = "<group>"; };
+		76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlaneObject.mm; sourceTree = "<group>"; };
+		76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = voronoi.mm; sourceTree = "<group>"; };
+		7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voronoi.h; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Golden_Triangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Golden_Triangle-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Golden Triangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golden Triangle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				76EDABD1128DFD5D0017BDF4 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */,
+				7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */,
+				76DF8D5612D7C53D0090AC9B /* CityObject.h */,
+				76DF8D5712D7C53D0090AC9B /* CityObject.mm */,
+				76DF8D6312D7C7320090AC9B /* BuildingObject.h */,
+				76DF8D6412D7C7320090AC9B /* BuildingObject.mm */,
+				76DF8D8312D7CEC40090AC9B /* PlaneObject.h */,
+				76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */,
+				768064E812D680F8001FC31E /* BoundingPolygon.h */,
+				768064E912D680F8001FC31E /* BoundingPolygon.mm */,
+				7680643012D664E2001FC31E /* CityPoint.h */,
+				7680643112D664E2001FC31E /* CityPoint.mm */,
+				768064E112D67DD2001FC31E /* Golden_TriangleAppDelegate.h */,
+				768064E212D67DD2001FC31E /* Golden_TriangleAppDelegate.mm */,
+				7680641412D65B2B001FC31E /* CityGen.h */,
+				7680641512D65B2B001FC31E /* CityGen.mm */,
+				7619E22E12D647ED00CA244D /* CityMath.h */,
+				7619E22F12D647ED00CA244D /* CityMath.mm */,
+				768064BD12D67C86001FC31E /* CityGLView.h */,
+				768064BE12D67C86001FC31E /* CityGLView.mm */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Golden Triangle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Golden Triangle */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = "Golden Triangle";
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3F00F4B6AF500CF3369 /* Golden_Triangle_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.mm */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7680668312D6A7F6001FC31E /* alpine_down.bmp */,
+				7680668412D6A7F8001FC31E /* alpine_east.bmp */,
+				7680668512D6A7F9001FC31E /* alpine_north.bmp */,
+				7680668612D6A7F9001FC31E /* alpine_south.bmp */,
+				7680668712D6A7FA001FC31E /* alpine_up.bmp */,
+				7680668812D6A7FB001FC31E /* alpine_west.bmp */,
+				8D1107310486CEB800E47090 /* Golden_Triangle-Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Golden Triangle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Golden Triangle" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Golden Triangle";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "Golden Triangle";
+			productReference = 8D1107320486CEB800E47090 /* Golden Triangle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Golden Triangle" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Golden Triangle */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Golden Triangle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				7680668912D6A7FB001FC31E /* alpine_down.bmp in Resources */,
+				7680668A12D6A7FB001FC31E /* alpine_east.bmp in Resources */,
+				7680668B12D6A7FB001FC31E /* alpine_north.bmp in Resources */,
+				7680668C12D6A7FB001FC31E /* alpine_south.bmp in Resources */,
+				7680668D12D6A7FB001FC31E /* alpine_up.bmp in Resources */,
+				7680668E12D6A7FB001FC31E /* alpine_west.bmp in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.mm in Sources */,
+				7619E23012D647ED00CA244D /* CityMath.mm in Sources */,
+				7680641612D65B2B001FC31E /* CityGen.mm in Sources */,
+				7680643212D664E2001FC31E /* CityPoint.mm in Sources */,
+				768064BF12D67C86001FC31E /* CityGLView.mm in Sources */,
+				768064E312D67DD2001FC31E /* Golden_TriangleAppDelegate.mm in Sources */,
+				768064EA12D680F8001FC31E /* BoundingPolygon.mm in Sources */,
+				76DF8D5812D7C53D0090AC9B /* CityObject.mm in Sources */,
+				76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */,
+				76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */,
+				7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Golden_Triangle_Prefix.pch;
+				INFOPLIST_FILE = "Golden_Triangle-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "Golden Triangle";
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Golden_Triangle_Prefix.pch;
+				INFOPLIST_FILE = "Golden_Triangle-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "Golden Triangle";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Golden Triangle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Golden Triangle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
