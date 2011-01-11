@@ -12,12 +12,11 @@
 
 + (NSMutableArray *) masterGenerate {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
-	//[CityGen addPlane:polygons3D];
-	//Voronoi d = GenerateVoronoi(1, 20, -20, 20, -50, 0);
-	//std::list<std::list<JPoint> > polys = d.getPolygons();
-	//[CityGen addCityBuildings:polygons3D diagram:polys];
-	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
-	
+	[CityGen addPlane:polygons3D];
+	std::list<std::list<JPoint> > polys = GenerateVoronoi(1, 20, -5, 5, -10, 0);
+	[CityGen addCityBuildings:polygons3D diagram:polys];
+//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
+
 	return polygons3D;
 }
 
@@ -39,7 +38,7 @@
 			[points addObject: [[CityPoint alloc] initWithX:x y:-0.9 z:z]];
 			
 		}
-		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:0 green:1 blue:1] avgHeight:5]];
+		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:0 green:1 blue:1] avgHeight:2]];
 	}
 	
 	// For each polygon call addBuilding w/ height generated from gausian

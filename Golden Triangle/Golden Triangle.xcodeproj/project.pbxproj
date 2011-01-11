@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		7619E23012D647ED00CA244D /* CityMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7619E22F12D647ED00CA244D /* CityMath.mm */; };
+		761FCAA812DBF50600781398 /* RoadObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 761FCAA712DBF50600781398 /* RoadObject.mm */; };
 		7680641612D65B2B001FC31E /* CityGen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7680641512D65B2B001FC31E /* CityGen.mm */; };
 		7680643212D664E2001FC31E /* CityPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7680643112D664E2001FC31E /* CityPoint.mm */; };
 		768064BF12D67C86001FC31E /* CityGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 768064BE12D67C86001FC31E /* CityGLView.mm */; };
@@ -23,9 +24,8 @@
 		76DF8D5812D7C53D0090AC9B /* CityObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D5712D7C53D0090AC9B /* CityObject.mm */; };
 		76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */; };
 		76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */; };
-		76E270E912DBAD36007A4976 /* RoadObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76E270E812DBAD36007A4976 /* RoadObject.mm */; };
 		76EDABD1128DFD5D0017BDF4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */; };
-		7CEDAFA312DA9A2D00DEDBDA /* voronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */; };
+		7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -42,6 +42,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		7619E22E12D647ED00CA244D /* CityMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityMath.h; sourceTree = "<group>"; };
 		7619E22F12D647ED00CA244D /* CityMath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityMath.mm; sourceTree = "<group>"; };
+		761FCAA612DBF50600781398 /* RoadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadObject.h; sourceTree = "<group>"; };
+		761FCAA712DBF50600781398 /* RoadObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RoadObject.mm; sourceTree = "<group>"; };
 		7680641412D65B2B001FC31E /* CityGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityGen.h; sourceTree = "<group>"; };
 		7680641512D65B2B001FC31E /* CityGen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityGen.mm; sourceTree = "<group>"; };
 		7680643012D664E2001FC31E /* CityPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityPoint.h; sourceTree = "<group>"; };
@@ -64,10 +66,8 @@
 		76DF8D6412D7C7320090AC9B /* BuildingObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BuildingObject.mm; sourceTree = "<group>"; };
 		76DF8D8312D7CEC40090AC9B /* PlaneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaneObject.h; sourceTree = "<group>"; };
 		76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlaneObject.mm; sourceTree = "<group>"; };
-		76E270E712DBAD36007A4976 /* RoadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadObject.h; sourceTree = "<group>"; };
-		76E270E812DBAD36007A4976 /* RoadObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RoadObject.mm; sourceTree = "<group>"; };
 		76EDABD0128DFD5D0017BDF4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = voronoi.cpp; sourceTree = "<group>"; };
+		7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = voronoi.mm; sourceTree = "<group>"; };
 		7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voronoi.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Golden_Triangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Golden_Triangle-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Golden Triangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golden Triangle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,13 +89,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				76E270E712DBAD36007A4976 /* RoadObject.h */,
-				76E270E812DBAD36007A4976 /* RoadObject.mm */,
-				7CEDAFA112DA9A2D00DEDBDA /* voronoi.cpp */,
+				7CEDAFA112DA9A2D00DEDBDA /* voronoi.mm */,
 				7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */,
 				76DF8D5612D7C53D0090AC9B /* CityObject.h */,
 				76DF8D5712D7C53D0090AC9B /* CityObject.mm */,
 				76DF8D6312D7C7320090AC9B /* BuildingObject.h */,
+				761FCAA612DBF50600781398 /* RoadObject.h */,
+				761FCAA712DBF50600781398 /* RoadObject.mm */,
 				76DF8D6412D7C7320090AC9B /* BuildingObject.mm */,
 				76DF8D8312D7CEC40090AC9B /* PlaneObject.h */,
 				76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */,
@@ -266,8 +266,8 @@
 				76DF8D5812D7C53D0090AC9B /* CityObject.mm in Sources */,
 				76DF8D6512D7C7320090AC9B /* BuildingObject.mm in Sources */,
 				76DF8D8512D7CEC40090AC9B /* PlaneObject.mm in Sources */,
-				7CEDAFA312DA9A2D00DEDBDA /* voronoi.cpp in Sources */,
-				76E270E912DBAD36007A4976 /* RoadObject.mm in Sources */,
+				7CEDAFA312DA9A2D00DEDBDA /* voronoi.mm in Sources */,
+				761FCAA812DBF50600781398 /* RoadObject.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

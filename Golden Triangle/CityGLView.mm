@@ -163,9 +163,8 @@
 	glLoadIdentity();                // and reset it
 }
 
-- (void) initLighting {
-	/*
-	glEnable(GL_FOG);
+- (void) initLighting {	
+	/*glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
 	glFogf(GL_FOG_START, 3.0f);
 	glFogf(GL_FOG_END, 15.0f);
