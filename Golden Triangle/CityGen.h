@@ -12,6 +12,7 @@
 #import "RoadObject.h"
 #import "voronoi.h"
 
+using namespace std;
 
 @interface CityGen : NSObject {
 

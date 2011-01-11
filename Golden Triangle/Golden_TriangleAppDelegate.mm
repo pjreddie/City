@@ -41,7 +41,7 @@
 		NSOpenGLPFADoubleBuffer,
 		NSOpenGLPFAAccelerated,
 		NSOpenGLPFAColorSize, 32,
-		NSOpenGLPFADepthSize, 16,
+		NSOpenGLPFADepthSize, 32,
 		0
 	};
 	NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];

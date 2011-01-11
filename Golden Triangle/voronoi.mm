@@ -110,7 +110,8 @@ list<JPoint> Shrink(list<JPoint> poly, double s){
 	
 }
 
-list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy){
+pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy){
+	
 	srand(seed);
 	
 	list<Segment> bounds;
@@ -133,10 +134,19 @@ list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, doubl
 	
 	list<list<JPoint> > polys = d.getPolygons(4);
 	
+	list<Segment> bigRoads;
+	list<Segment> smallRoads;
+
+	bigRoads.insert(bigRoads.begin(),d.diagram.begin(), d.diagram.end());
+
+	
 	for(list<list<JPoint> > ::iterator pit = polys.begin(); pit != polys.end(); ++pit){
 		Voronoi r = GenerateRoads(*pit, (maxx-minx)/30,(maxx-minx)/20);
 		list<list<JPoint> > b = r.getPolygons(2);
 		blocks.insert(blocks.begin(), b.begin(), b.end());
+		smallRoads.insert(smallRoads.begin(),r.diagram.begin(), r.diagram.end());
+		//smallRoads.insert(smallRoads.begin(),r.bounds.begin(), r.bounds.end());
+
 	}	
 
 	list<list<JPoint> > buildings;
@@ -147,7 +157,7 @@ list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, doubl
 		buildings.insert(buildings.begin(), b.begin(), b.end());
 	}	
 	
-	return buildings;
+	return make_pair(buildings,make_pair(bigRoads, smallRoads));
 	
 }
 /*
@@ -166,6 +176,6 @@ void testdraw(){
 
 /*
  int main(void){
-	 std::list<std::list<JPoint> > polys = GenerateVoronoi(5, 30, -200, 200, -400, 0);
+	 pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > polys = GenerateVoronoi(5, 20, -100, 100, -200, 0);
  }
 */

@@ -13,9 +13,17 @@
 + (NSMutableArray *) masterGenerate {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	//[CityGen addPlane:polygons3D];
-	std::list<std::list<JPoint> > polys = GenerateVoronoi(5, 30, -200, 200, -400, 0);
-	[CityGen addCityBuildings:polygons3D diagram:polys];
-//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
+	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(5, 20, -100, 100, -200, 0);
+	//[CityGen addCityBuildings:polygons3D diagram:city.first];
+	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
+		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	}
+	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
+		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	}
+	
+	
+	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
 
 	return polygons3D;
 }

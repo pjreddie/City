@@ -345,6 +345,6 @@ struct Voronoi{
 
 Voronoi GenerateRoads(list<JPoint> points);
 
-list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
+pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
 
 void testdraw();
