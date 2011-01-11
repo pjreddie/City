@@ -30,8 +30,8 @@
 	renderTimer = nil;
 	// Set and activate full screen
 	NSRect mainDisplayRect = [[NSScreen mainScreen] frame];
-	NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
-	[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
+	//NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
+	//[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
 	
 	CGAssociateMouseAndMouseCursorPosition(FALSE);
 	CGDisplayHideCursor(NULL);
@@ -46,14 +46,17 @@
 	};
 	NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 	
-	NSRect viewRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
+	//NSRect viewRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
+	NSRect viewRect = NSMakeRect(0.0, 0.0, 500, 400);
+
 	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
-	[fullScreenWindow setContentView: glView];
-	[fullScreenWindow makeKeyAndOrderFront:self];
-	//[fullScreenWindow makeFirstResponder:self ];
-	
+	//[fullScreenWindow setContentView: glView];
+	//[fullScreenWindow makeKeyAndOrderFront:self];
+
+	[window setContentView: glView];
+	[window makeKeyAndOrderFront:self];
+
 	[window setAcceptsMouseMovedEvents:YES];
-	//[fullScreenWindow setAcceptsMouseMovedEvents:YES];
 	
 	if(glView != nil){
 		[glView initializeGL:mainDisplayRect];
