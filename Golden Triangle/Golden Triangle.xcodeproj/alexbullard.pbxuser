@@ -73,6 +73,40 @@
 			761FCAA912DBF55100781398 /* PBXTextBookmark */ = 761FCAA912DBF55100781398 /* PBXTextBookmark */;
 			761FCAAA12DBF55100781398 /* PBXTextBookmark */ = 761FCAAA12DBF55100781398 /* PBXTextBookmark */;
 			761FCAAB12DBF55100781398 /* PBXTextBookmark */ = 761FCAAB12DBF55100781398 /* PBXTextBookmark */;
+			761FCAAF12DBF69100781398 /* PBXTextBookmark */ = 761FCAAF12DBF69100781398 /* PBXTextBookmark */;
+			761FCAB012DBF69100781398 /* PBXTextBookmark */ = 761FCAB012DBF69100781398 /* PBXTextBookmark */;
+			761FCAB112DBF69100781398 /* PBXTextBookmark */ = 761FCAB112DBF69100781398 /* PBXTextBookmark */;
+			761FCAB212DBF69100781398 /* PBXTextBookmark */ = 761FCAB212DBF69100781398 /* PBXTextBookmark */;
+			761FCAB312DBF69100781398 /* PBXTextBookmark */ = 761FCAB312DBF69100781398 /* PBXTextBookmark */;
+			761FCAB412DBF69100781398 /* PBXTextBookmark */ = 761FCAB412DBF69100781398 /* PBXTextBookmark */;
+			761FCAB512DBF69100781398 /* PBXTextBookmark */ = 761FCAB512DBF69100781398 /* PBXTextBookmark */;
+			761FCAB612DBF69100781398 /* PBXTextBookmark */ = 761FCAB612DBF69100781398 /* PBXTextBookmark */;
+			761FCAB712DBF69100781398 /* PBXTextBookmark */ = 761FCAB712DBF69100781398 /* PBXTextBookmark */;
+			761FCAB812DBF69100781398 /* PBXTextBookmark */ = 761FCAB812DBF69100781398 /* PBXTextBookmark */;
+			761FCAB912DBF69100781398 /* PBXTextBookmark */ = 761FCAB912DBF69100781398 /* PBXTextBookmark */;
+			761FCABA12DBF69100781398 /* PBXTextBookmark */ = 761FCABA12DBF69100781398 /* PBXTextBookmark */;
+			761FCABB12DBF69100781398 /* PBXTextBookmark */ = 761FCABB12DBF69100781398 /* PBXTextBookmark */;
+			761FCABC12DBF69100781398 /* PBXTextBookmark */ = 761FCABC12DBF69100781398 /* PBXTextBookmark */;
+			761FCABD12DBF69100781398 /* PBXTextBookmark */ = 761FCABD12DBF69100781398 /* PBXTextBookmark */;
+			761FCABE12DBF69100781398 /* PBXTextBookmark */ = 761FCABE12DBF69100781398 /* PBXTextBookmark */;
+			761FCABF12DBF69100781398 /* PBXTextBookmark */ = 761FCABF12DBF69100781398 /* PBXTextBookmark */;
+			761FCAC012DBF69100781398 /* PBXTextBookmark */ = 761FCAC012DBF69100781398 /* PBXTextBookmark */;
+			761FCAC112DBF69100781398 /* PBXTextBookmark */ = 761FCAC112DBF69100781398 /* PBXTextBookmark */;
+			761FCAC212DBF69100781398 /* PBXTextBookmark */ = 761FCAC212DBF69100781398 /* PBXTextBookmark */;
+			761FCAC312DBF69100781398 /* PBXTextBookmark */ = 761FCAC312DBF69100781398 /* PBXTextBookmark */;
+			761FCAC412DBF69100781398 /* PBXTextBookmark */ = 761FCAC412DBF69100781398 /* PBXTextBookmark */;
+			761FCAC512DBF69100781398 /* PBXTextBookmark */ = 761FCAC512DBF69100781398 /* PBXTextBookmark */;
+			761FCAC612DBF6CE00781398 /* PBXTextBookmark */ = 761FCAC612DBF6CE00781398 /* PBXTextBookmark */;
+			761FCAC712DBF6CE00781398 /* PBXTextBookmark */ = 761FCAC712DBF6CE00781398 /* PBXTextBookmark */;
+			761FCAC812DBF6CE00781398 /* PBXTextBookmark */ = 761FCAC812DBF6CE00781398 /* PBXTextBookmark */;
+			761FCAC912DBF6F300781398 /* PBXTextBookmark */ = 761FCAC912DBF6F300781398 /* PBXTextBookmark */;
+			761FCACA12DBF6F300781398 /* PBXTextBookmark */ = 761FCACA12DBF6F300781398 /* PBXTextBookmark */;
+			761FCACB12DBF6F300781398 /* PBXTextBookmark */ = 761FCACB12DBF6F300781398 /* PBXTextBookmark */;
+			761FCACF12DBF7A400781398 /* XCBuildMessageTextBookmark */ = 761FCACF12DBF7A400781398 /* XCBuildMessageTextBookmark */;
+			761FCAD012DBF7A400781398 /* PBXTextBookmark */ = 761FCAD012DBF7A400781398 /* PBXTextBookmark */;
+			761FCAD812DBF7A800781398 /* PBXTextBookmark */ = 761FCAD812DBF7A800781398 /* PBXTextBookmark */;
+			761FCAD912DBF7A800781398 /* PBXTextBookmark */ = 761FCAD912DBF7A800781398 /* PBXTextBookmark */;
+			761FCADA12DBF7A800781398 /* PBXTextBookmark */ = 761FCADA12DBF7A800781398 /* PBXTextBookmark */;
 			763EF7FA12D7B6480071B71F = 763EF7FA12D7B6480071B71F /* PBXTextBookmark */;
 			763EF7FB12D7B6480071B71F = 763EF7FB12D7B6480071B71F /* PBXTextBookmark */;
 			763EF80F12D7B6A30071B71F = 763EF80F12D7B6A30071B71F /* PBXTextBookmark */;
@@ -468,7 +502,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.mm: 175";
 		rLen = 0;
-		rLoc = 3897;
+		rLoc = 3831;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 3866;
@@ -483,12 +517,26 @@
 		vrLen = 313;
 		vrLoc = 0;
 	};
+	761FCAA612DBF50600781398 /* RoadObject.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 351}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 839}";
+		};
+	};
+	761FCAA712DBF50600781398 /* RoadObject.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1811, 1391}}";
+			sepNavSelRange = "{1388, 0}";
+			sepNavVisRange = "{1083, 890}";
+		};
+	};
 	761FCAA912DBF55100781398 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.mm: 175";
 		rLen = 0;
-		rLoc = 3897;
+		rLoc = 3831;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 3866;
@@ -498,7 +546,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.mm: 177";
 		rLen = 0;
-		rLoc = 3999;
+		rLoc = 3884;
 		rType = 0;
 		vrLen = 632;
 		vrLoc = 3793;
@@ -513,12 +561,351 @@
 		vrLen = 313;
 		vrLoc = 0;
 	};
+	761FCAAF12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
+		name = "CityGLView.mm: 177";
+		rLen = 0;
+		rLoc = 3884;
+		rType = 0;
+		vrLen = 355;
+		vrLoc = 0;
+	};
+	761FCAB012DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064BD12D67C86001FC31E /* CityGLView.h */;
+		name = "CityGLView.h: 5";
+		rLen = 0;
+		rLoc = 48;
+		rType = 0;
+		vrLen = 607;
+		vrLoc = 753;
+	};
+	761FCAB112DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7619E22F12D647ED00CA244D /* CityMath.mm */;
+		name = "CityMath.mm: 36";
+		rLen = 0;
+		rLoc = 780;
+		rType = 0;
+		vrLen = 514;
+		vrLoc = 0;
+	};
+	761FCAB212DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7619E22E12D647ED00CA244D /* CityMath.h */;
+		name = "CityMath.h: 17";
+		rLen = 0;
+		rLoc = 309;
+		rType = 0;
+		vrLen = 435;
+		vrLoc = 0;
+	};
+	761FCAB312DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064E212D67DD2001FC31E /* Golden_TriangleAppDelegate.mm */;
+		name = "Golden_TriangleAppDelegate.mm: 47";
+		rLen = 28;
+		rLoc = 1254;
+		rType = 0;
+		vrLen = 525;
+		vrLoc = 0;
+	};
+	761FCAB412DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064E112D67DD2001FC31E /* Golden_TriangleAppDelegate.h */;
+		name = "Golden_TriangleAppDelegate.h: 11";
+		rLen = 0;
+		rLoc = 211;
+		rType = 0;
+		vrLen = 502;
+		vrLoc = 0;
+	};
+	761FCAB512DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680643112D664E2001FC31E /* CityPoint.mm */;
+		name = "CityPoint.mm: 35";
+		rLen = 38;
+		rLoc = 419;
+		rType = 0;
+		vrLen = 362;
+		vrLoc = 0;
+	};
+	761FCAB612DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680643012D664E2001FC31E /* CityPoint.h */;
+		name = "CityPoint.h: 22";
+		rLen = 17;
+		rLoc = 338;
+		rType = 0;
+		vrLen = 358;
+		vrLoc = 3;
+	};
+	761FCAB712DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064E912D680F8001FC31E /* BoundingPolygon.mm */;
+		name = "BoundingPolygon.mm: 48";
+		rLen = 0;
+		rLoc = 835;
+		rType = 0;
+		vrLen = 264;
+		vrLoc = 656;
+	};
+	761FCAB812DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064E812D680F8001FC31E /* BoundingPolygon.h */;
+		name = "BoundingPolygon.h: 27";
+		rLen = 0;
+		rLoc = 607;
+		rType = 0;
+		vrLen = 576;
+		vrLoc = 0;
+	};
+	761FCAB912DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */;
+		name = "PlaneObject.mm: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 207;
+		vrLoc = 0;
+	};
+	761FCABA12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D8312D7CEC40090AC9B /* PlaneObject.h */;
+		name = "PlaneObject.h: 10";
+		rLen = 0;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 243;
+		vrLoc = 0;
+	};
+	761FCABB12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 123";
+		rLen = 0;
+		rLoc = 5180;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 0;
+	};
+	761FCABC12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 761FCAA712DBF50600781398 /* RoadObject.mm */;
+		name = "RoadObject.mm: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 2722;
+	};
+	761FCABD12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 761FCAA612DBF50600781398 /* RoadObject.h */;
+		name = "RoadObject.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 839;
+		vrLoc = 0;
+	};
+	761FCABE12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6312D7C7320090AC9B /* BuildingObject.h */;
+		name = "BuildingObject.h: 15";
+		rLen = 0;
+		rLoc = 281;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 44;
+	};
+	761FCABF12DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D5712D7C53D0090AC9B /* CityObject.mm */;
+		name = "CityObject.mm: 22";
+		rLen = 0;
+		rLoc = 372;
+		rType = 0;
+		vrLen = 349;
+		vrLoc = 142;
+	};
+	761FCAC012DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */;
+		name = "voronoi.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 398;
+		vrLoc = 0;
+	};
+	761FCAC112DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D5612D7C53D0090AC9B /* CityObject.h */;
+		name = "CityObject.h: 16";
+		rLen = 0;
+		rLoc = 322;
+		rType = 0;
+		vrLen = 395;
+		vrLoc = 0;
+	};
+	761FCAC212DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680641412D65B2B001FC31E /* CityGen.h */;
+		name = "CityGen.h: 12";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 492;
+		vrLoc = 0;
+	};
+	761FCAC312DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
+		name = "CityGen.mm: 15";
+		rLen = 0;
+		rLoc = 304;
+		rType = 0;
+		vrLen = 1854;
+		vrLoc = 1761;
+	};
+	761FCAC412DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
+		name = "CityGen.mm: 15";
+		rLen = 0;
+		rLoc = 304;
+		rType = 0;
+		vrLen = 761;
+		vrLoc = 0;
+	};
+	761FCAC512DBF69100781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 152";
+		rLen = 0;
+		rLoc = 6315;
+		rType = 0;
+		vrLen = 313;
+		vrLoc = 0;
+	};
+	761FCAC612DBF6CE00781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
+		name = "CityGen.mm: 15";
+		rLen = 0;
+		rLoc = 304;
+		rType = 0;
+		vrLen = 761;
+		vrLoc = 0;
+	};
+	761FCAC712DBF6CE00781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 17";
+		rLen = 0;
+		rLoc = 537;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 0;
+	};
+	761FCAC812DBF6CE00781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 149";
+		rLen = 0;
+		rLoc = 6315;
+		rType = 0;
+		vrLen = 313;
+		vrLoc = 0;
+	};
+	761FCAC912DBF6F300781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 17";
+		rLen = 0;
+		rLoc = 537;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 0;
+	};
+	761FCACA12DBF6F300781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
+		name = "CityGLView.mm: 167";
+		rLen = 0;
+		rLoc = 3821;
+		rType = 0;
+		vrLen = 464;
+		vrLoc = 11013;
+	};
+	761FCACB12DBF6F300781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
+		name = "BuildingObject.mm: 149";
+		rLen = 0;
+		rLoc = 6315;
+		rType = 0;
+		vrLen = 313;
+		vrLoc = 0;
+	};
+	761FCACF12DBF7A400781398 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Unused variable 'sidewalkSize'";
+		fRef = 761FCAA712DBF50600781398 /* RoadObject.mm */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 51;
+		rType = 1;
+	};
+	761FCAD012DBF7A400781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 761FCAA712DBF50600781398 /* RoadObject.mm */;
+		name = "RoadObject.mm: 39";
+		rLen = 38;
+		rLoc = 1108;
+		rType = 0;
+		vrLen = 342;
+		vrLoc = 998;
+	};
+	761FCAD812DBF7A800781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
+		name = "CityGLView.mm: 167";
+		rLen = 0;
+		rLoc = 3821;
+		rType = 0;
+		vrLen = 465;
+		vrLoc = 11012;
+	};
+	761FCAD912DBF7A800781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
+		name = "CityGen.mm: 15";
+		rLen = 0;
+		rLoc = 304;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 0;
+	};
+	761FCADA12DBF7A800781398 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 761FCAA712DBF50600781398 /* RoadObject.mm */;
+		name = "RoadObject.mm: 52";
+		rLen = 0;
+		rLoc = 1388;
+		rType = 0;
+		vrLen = 890;
+		vrLoc = 1083;
+	};
 	763EF7FA12D7B6480071B71F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 25";
 		rLen = 0;
-		rLoc = 935;
+		rLoc = 662;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 165;
@@ -528,7 +915,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 17";
 		rLen = 0;
-		rLoc = 338;
+		rLoc = 304;
 		rType = 0;
 		vrLen = 1522;
 		vrLoc = 165;
@@ -548,7 +935,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 240";
 		rLen = 0;
-		rLoc = 5995;
+		rLoc = 5880;
 		rType = 0;
 		vrLen = 586;
 		vrLoc = 5809;
@@ -558,7 +945,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 17";
 		rLen = 0;
-		rLoc = 338;
+		rLoc = 304;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 165;
@@ -568,7 +955,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 143";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2849;
@@ -578,7 +965,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 17";
 		rLen = 0;
-		rLoc = 338;
+		rLoc = 304;
 		rType = 0;
 		vrLen = 879;
 		vrLoc = 0;
@@ -588,7 +975,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 61";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 129;
 		vrLoc = 2720;
@@ -630,31 +1017,31 @@
 	};
 	7680641412D65B2B001FC31E /* CityGen.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 288}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 312}}";
 			sepNavSelRange = "{219, 0}";
-			sepNavVisRange = "{0, 401}";
+			sepNavVisRange = "{0, 492}";
 		};
 	};
 	7680641512D65B2B001FC31E /* CityGen.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1321, 715}}";
-			sepNavSelRange = "{2418, 0}";
-			sepNavVisRange = "{935, 1882}";
+			sepNavIntBoundsRect = "{{0, 0}, {1321, 923}}";
+			sepNavSelRange = "{304, 0}";
+			sepNavVisRange = "{0, 617}";
 			sepNavWindowFrame = "{{15, 600}, {1069, 273}}";
 		};
 	};
 	7680643012D664E2001FC31E /* CityPoint.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {792, 325}}";
-			sepNavSelRange = "{171, 0}";
-			sepNavVisRange = "{145, 216}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 325}}";
+			sepNavSelRange = "{338, 17}";
+			sepNavVisRange = "{3, 358}";
 		};
 	};
 	7680643112D664E2001FC31E /* CityPoint.mm */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 520}}";
 			sepNavSelRange = "{419, 38}";
-			sepNavVisRange = "{288, 175}";
+			sepNavVisRange = "{0, 362}";
 		};
 	};
 	7680645612D665FD001FC31E /* PBXTextBookmark */ = {
@@ -683,30 +1070,30 @@
 	};
 	768064BE12D67C86001FC31E /* CityGLView.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 5733}}";
-			sepNavSelRange = "{3999, 0}";
-			sepNavVisRange = "{0, 355}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 5629}}";
+			sepNavSelRange = "{3821, 0}";
+			sepNavVisRange = "{11012, 465}";
 		};
 	};
 	768064E112D67DD2001FC31E /* Golden_TriangleAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 312}}";
 			sepNavSelRange = "{211, 0}";
-			sepNavVisRange = "{0, 503}";
+			sepNavVisRange = "{0, 502}";
 		};
 	};
 	768064E212D67DD2001FC31E /* Golden_TriangleAppDelegate.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1807}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1781}}";
 			sepNavSelRange = "{1254, 28}";
-			sepNavVisRange = "{902, 874}";
+			sepNavVisRange = "{0, 525}";
 		};
 	};
 	768064E812D680F8001FC31E /* BoundingPolygon.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 390}}";
 			sepNavSelRange = "{607, 0}";
-			sepNavVisRange = "{147, 483}";
+			sepNavVisRange = "{0, 576}";
 			sepNavWindowFrame = "{{15, 600}, {1069, 273}}";
 		};
 	};
@@ -714,7 +1101,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 715}}";
 			sepNavSelRange = "{835, 0}";
-			sepNavVisRange = "{45, 557}";
+			sepNavVisRange = "{656, 264}";
 		};
 	};
 	768064FA12D68484001FC31E /* PlistBookmark */ = {
@@ -755,7 +1142,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 149";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2849;
@@ -825,7 +1212,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 182";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 818;
 		vrLoc = 4586;
@@ -835,7 +1222,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1782;
 		vrLoc = 1067;
@@ -865,7 +1252,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 49";
 		rLen = 0;
-		rLoc = 1937;
+		rLoc = 1867;
 		rType = 0;
 		vrLen = 1204;
 		vrLoc = 744;
@@ -885,7 +1272,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 48";
 		rLen = 0;
-		rLoc = 1861;
+		rLoc = 1791;
 		rType = 0;
 		vrLen = 1212;
 		vrLoc = 744;
@@ -905,7 +1292,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 49";
 		rLen = 0;
-		rLoc = 1934;
+		rLoc = 1864;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 744;
@@ -925,7 +1312,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 43";
 		rLen = 0;
-		rLoc = 1323;
+		rLoc = 1253;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 809;
@@ -945,7 +1332,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 34";
 		rLen = 0;
-		rLoc = 1006;
+		rLoc = 936;
 		rType = 0;
 		vrLen = 962;
 		vrLoc = 691;
@@ -965,7 +1352,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 126";
 		rLen = 0;
-		rLoc = 5747;
+		rLoc = 5677;
 		rType = 0;
 		vrLen = 1590;
 		vrLoc = 4444;
@@ -985,7 +1372,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 109";
 		rLen = 6;
-		rLoc = 4466;
+		rLoc = 4396;
 		rType = 0;
 		vrLen = 1472;
 		vrLoc = 4599;
@@ -1265,7 +1652,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 245";
 		rLen = 0;
-		rLoc = 6723;
+		rLoc = 6608;
 		rType = 0;
 		vrLen = 716;
 		vrLoc = 5925;
@@ -1285,7 +1672,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 3899;
@@ -1305,7 +1692,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 206";
 		rLen = 0;
-		rLoc = 5693;
+		rLoc = 5578;
 		rType = 0;
 		vrLen = 605;
 		vrLoc = 4948;
@@ -1325,7 +1712,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 3631;
@@ -1345,7 +1732,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 926;
 		vrLoc = 3631;
@@ -1365,7 +1752,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 196";
 		rLen = 0;
-		rLoc = 5416;
+		rLoc = 5301;
 		rType = 0;
 		vrLen = 653;
 		vrLoc = 4747;
@@ -1385,7 +1772,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 195";
 		rLen = 0;
-		rLoc = 5310;
+		rLoc = 5195;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 4814;
@@ -1405,7 +1792,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 195";
 		rLen = 0;
-		rLoc = 5300;
+		rLoc = 5185;
 		rType = 0;
 		vrLen = 715;
 		vrLoc = 4814;
@@ -1425,7 +1812,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 605;
 		vrLoc = 4948;
@@ -1445,7 +1832,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 3826;
@@ -1465,7 +1852,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3851;
@@ -1485,7 +1872,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 3945;
@@ -1505,7 +1892,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 195";
 		rLen = 0;
-		rLoc = 5310;
+		rLoc = 5195;
 		rType = 0;
 		vrLen = 678;
 		vrLoc = 4747;
@@ -1525,7 +1912,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 195";
 		rLen = 0;
-		rLoc = 5310;
+		rLoc = 5195;
 		rType = 0;
 		vrLen = 741;
 		vrLoc = 4747;
@@ -1535,7 +1922,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1647;
 		vrLoc = 1202;
@@ -1545,7 +1932,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 46";
 		rLen = 0;
-		rLoc = 2418;
+		rLoc = 2145;
 		rType = 0;
 		vrLen = 1527;
 		vrLoc = 1322;
@@ -1565,7 +1952,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 46";
 		rLen = 0;
-		rLoc = 2418;
+		rLoc = 2145;
 		rType = 0;
 		vrLen = 1587;
 		vrLoc = 1262;
@@ -1595,7 +1982,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 197";
 		rLen = 0;
-		rLoc = 5392;
+		rLoc = 5277;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 4702;
@@ -1615,7 +2002,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 197";
 		rLen = 0;
-		rLoc = 5356;
+		rLoc = 5241;
 		rType = 0;
 		vrLen = 679;
 		vrLoc = 4799;
@@ -1635,7 +2022,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 173";
 		rLen = 0;
-		rLoc = 4395;
+		rLoc = 4280;
 		rType = 0;
 		vrLen = 783;
 		vrLoc = 4127;
@@ -1655,7 +2042,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 174";
 		rLen = 0;
-		rLoc = 4425;
+		rLoc = 4310;
 		rType = 0;
 		vrLen = 742;
 		vrLoc = 4212;
@@ -1675,7 +2062,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 168";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 761;
 		vrLoc = 3992;
@@ -1695,7 +2082,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 178";
 		rLen = 0;
-		rLoc = 4634;
+		rLoc = 4519;
 		rType = 0;
 		vrLen = 775;
 		vrLoc = 4036;
@@ -1715,7 +2102,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 390";
 		rLen = 0;
-		rLoc = 11058;
+		rLoc = 10943;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 3774;
@@ -1735,7 +2122,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 204";
 		rLen = 0;
-		rLoc = 5357;
+		rLoc = 5242;
 		rType = 0;
 		vrLen = 644;
 		vrLoc = 5025;
@@ -1755,7 +2142,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 197";
 		rLen = 44;
-		rLoc = 5313;
+		rLoc = 5198;
 		rType = 0;
 		vrLen = 636;
 		vrLoc = 5025;
@@ -1775,7 +2162,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 162";
 		rLen = 0;
-		rLoc = 3936;
+		rLoc = 3844;
 		rType = 0;
 		vrLen = 837;
 		vrLoc = 3538;
@@ -1795,7 +2182,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 162";
 		rLen = 0;
-		rLoc = 3936;
+		rLoc = 3844;
 		rType = 0;
 		vrLen = 745;
 		vrLoc = 3631;
@@ -1815,7 +2202,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 166";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 670;
 		vrLoc = 3774;
@@ -1835,7 +2222,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 174";
 		rLen = 0;
-		rLoc = 4363;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 712;
 		vrLoc = 3824;
@@ -1855,7 +2242,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 164";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 3827;
@@ -1875,7 +2262,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 185";
 		rLen = 0;
-		rLoc = 4690;
+		rLoc = 4575;
 		rType = 0;
 		vrLen = 744;
 		vrLoc = 4282;
@@ -1895,7 +2282,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 164";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 856;
 		vrLoc = 3472;
@@ -1915,7 +2302,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 163";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 3472;
@@ -1935,7 +2322,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 164";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 760;
 		vrLoc = 3588;
@@ -1955,7 +2342,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 164";
 		rLen = 0;
-		rLoc = 3842;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 672;
 		vrLoc = 3709;
@@ -1975,7 +2362,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 164";
 		rLen = 0;
-		rLoc = 3899;
+		rLoc = 3833;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3774;
@@ -2155,7 +2542,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 187";
 		rLen = 0;
-		rLoc = 4405;
+		rLoc = 4290;
 		rType = 0;
 		vrLen = 775;
 		vrLoc = 3972;
@@ -2175,7 +2562,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 177";
 		rLen = 0;
-		rLoc = 3987;
+		rLoc = 3872;
 		rType = 0;
 		vrLen = 721;
 		vrLoc = 4000;
@@ -2195,7 +2582,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 179";
 		rLen = 0;
-		rLoc = 4027;
+		rLoc = 3912;
 		rType = 0;
 		vrLen = 721;
 		vrLoc = 4000;
@@ -2215,7 +2602,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 181";
 		rLen = 0;
-		rLoc = 4125;
+		rLoc = 4010;
 		rType = 0;
 		vrLen = 698;
 		vrLoc = 4032;
@@ -2235,7 +2622,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 194";
 		rLen = 0;
-		rLoc = 4688;
+		rLoc = 4573;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 4055;
@@ -2255,7 +2642,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 194";
 		rLen = 0;
-		rLoc = 4688;
+		rLoc = 4573;
 		rType = 0;
 		vrLen = 770;
 		vrLoc = 4104;
@@ -2275,7 +2662,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 193";
 		rLen = 0;
-		rLoc = 4621;
+		rLoc = 4506;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 4197;
@@ -2295,7 +2682,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 193";
 		rLen = 1;
-		rLoc = 4608;
+		rLoc = 4493;
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 4243;
@@ -2315,7 +2702,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 194";
 		rLen = 0;
-		rLoc = 4634;
+		rLoc = 4519;
 		rType = 0;
 		vrLen = 789;
 		vrLoc = 4295;
@@ -2335,7 +2722,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 193";
 		rLen = 0;
-		rLoc = 4589;
+		rLoc = 4474;
 		rType = 0;
 		vrLen = 890;
 		vrLoc = 4295;
@@ -2355,7 +2742,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 46";
 		rLen = 0;
-		rLoc = 2418;
+		rLoc = 2145;
 		rType = 0;
 		vrLen = 1882;
 		vrLoc = 935;
@@ -2375,7 +2762,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 123";
 		rLen = 0;
-		rLoc = 5250;
+		rLoc = 5180;
 		rType = 0;
 		vrLen = 1585;
 		vrLoc = 4266;
@@ -2395,7 +2782,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 193";
 		rLen = 0;
-		rLoc = 4589;
+		rLoc = 4474;
 		rType = 0;
 		vrLen = 890;
 		vrLoc = 4295;
@@ -2405,7 +2792,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 212";
 		rLen = 0;
-		rLoc = 5309;
+		rLoc = 5194;
 		rType = 0;
 		vrLen = 732;
 		vrLoc = 5080;
@@ -2425,7 +2812,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 189";
 		rLen = 0;
-		rLoc = 4393;
+		rLoc = 4278;
 		rType = 0;
 		vrLen = 743;
 		vrLoc = 4104;
@@ -2445,7 +2832,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 169";
 		rLen = 0;
-		rLoc = 3840;
+		rLoc = 3821;
 		rType = 0;
 		vrLen = 567;
 		vrLoc = 3863;
@@ -2465,7 +2852,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 172";
 		rLen = 0;
-		rLoc = 3897;
+		rLoc = 3831;
 		rType = 0;
 		vrLen = 572;
 		vrLoc = 3889;
@@ -2485,7 +2872,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 149";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2849;
@@ -2495,7 +2882,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 55";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 505;
 		vrLoc = 2344;
@@ -2505,7 +2892,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 61";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 505;
 		vrLoc = 2344;
@@ -2515,7 +2902,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 61";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 127;
 		vrLoc = 2722;
@@ -2525,7 +2912,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1236;
 		vrLoc = 1613;
@@ -2535,37 +2922,37 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1423;
 		vrLoc = 1426;
 	};
 	76DF8D5612D7C53D0090AC9B /* CityObject.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 298}}";
-			sepNavSelRange = "{217, 11}";
-			sepNavVisRange = "{0, 398}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 302}}";
+			sepNavSelRange = "{322, 0}";
+			sepNavVisRange = "{0, 395}";
 		};
 	};
 	76DF8D5712D7C53D0090AC9B /* CityObject.mm */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 494}}";
 			sepNavSelRange = "{372, 0}";
-			sepNavVisRange = "{142, 395}";
+			sepNavVisRange = "{142, 349}";
 		};
 	};
 	76DF8D6312D7C7320090AC9B /* BuildingObject.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 416}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 403}}";
 			sepNavSelRange = "{281, 0}";
-			sepNavVisRange = "{44, 765}";
+			sepNavVisRange = "{44, 669}";
 		};
 	};
 	76DF8D6412D7C7320090AC9B /* BuildingObject.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1010, 1989}}";
-			sepNavSelRange = "{247, 0}";
-			sepNavVisRange = "{0, 313}";
+			sepNavIntBoundsRect = "{{0, 0}, {1010, 2015}}";
+			sepNavSelRange = "{6315, 0}";
+			sepNavVisRange = "{0, 247}";
 			sepNavWindowFrame = "{{15, 600}, {1069, 273}}";
 		};
 	};
@@ -2594,7 +2981,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 30";
 		rLen = 0;
-		rLoc = 1502;
+		rLoc = 1229;
 		rType = 0;
 		vrLen = 1244;
 		vrLoc = 449;
@@ -2604,7 +2991,7 @@
 		comments = "'basePolygon' undeclared (first use in this function)";
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		rLen = 1;
-		rLoc = 28;
+		rLoc = 25;
 		rType = 1;
 	};
 	76DF8D7C12D7CDBE0090AC9B /* PBXTextBookmark */ = {
@@ -2619,14 +3006,14 @@
 	};
 	76DF8D8312D7CEC40090AC9B /* PlaneObject.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 298}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 302}}";
 			sepNavSelRange = "{178, 0}";
 			sepNavVisRange = "{0, 243}";
 		};
 	};
 	76DF8D8412D7CEC40090AC9B /* PlaneObject.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 298}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 302}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 207}";
 		};
@@ -2636,7 +3023,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 35";
 		rLen = 2;
-		rLoc = 1502;
+		rLoc = 1229;
 		rType = 0;
 		vrLen = 1270;
 		vrLoc = 935;
@@ -2646,7 +3033,7 @@
 		comments = "'pointa' undeclared (first use in this function)";
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		rLen = 1;
-		rLoc = 83;
+		rLoc = 80;
 		rType = 1;
 	};
 	76DF8D8912D7CFDB0090AC9B /* PBXTextBookmark */ = {
@@ -2654,7 +3041,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 86";
 		rLen = 0;
-		rLoc = 3707;
+		rLoc = 3637;
 		rType = 0;
 		vrLen = 360;
 		vrLoc = 3183;
@@ -2736,7 +3123,7 @@
 		rLen = 0;
 		rLoc = 211;
 		rType = 0;
-		vrLen = 503;
+		vrLen = 502;
 		vrLoc = 0;
 	};
 	76DF8DA612D7D2310090AC9B /* PBXTextBookmark */ = {
@@ -2824,7 +3211,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 194";
 		rLen = 0;
-		rLoc = 5258;
+		rLoc = 5143;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 4588;
@@ -2834,7 +3221,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2832;
+		rLoc = 2559;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 228;
@@ -2844,7 +3231,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 17";
 		rLen = 0;
-		rLoc = 338;
+		rLoc = 304;
 		rType = 0;
 		vrLen = 1278;
 		vrLoc = 228;
@@ -2854,7 +3241,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 17";
 		rLen = 0;
-		rLoc = 338;
+		rLoc = 304;
 		rType = 0;
 		vrLen = 1426;
 		vrLoc = 337;
@@ -2864,7 +3251,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 37";
 		rLen = 0;
-		rLoc = 1505;
+		rLoc = 1232;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 937;
@@ -2874,7 +3261,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 37";
 		rLen = 0;
-		rLoc = 1505;
+		rLoc = 1232;
 		rType = 0;
 		vrLen = 1906;
 		vrLoc = 937;
@@ -2894,7 +3281,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 20";
 		rLen = 0;
-		rLoc = 614;
+		rLoc = 544;
 		rType = 0;
 		vrLen = 627;
 		vrLoc = 63;
@@ -2904,7 +3291,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 20";
 		rLen = 0;
-		rLoc = 614;
+		rLoc = 544;
 		rType = 0;
 		vrLen = 705;
 		vrLoc = 63;
@@ -2914,7 +3301,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 37";
 		rLen = 0;
-		rLoc = 1505;
+		rLoc = 1232;
 		rType = 0;
 		vrLen = 1905;
 		vrLoc = 938;
@@ -2924,7 +3311,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1527;
 		vrLoc = 1322;
@@ -2934,7 +3321,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 51";
 		rLen = 0;
-		rLoc = 2840;
+		rLoc = 2567;
 		rType = 0;
 		vrLen = 1587;
 		vrLoc = 1262;
@@ -2944,7 +3331,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 20";
 		rLen = 0;
-		rLoc = 614;
+		rLoc = 544;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 63;
@@ -2954,7 +3341,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 47";
 		rLen = 0;
-		rLoc = 2047;
+		rLoc = 1977;
 		rType = 0;
 		vrLen = 1210;
 		vrLoc = 623;
@@ -2964,7 +3351,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2065;
+		rLoc = 1995;
 		rType = 0;
 		vrLen = 1139;
 		vrLoc = 844;
@@ -2974,7 +3361,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 40";
 		rLen = 0;
-		rLoc = 2045;
+		rLoc = 1975;
 		rType = 0;
 		vrLen = 1191;
 		vrLoc = 871;
@@ -3004,7 +3391,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 45";
 		rLen = 0;
-		rLoc = 2045;
+		rLoc = 1975;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 891;
@@ -3014,7 +3401,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2065;
+		rLoc = 1995;
 		rType = 0;
 		vrLen = 1144;
 		vrLoc = 881;
@@ -3044,7 +3431,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 41";
 		rLen = 0;
-		rLoc = 1952;
+		rLoc = 1679;
 		rType = 0;
 		vrLen = 1159;
 		vrLoc = 817;
@@ -3054,7 +3441,7 @@
 		comments = "Unused variable 'pointb'";
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 51;
 		rType = 1;
 	};
 	76DF8DE112D7D3BC0090AC9B /* PBXTextBookmark */ = {
@@ -3062,7 +3449,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 39";
 		rLen = 0;
-		rLoc = 2045;
+		rLoc = 1975;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 786;
@@ -3082,7 +3469,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2065;
+		rLoc = 1995;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 858;
@@ -3100,7 +3487,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2088;
+		rLoc = 2018;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 862;
@@ -3210,7 +3597,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2064;
+		rLoc = 1994;
 		rType = 0;
 		vrLen = 1081;
 		vrLoc = 858;
@@ -3230,7 +3617,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2064;
+		rLoc = 1994;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 858;
@@ -3242,7 +3629,7 @@
 		rLen = 11;
 		rLoc = 217;
 		rType = 0;
-		vrLen = 398;
+		vrLen = 395;
 		vrLoc = 0;
 	};
 	76DF8E1512D7D5E30090AC9B /* PBXTextBookmark */ = {
@@ -3290,7 +3677,7 @@
 		comments = "'polygons' undeclared (first use in this function)";
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		rLen = 1;
-		rLoc = 66;
+		rLoc = 63;
 		rType = 1;
 	};
 	76DF8E1B12D7D5E80090AC9B /* PBXTextBookmark */ = {
@@ -3298,7 +3685,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 71";
 		rLen = 0;
-		rLoc = 3401;
+		rLoc = 3331;
 		rType = 0;
 		vrLen = 1165;
 		vrLoc = 4610;
@@ -3348,7 +3735,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 50";
 		rLen = 0;
-		rLoc = 2064;
+		rLoc = 1994;
 		rType = 0;
 		vrLen = 1153;
 		vrLoc = 858;
@@ -3398,7 +3785,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 51";
 		rLen = 0;
-		rLoc = 2064;
+		rLoc = 1994;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 973;
@@ -3418,7 +3805,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 46";
 		rLen = 0;
-		rLoc = 2045;
+		rLoc = 1975;
 		rType = 0;
 		vrLen = 1305;
 		vrLoc = 1045;
@@ -3438,7 +3825,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 141";
 		rLen = 0;
-		rLoc = 6093;
+		rLoc = 6023;
 		rType = 0;
 		vrLen = 911;
 		vrLoc = 4924;
@@ -3468,7 +3855,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 48";
 		rLen = 0;
-		rLoc = 2045;
+		rLoc = 1975;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 3205;
@@ -3478,7 +3865,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 118";
 		rLen = 0;
-		rLoc = 5267;
+		rLoc = 5197;
 		rType = 0;
 		vrLen = 1465;
 		vrLoc = 4213;
@@ -3498,7 +3885,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 101";
 		rLen = 0;
-		rLoc = 4340;
+		rLoc = 4270;
 		rType = 0;
 		vrLen = 1471;
 		vrLoc = 3898;
@@ -3518,7 +3905,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 115";
 		rLen = 0;
-		rLoc = 5187;
+		rLoc = 5117;
 		rType = 0;
 		vrLen = 1526;
 		vrLoc = 3965;
@@ -3538,7 +3925,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 101";
 		rLen = 0;
-		rLoc = 4340;
+		rLoc = 4270;
 		rType = 0;
 		vrLen = 1513;
 		vrLoc = 3901;
@@ -3558,7 +3945,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 101";
 		rLen = 0;
-		rLoc = 4340;
+		rLoc = 4270;
 		rType = 0;
 		vrLen = 1603;
 		vrLoc = 3967;
@@ -3578,7 +3965,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 103";
 		rLen = 0;
-		rLoc = 4448;
+		rLoc = 4378;
 		rType = 0;
 		vrLen = 1599;
 		vrLoc = 3967;
@@ -3598,7 +3985,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 101";
 		rLen = 0;
-		rLoc = 4340;
+		rLoc = 4270;
 		rType = 0;
 		vrLen = 1419;
 		vrLoc = 3898;
@@ -3618,7 +4005,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 115";
 		rLen = 0;
-		rLoc = 5187;
+		rLoc = 5117;
 		rType = 0;
 		vrLen = 1626;
 		vrLoc = 3901;
@@ -3638,7 +4025,7 @@
 		fRef = 76DF8D6412D7C7320090AC9B /* BuildingObject.mm */;
 		name = "BuildingObject.m: 115";
 		rLen = 0;
-		rLoc = 5187;
+		rLoc = 5117;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 668;
@@ -3668,7 +4055,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 836;
 		vrLoc = 4382;
@@ -3678,7 +4065,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 790;
 		vrLoc = 4429;
@@ -3698,7 +4085,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 769;
 		vrLoc = 4589;
@@ -3768,7 +4155,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 741;
 		vrLoc = 4617;
@@ -3788,7 +4175,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 718;
 		vrLoc = 4586;
@@ -3808,7 +4195,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 184";
 		rLen = 0;
-		rLoc = 4721;
+		rLoc = 4606;
 		rType = 0;
 		vrLen = 763;
 		vrLoc = 4586;
@@ -3997,7 +4384,7 @@
 		fRef = 768064BE12D67C86001FC31E /* CityGLView.mm */;
 		name = "CityGLView.m: 237";
 		rLen = 0;
-		rLoc = 5853;
+		rLoc = 5738;
 		rType = 0;
 		vrLen = 688;
 		vrLoc = 6134;
@@ -4037,7 +4424,7 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 54";
 		rLen = 0;
-		rLoc = 2843;
+		rLoc = 2570;
 		rType = 0;
 		vrLen = 1145;
 		vrLoc = 1704;
@@ -4047,10 +4434,17 @@
 		fRef = 7680641512D65B2B001FC31E /* CityGen.mm */;
 		name = "CityGen.m: 25";
 		rLen = 0;
-		rLoc = 935;
+		rLoc = 662;
 		rType = 0;
 		vrLen = 1570;
 		vrLoc = 189;
+	};
+	7CEDAFA212DA9A2D00DEDBDA /* voronoi.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1993, 4563}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 398}";
+		};
 	};
 	8D1107260486CEB800E47090 /* Golden Triangle */ = {
 		activeExec = 0;

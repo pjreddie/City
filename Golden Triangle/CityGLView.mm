@@ -158,13 +158,14 @@
 	glMatrixMode( GL_PROJECTION );   // Select the projection matrix
 	glLoadIdentity();                // and reset it
 	// Calculate the aspect ratio of the view
-	gluPerspective( 45.0f, frame.size.width / frame.size.height, 0.5f, 85.0f );
+	gluPerspective( 45.0f, frame.size.width / frame.size.height, 0.5f, 1000.0f );
 	glMatrixMode( GL_MODELVIEW );    // Select the modelview matrix
 	glLoadIdentity();                // and reset it
 }
 
 - (void) initLighting {	
-	/*glEnable(GL_FOG);
+	/*
+	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
 	glFogf(GL_FOG_START, 3.0f);
 	glFogf(GL_FOG_END, 15.0f);
@@ -280,23 +281,26 @@
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 	double t = (3.14159265*dRotated)/180;
+	double s = (3.14159265*xRotated)/180;
 	if(movingLeft == true){
-		zTranslate += 0.03*-cos(t+3.14159265/2);
-		xTranslate += 0.03*sin(t+3.14159265/2);
+		zTranslate += DMOVE*-cos(t+3.14159265/2);
+		xTranslate += DMOVE*sin(t+3.14159265/2);
 	}if(movingRight == true){
-		zTranslate += 0.03*-cos(t-3.14159265/2);
-		xTranslate += 0.03*sin(t-3.14159265/2);
+		zTranslate += DMOVE*-cos(t-3.14159265/2);
+		xTranslate += DMOVE*sin(t-3.14159265/2);
 	}if(movingUp == true){
-		zTranslate += 0.03*cos(t);
-		xTranslate += 0.03*-sin(t);
+		zTranslate += DMOVE*cos(t)*cos(s);
+		xTranslate += DMOVE*-sin(t)*cos(s);
+		yTranslate += DMOVE*sin(s);
 	}if(movingDown == true){
-		zTranslate += 0.03*-cos(t);
-		xTranslate += 0.03*sin(t);
+		zTranslate += DMOVE*-cos(t)*cos(s);
+		xTranslate += DMOVE*sin(t)*cos(s);
+		yTranslate += DMOVE*-sin(s);
 	}if (rotating) {
 		dRotated += 0.5*rotateDirection;
 	}
 	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glRotated(xRotated, 1.0, 0.0, 0.0);
+	glRotated(xRotated,  cos(t), 0.0, sin(t));
 	glTranslated(xTranslate,yTranslate,zTranslate);
 	[self drawSkybox];
 

@@ -15,7 +15,7 @@
 
 
 #define MAX_DISPLAY_LISTS 10024
-
+#define DMOVE 0.40
 
 @interface CityGLView : NSOpenGLView {
 	// Polygon data
