@@ -163,7 +163,7 @@
 	glLoadIdentity();                // and reset it
 }
 
-- (void) initLighting {
+- (void) initLighting {	
 	/*
 	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
@@ -231,6 +231,7 @@
 							glBegin(GL_POLYGON);
 						}
 						for(pt in [polygon coordinates]){
+							NSLog(@"hello x%f y%f z%f",[pt x], [pt y], [pt z]);
 							glVertex3f([pt x], [pt y], [pt z]);
 						}
 						if(j>4){ // Polygons must be defined independantly

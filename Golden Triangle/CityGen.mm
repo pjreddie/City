@@ -15,6 +15,8 @@
 	//[CityGen addPlane:polygons3D];
 	std::list<std::list<JPoint> > polys = GenerateVoronoi(5, 30, -200, 200, -400, 0);
 	[CityGen addCityBuildings:polygons3D diagram:polys];
+//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
+
 	return polygons3D;
 }
 
