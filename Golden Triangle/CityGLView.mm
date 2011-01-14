@@ -19,134 +19,6 @@
 	}
 }
 
-- (void) drawSkybox {
-	glPushMatrix();
-
-    // Reset and transform the matrix.
-    glLoadIdentity();
-	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glRotated(xRotated, 1.0, 0.0, 0.0);
-
-   /* gluLookAt(
-			  0,0,0,
-			  camera->x(),camera->y(),camera->z(),
-			  0,1,0);*/
-	
-    // Enable/Disable features
-    glPushAttrib(GL_ENABLE_BIT);
-	glEnable(GL_TEXTURE_2D);
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_BLEND);
-	
-    // Just in case we set all vertices to white.
-    glColor3f(1,1,1);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-    // Render the front quad
-	glBindTexture( GL_TEXTURE_2D, texture[ 0 ] ); 
-    glBegin(GL_POLYGON);
-	glTexCoord2f( 0.0f, 0.0f );
-	 glVertex3f(  1.5f, -1.5f, -1.5f );
-	glTexCoord2f( 1.0f, 0.0f );
-	 glVertex3f( -1.5f, -1.5f, -1.5f );
-	glTexCoord2f( 1.0f, 1.0f );
-	 glVertex3f( -1.5f,  1.5f, -1.5f );
-	glTexCoord2f( 0.0f, 1.0f );
-	 glVertex3f(  1.5f,  1.5f, -1.5f );
-    glEnd();
-	
-    // Render the left quad
-	glBindTexture( GL_TEXTURE_2D, texture[ 1 ] ); 
-
-    glBegin(GL_QUADS);
-	glTexCoord2f( 0.0f, 0.0f );
-
-	 glVertex3f(  1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 0.0f );
-
-	 glVertex3f(  1.0f, -1.0f, -1.0f );
-	glTexCoord2f( 1.0f, 1.0f );
-	 glVertex3f(  1.0f,  1.0f, -1.0f );
-	glTexCoord2f( 0.0f, 1.0f );
-	 glVertex3f(  1.0f,  1.0f,  1.0f );
-    glEnd();
-	
-    // Render the back quad
-	glBindTexture( GL_TEXTURE_2D, texture[ 2 ] ); 
-
-    glBegin(GL_QUADS);
-	glTexCoord2f( 0.0f, 0.0f );
-	glVertex3f( -1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 0.0f );
-
-	glVertex3f(  1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 1.0f );
-	glVertex3f(  1.0f,  1.0f,  1.0f );
-	glTexCoord2f( 0.0f, 1.0f );
-	glVertex3f( -1.0f,  1.0f,  1.0f );
-	
-    glEnd();
-	
-    // Render the right quad	
-	glBindTexture( GL_TEXTURE_2D, texture[ 3 ] ); 
-
-    glBegin(GL_QUADS);
-	glTexCoord2f( 0.0f, 0.0f );
-
-	 glVertex3f( -1.0f, -1.0f, -1.0f );
-	glTexCoord2f( 1.0f, 0.0f );
-	glVertex3f( -1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 1.0f );
-	 glVertex3f( -1.0f,  1.0f,  1.0f );
-	glTexCoord2f( 0.0f, 1.0f );
-	 glVertex3f( -1.0f,  1.0f, -1.0f );
-    glEnd();
-	
-    // Render the top quad
-	glBindTexture( GL_TEXTURE_2D, texture[ 4 ] ); 
-
-    glBegin(GL_QUADS);
-	glTexCoord2f( 0.0f, 1.0f );
-
-	glVertex3f( -1.0f,  1.0f, -1.0f );
-	glTexCoord2f( 0.0f, 0.0f );
-
-
-	glVertex3f( -1.0f,  1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 0.0f );
-
-	glVertex3f(  1.0f,  1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 1.0f );
-
-	glVertex3f(  1.0f,  1.0f, -1.0f );
-	
-    glEnd();
-	
-    // Render the bottom quad
-	glBindTexture( GL_TEXTURE_2D, texture[ 5 ] ); 
-
-    glBegin(GL_QUADS);
-	glTexCoord2f( 0.0f, 0.0f );
-
-	glVertex3f( -1.0f, -1.0f, -1.0f );
-	glTexCoord2f( 1.0f, 0.0f );
-
-	glVertex3f( -1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 1.0f, 1.0f );
-
-	glVertex3f(  1.0f, -1.0f,  1.0f );
-	glTexCoord2f( 0.0f, 1.0f );
-
-	glVertex3f(  1.0f, -1.0f, -1.0f );
-    glEnd();
-	
-    // Restore enable bits and matrix
-    glPopAttrib();
-	glEnable(GL_DEPTH_TEST);
-    glPopMatrix();
-}
-
 /*
  * Resize ourself
  */
@@ -197,7 +69,7 @@
 
 - (void) initDisplayLists {	
 	// Populates polygonsToDraw with all generated polygons
-	NSArray * polygonsToDraw = [CityGen masterGenerate];
+	NSArray * polygonsToDraw = [CityGen masterGenerate:self];
 	polygonsToDrawCount = [polygonsToDraw count];
 
 	//Draw polygons
@@ -231,7 +103,6 @@
 							glBegin(GL_POLYGON);
 						}
 						for(pt in [polygon coordinates]){
-							NSLog(@"hello x%f y%f z%f",[pt x], [pt y], [pt z]);
 							glVertex3f([pt x], [pt y], [pt z]);
 						}
 						if(j>4){ // Polygons must be defined independantly
@@ -249,21 +120,48 @@
 	[polygonsToDraw release]; //IS this enough?
 }
 
+- (void) addLoadingMessage:(NSString *)message {
+	NSLog(message);
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glLoadIdentity();
+    glPushAttrib(GL_ENABLE_BIT);
+	glEnable(GL_TEXTURE_2D);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_BLEND);
+	
+    // Just in case we set all vertices to white.
+    glColor3f(1,1,1);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	float verticalOffset = 1.50;
+	for(int i=0; i<=numberOfLoadMessages; i++){
+		glBindTexture( GL_TEXTURE_2D, texture[ TEXTURE_LOADING_START+i ] ); 
+		glBegin(GL_POLYGON);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-9.0f, -6.0f + i*verticalOffset, -15.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 2.0f, -6.0f+ i*verticalOffset, -15.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f, -4.0f+ i*verticalOffset, -15.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-9.0f, -4.0f+ i*verticalOffset, -15.0f);
+		glEnd();		
+	}
+	
+	glPopAttrib();
+	glEnable(GL_DEPTH_TEST);
+	
+	[ [ self openGLContext ] flushBuffer ];
+	numberOfLoadMessages++;
+}
 
 /*
  * Initial OpenGL setup
  */
 - (void) initializeGL:(NSRect)frame
 { 	
-	xTranslate = 0.0;
-	yTranslate = 0.0;
-	zTranslate = 0.0;
-	dRotated = 0.0;
 	[self reshape:frame];
-	if( ![ self loadGLTextures ] ){
+	if( ![ self loadGLTextures]){
+	 
 		NSLog(@"Error loading textures");
 	}
-	[self initDisplayLists];
+
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glEnable(GL_LINE_SMOOTH);
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );   // Black background
@@ -273,6 +171,24 @@
 	// Really nice perspective calculations
 	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
 	[self initLighting];
+	[ self setNeedsDisplay: YES ] ;
+
+
+}
+
+- (void) initializeData {
+	fullscreen = false;
+	xTranslate = 0.0;
+	yTranslate = 0.0;
+	zTranslate = 0.0;
+	dRotated = 0.0;
+	loadState = 0;
+
+}
+
+-(bool) fullscreen {
+	fullscreen = !fullscreen;
+	return !fullscreen;
 }
 
 /*  Draw Method - 
@@ -280,6 +196,7 @@
 -(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
+	if(loadState == 2){
 	double t = (3.14159265*dRotated)/180;
 	double s = (3.14159265*xRotated)/180;
 	if(movingLeft == true){
@@ -305,14 +222,14 @@
 	[self drawSkybox];
 
 	[self drawPolygons];
-
+	}else if (loadState == 0){
+		loadState = 1;
+		numberOfLoadMessages = 0;
+		[self initDisplayLists];
+		loadState = 2;
+	}
 	[ [ self openGLContext ] flushBuffer ];
-	[ self setNeedsDisplay: YES ] ;
 }
-
-/*
- * Setup a texture from our model
- */
 
 - (BOOL) loadGLTextures
 {
@@ -323,27 +240,31 @@
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_south.bmp" ] intoIndex:2 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_east.bmp" ] intoIndex:3 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_up.bmp" ] intoIndex:4 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_down.bmp" ] intoIndex:5 ]
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_down.bmp" ] intoIndex:5 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading1.bmp" ] intoIndex:6 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ]
+
 	   )
 	{
 		status = TRUE;
-		for(int i=0; i<6; i++){
-		glGenTextures( 1, &texture[ i ] );   // Create the texture
-		// Typical texture generation using data from the bitmap
-		glBindTexture( GL_TEXTURE_2D, texture[ i ] );
-		
-		glTexImage2D( GL_TEXTURE_2D, 0, 3, texSize[ i ].width,
-					 texSize[ i ].height, 0, texFormat[ i ],
-					 GL_UNSIGNED_BYTE, texBytes[ i ] );
+		for(int i=0; i<=TEXTURE_END; i++){
+			glGenTextures( 1, &texture[ i ] );   // Create the texture
+			// Typical texture generation using data from the bitmap
+			glBindTexture( GL_TEXTURE_2D, texture[ i ] );
 			
-		// Linear filtering
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-
-		
-		free( texBytes[ i ] );
+			glTexImage2D( GL_TEXTURE_2D, 0, 3, texSize[ i ].width,
+						 texSize[ i ].height, 0, texFormat[ i ],
+						 GL_UNSIGNED_BYTE, texBytes[ i ] );
+			
+			// Linear filtering
+			glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+			glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+			//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+			
+			
+			free( texBytes[ i ] );
 		}
 	}
 	
@@ -375,7 +296,7 @@
 		texSize[ texIndex ].width = [ theImage pixelsWide ];
 		texSize[ texIndex ].height = [ theImage pixelsHigh ];
 		texBytes[ texIndex ] = (char*)calloc( bytesPRow * texSize[ texIndex ].height, 
-								  1 );
+											 1 );
 		if( texBytes[ texIndex ] != NULL )
 		{
 			success = TRUE;
@@ -395,7 +316,136 @@
 	return success;
 }
 
-
+/*
+ * Draws the skybox
+ */
+- (void) drawSkybox {
+	glPushMatrix();
+	
+    // Reset and transform the matrix.
+    glLoadIdentity();
+	glRotated(dRotated, 0.0, 1.0, 0.0);
+	glRotated(xRotated, 1.0, 0.0, 0.0);
+	
+	/* gluLookAt(
+	 0,0,0,
+	 camera->x(),camera->y(),camera->z(),
+	 0,1,0);*/
+	
+    // Enable/Disable features
+    glPushAttrib(GL_ENABLE_BIT);
+	glEnable(GL_TEXTURE_2D);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_BLEND);
+	
+    // Just in case we set all vertices to white.
+    glColor3f(1,1,1);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	
+    // Render the front quad
+	glBindTexture( GL_TEXTURE_2D, texture[ 0 ] ); 
+    glBegin(GL_POLYGON);
+	glTexCoord2f( 0.0f, 0.0f );
+	glVertex3f(  1.5f, -1.5f, -1.5f );
+	glTexCoord2f( 1.0f, 0.0f );
+	glVertex3f( -1.5f, -1.5f, -1.5f );
+	glTexCoord2f( 1.0f, 1.0f );
+	glVertex3f( -1.5f,  1.5f, -1.5f );
+	glTexCoord2f( 0.0f, 1.0f );
+	glVertex3f(  1.5f,  1.5f, -1.5f );
+    glEnd();
+	
+    // Render the left quad
+	glBindTexture( GL_TEXTURE_2D, texture[ 1 ] ); 
+	
+    glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 0.0f );
+	
+	glVertex3f(  1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 0.0f );
+	
+	glVertex3f(  1.0f, -1.0f, -1.0f );
+	glTexCoord2f( 1.0f, 1.0f );
+	glVertex3f(  1.0f,  1.0f, -1.0f );
+	glTexCoord2f( 0.0f, 1.0f );
+	glVertex3f(  1.0f,  1.0f,  1.0f );
+    glEnd();
+	
+    // Render the back quad
+	glBindTexture( GL_TEXTURE_2D, texture[ 2 ] ); 
+	
+    glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 0.0f );
+	glVertex3f( -1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 0.0f );
+	
+	glVertex3f(  1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 1.0f );
+	glVertex3f(  1.0f,  1.0f,  1.0f );
+	glTexCoord2f( 0.0f, 1.0f );
+	glVertex3f( -1.0f,  1.0f,  1.0f );
+	
+    glEnd();
+	
+    // Render the right quad	
+	glBindTexture( GL_TEXTURE_2D, texture[ 3 ] ); 
+	
+    glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 0.0f );
+	
+	glVertex3f( -1.0f, -1.0f, -1.0f );
+	glTexCoord2f( 1.0f, 0.0f );
+	glVertex3f( -1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 1.0f );
+	glVertex3f( -1.0f,  1.0f,  1.0f );
+	glTexCoord2f( 0.0f, 1.0f );
+	glVertex3f( -1.0f,  1.0f, -1.0f );
+    glEnd();
+	
+    // Render the top quad
+	glBindTexture( GL_TEXTURE_2D, texture[ 4 ] ); 
+	
+    glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 1.0f );
+	
+	glVertex3f( -1.0f,  1.0f, -1.0f );
+	glTexCoord2f( 0.0f, 0.0f );
+	
+	
+	glVertex3f( -1.0f,  1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 0.0f );
+	
+	glVertex3f(  1.0f,  1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 1.0f );
+	
+	glVertex3f(  1.0f,  1.0f, -1.0f );
+	
+    glEnd();
+	
+    // Render the bottom quad
+	glBindTexture( GL_TEXTURE_2D, texture[ 5 ] ); 
+	
+    glBegin(GL_QUADS);
+	glTexCoord2f( 0.0f, 0.0f );
+	
+	glVertex3f( -1.0f, -1.0f, -1.0f );
+	glTexCoord2f( 1.0f, 0.0f );
+	
+	glVertex3f( -1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 1.0f, 1.0f );
+	
+	glVertex3f(  1.0f, -1.0f,  1.0f );
+	glTexCoord2f( 0.0f, 1.0f );
+	
+	glVertex3f(  1.0f, -1.0f, -1.0f );
+    glEnd();
+	
+    // Restore enable bits and matrix
+    glPopAttrib();
+	glEnable(GL_DEPTH_TEST);
+    glPopMatrix();
+}
 
 /* Methods used to move the camera */
 - (void) moveLeft:(bool)move {

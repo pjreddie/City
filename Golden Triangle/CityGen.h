@@ -11,13 +11,14 @@
 #import "PlaneObject.h"
 #import "RoadObject.h"
 #import "voronoi.h"
+#import "CityGLView.h"
 
 
 @interface CityGen : NSObject {
 
 }
 
-+ (NSMutableArray *) masterGenerate;
++ (NSMutableArray *) masterGenerate:(NSView *)glView;
 + (void) addPlane:(NSMutableArray *)polygons;
 + (void) addCityBuildings:(NSMutableArray *) polygons3D diagram: (std::list<std::list<JPoint> > ) polys;
 @end
