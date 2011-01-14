@@ -13,6 +13,10 @@
     NSWindow *window;
 	NSTimer *renderTimer;
 	CityGLView *glView;
+	NSRect mainDisplayRect;
+	NSRect viewRect;
+	NSRect viewFullRect;
+	NSOpenGLPixelFormat* pixelFormat;
 }
 
 

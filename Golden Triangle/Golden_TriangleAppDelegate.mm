@@ -25,12 +25,12 @@
 	
 	[ NSApp setDelegate:self ];   // We want delegate notifications
 	[ window makeFirstResponder:self ];
-
+	
 	
 	renderTimer = nil;
 	// Set and activate full screen
-	NSRect mainDisplayRect = [[NSScreen mainScreen] frame];
-	//NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
+	 mainDisplayRect = [[NSScreen mainScreen] frame];
+	//fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
 	//[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
 	
 	CGAssociateMouseAndMouseCursorPosition(FALSE);
@@ -44,18 +44,18 @@
 		NSOpenGLPFADepthSize, 32,
 		0
 	};
-	NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
+	pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 	
-	//NSRect viewRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
-	NSRect viewRect = NSMakeRect(0.0, 0.0, 500, 400);
-
+	viewFullRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
+	viewRect = NSMakeRect(0.0, 0.0, 500, 400);
+	
 	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
 	//[fullScreenWindow setContentView: glView];
 	//[fullScreenWindow makeKeyAndOrderFront:self];
-
+	
 	[window setContentView: glView];
 	[window makeKeyAndOrderFront:self];
-
+	
 	[window setAcceptsMouseMovedEvents:YES];
 	
 	if(glView != nil){
@@ -64,8 +64,9 @@
 	}else {
 		NSLog(@"Error Initializing OpenGL -A");
 	}
-
+	
 }
+
 
 /*
  * Setup timer to update the OpenGL view.
@@ -90,6 +91,7 @@
  */
 - (void) updateGLView:(NSTimer *)timer
 {
+
 	if( glView != nil )
 		[ glView draw:[ glView frame ] ];
 } 
@@ -111,8 +113,26 @@
 		[glView rotateScene:true direction:-1];
 	}else if(unicodeKey == 'e'){
 		[glView rotateScene:true direction:1];
+	}else if(unicodeKey == 'f'){
+		[window setContentView:nil];
+		[[glView openGLContext] clearDrawable];
+		if(![glView fullscreen]){
+			NSLog(@"enter fullscreen");
+
+			NSOpenGLContext * newContext = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:nil];
+			[glView setFrame:mainDisplayRect];
+			[glView setOpenGLContext:newContext];
+			[newContext makeCurrentContext];
+			[newContext setFullScreen];
+			[glView initializeGL:viewFullRect];
+			[window setContentView:glView];
+
+		}else{
+			NSLog(@"exit fullscreen");
+		}
 	}
 }
+
 - (void) keyUp:(NSEvent *)theEvent
 {
 	unichar unicodeKey;
@@ -135,6 +155,4 @@
 - (void) mouseMoved:(NSEvent *)theEvent {
 	[glView	rotateFromMouse:[theEvent deltaX] deltaY:[theEvent deltaY]];
 }
-
-//CGWarpMouseCursorPosition
 @end

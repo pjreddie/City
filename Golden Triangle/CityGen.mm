@@ -10,28 +10,28 @@
 
 @implementation CityGen
 
-+ (NSMutableArray *) masterGenerate {
+//TODO change to instance of CityGLView
++ (NSMutableArray *) masterGenerate:(NSView *)glView {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	//[CityGen addPlane:polygons3D];
-
+	[glView addLoadingMessage:@"building city..."];
+	[glView addLoadingMessage:@"generating voronoi diagrams..."];
 	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(RANDSEED, NUMCONTROL, MINX, MAXX, MINZ, MAXZ);
-	
+	[glView addLoadingMessage:@"constructing buildings..."];
 	double cx = MINX + (MAXX-MINX)/2;
 	double cz = MINZ + (MAXZ-MINZ)/2;
 	
 	double maxDist = MAXX-cx + MAXZ - cz;
 	
 	[CityGen addCityBuildings:polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
+	[glView addLoadingMessage:@"paving roads..."];
+
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
 		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
 	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
 		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
-	
-	
-	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:1.0 x1:0.0 y1:-0.5 z1:0.0 x2:3.0 y2:-0.5 z2:-5.0]];
-
 	return polygons3D;
 }
 
