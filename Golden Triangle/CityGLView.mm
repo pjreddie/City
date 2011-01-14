@@ -25,7 +25,8 @@
     // Reset and transform the matrix.
     glLoadIdentity();
 	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glRotated(xRotated, 1.0, 0.0, 0.0);
+	double t = (3.14159265*dRotated)/180;
+	glRotated(xRotated,  cos(t), 0.0, sin(t));
 
    /* gluLookAt(
 			  0,0,0,

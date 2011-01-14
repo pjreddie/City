@@ -10,9 +10,8 @@
 	wallPolygons = [[NSMutableArray alloc] init];
 	basePolygon = bounds;
 	numberOfTiers = [CityMath poisson:0.5]+1;
-	buildingHeight = [CityMath gausian:height deviation:0.5];
-	windowSizeX = [CityMath gausian:0.1 deviation:0.05];
-	buildingHeight = [CityMath gausian:height deviation:2];
+
+	buildingHeight = std::max([CityMath gausian:height deviation:3], (float)MINHEIGHT);
 	windowSizeX = [CityMath gausian:0.2 deviation:0.05];
 	windowSizeY = [CityMath gausian:0.2 deviation:0.05];
 	windowSeperationX = [CityMath gausian:0.1 deviation:0.05];

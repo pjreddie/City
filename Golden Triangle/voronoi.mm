@@ -168,7 +168,7 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	
 	list<list<JPoint> > blocks;
 	
-	list<list<JPoint> > polys = d.getPolygons(4);
+	list<list<JPoint> > polys = d.getPolygons(2);
 	
 	list<Segment> bigRoads;
 	list<Segment> smallRoads;
@@ -178,7 +178,7 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	
 	for(list<list<JPoint> > ::iterator pit = polys.begin(); pit != polys.end(); ++pit){
 		Voronoi r = GenerateRoads(*pit, (maxx-minx)/15,(maxx-minx)/20);
-		list<list<JPoint> > b = r.getPolygons(2);
+		list<list<JPoint> > b = r.getPolygons(1.5);
 		blocks.insert(blocks.begin(), b.begin(), b.end());
 		smallRoads.insert(smallRoads.begin(),r.diagram.begin(), r.diagram.end());
 		//smallRoads.insert(smallRoads.begin(),r.bounds.begin(), r.bounds.end());

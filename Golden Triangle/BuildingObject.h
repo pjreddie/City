@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CityObject.h"
+#import <cmath>
+
+
+#define MINHEIGHT 2
 
 @interface BuildingObject : CityObject {
 	// Building Vars

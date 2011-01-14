@@ -13,8 +13,15 @@
 + (NSMutableArray *) masterGenerate {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	//[CityGen addPlane:polygons3D];
-	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(5, 20, -100, 100, -200, 0);
-	[CityGen addCityBuildings:polygons3D diagram:city.first];
+
+	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(RANDSEED, NUMCONTROL, MINX, MAXX, MINZ, MAXZ);
+	
+	double cx = MINX + (MAXX-MINX)/2;
+	double cz = MINZ + (MAXZ-MINZ)/2;
+	
+	double maxDist = MAXX-cx + MAXZ - cz;
+	
+	[CityGen addCityBuildings:polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
 		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
@@ -36,7 +43,7 @@
 																	[[CityPoint alloc] initWithX:20.0 y:-1.0 z:-500.0], nil] andColorRed:1.0 green:1.0 blue:1.0],nil]]];
 }
 
-+ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >) polys {
++ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
 	
 	for(std::list<std::list<JPoint> >::iterator p = polys.begin(); p != polys.end(); ++p){
 		NSMutableArray * points = [[NSMutableArray alloc] init];
@@ -46,7 +53,12 @@
 			[points addObject: [[CityPoint alloc] initWithX:x y:-0.9 z:z]];
 			
 		}
-		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:1 green:1 blue:1] avgHeight:8]];
+		double x = (*p).front().x;
+		double z = (*p).front().y;
+
+		double dist = abs(cz-z) + abs(cx-x);
+		double avgH = 2+30*[CityMath bell:dist/40 sigma:.7 mu:0];
+		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:1 green:1 blue:1] avgHeight:avgH]];
 	}
 	
 	// For each polygon call addBuilding w/ height generated from gausian

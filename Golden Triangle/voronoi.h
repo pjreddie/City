@@ -20,8 +20,6 @@
 
 using namespace std;
 
-#define PI 3.1415926536
-
 #define INF 9999999.9
 
 #define FUDGE 0.0001
