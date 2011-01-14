@@ -14,7 +14,7 @@
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	//[CityGen addPlane:polygons3D];
 	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(5, 20, -100, 100, -200, 0);
-	//[CityGen addCityBuildings:polygons3D diagram:city.first];
+	[CityGen addCityBuildings:polygons3D diagram:city.first];
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
 		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}

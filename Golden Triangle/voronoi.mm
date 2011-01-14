@@ -54,7 +54,42 @@ list<JPoint> Shrink(list<JPoint> poly, double s){
 	
 	list<JPoint> sp;
 	
+	for(list<JPoint>::iterator pit = poly.begin(), pit2 = ++poly.begin(); pit2 != poly.end();){
+		if ((*pit).distance(*pit2) < 2*s){			
+			
+			JPoint m = Segment(*pit, *pit2).Midd();
+			pit = poly.erase(pit);
+			pit = poly.erase(pit);
+			
+			poly.insert(pit, m);
+			--pit;
+			pit2 = pit;
+			++pit2;
+			
+		}else{
+			++pit;
+			++pit2;
+		}
+	}
+
+	if(poly.size() < 3) return poly;
+	
 	list<JPoint>::iterator pit = --poly.end(), pit2 = poly.begin(), pit3 = ++poly.begin();
+	
+	if ((*pit).distance(*pit2) < 2*s){
+		JPoint m = Segment(*pit, *pit2).Midd();
+		poly.erase(pit);
+		poly.erase(pit2);
+		poly.push_front(m);
+	}
+	
+	if(poly.size() < 3) return poly;
+	
+	pit = --poly.end();
+	pit2 = poly.begin();
+	pit3 = ++poly.begin();
+	
+	
 	double n1 = (*pit).distance(*pit2);
 	double n3 = (*pit3).distance(*pit2);
 	
@@ -104,7 +139,8 @@ list<JPoint> Shrink(list<JPoint> poly, double s){
 	dx = dx/n;
 	dy = dy/n;
 	dist = s/(p1).distance(m);
-	sp.push_back(JPoint((*pit2).x+dx*dist, (*pit2).y+dy*dist));	
+	sp.push_back(JPoint((*pit2).x+dx*dist, (*pit2).y+dy*dist));
+
 	
 	return sp;
 	
@@ -141,7 +177,7 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 
 	
 	for(list<list<JPoint> > ::iterator pit = polys.begin(); pit != polys.end(); ++pit){
-		Voronoi r = GenerateRoads(*pit, (maxx-minx)/30,(maxx-minx)/20);
+		Voronoi r = GenerateRoads(*pit, (maxx-minx)/15,(maxx-minx)/20);
 		list<list<JPoint> > b = r.getPolygons(2);
 		blocks.insert(blocks.begin(), b.begin(), b.end());
 		smallRoads.insert(smallRoads.begin(),r.diagram.begin(), r.diagram.end());
@@ -152,7 +188,7 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	list<list<JPoint> > buildings;
 
 	for(list<list<JPoint> > ::iterator pit = blocks.begin(); pit != blocks.end(); ++pit){
-		Voronoi r = GenerateRoads(*pit, (maxx-minx)/300,(maxx-minx)/200);
+		Voronoi r = GenerateRoads(*pit, (maxx-minx)/100,(maxx-minx)/100);
 		list<list<JPoint> > b = r.getPolygons(0);
 		buildings.insert(buildings.begin(), b.begin(), b.end());
 	}	

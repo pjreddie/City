@@ -275,7 +275,8 @@ struct Voronoi{
 			if(poly.front() == poly.back()){
 				poly.pop_front();
 			}
-			polys.push_back(Shrink(poly,shrink));
+			list<JPoint> shrunk = Shrink(poly,shrink);
+			if (shrunk.size() > 2) polys.push_back(shrunk);
 		}
 		return polys;
 	}
