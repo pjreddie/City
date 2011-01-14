@@ -10,15 +10,22 @@
 
 @implementation CityGen
 
+//TODO change to instance of CityGLView
 + (NSMutableArray *) masterGenerate:(NSView *)glView {
 	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
 	//[CityGen addPlane:polygons3D];
 	[glView addLoadingMessage:@"building city..."];
 	[glView addLoadingMessage:@"generating voronoi diagrams..."];
-	std::list<std::list<JPoint> > polys = GenerateVoronoi(5, 30, -200, 200, -400, 0);
+	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(5, 20, -100, 100, -200, 0);
 	[glView addLoadingMessage:@"constructing buildings..."];
-	[CityGen addCityBuildings:polygons3D diagram:polys];
-
+	[CityGen addCityBuildings:polygons3D diagram:city.first];
+	[glView addLoadingMessage:@"paving roads..."];
+	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
+		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	}
+	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
+		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	}
 	return polygons3D;
 }
 

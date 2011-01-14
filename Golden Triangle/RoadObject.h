@@ -12,7 +12,7 @@
 #define CONST_LANE_SIZE 0.5
 #define CONST_SIDEWALK_SIZE 0.1
 #define CONST_INTERSECTION_SIZE 1.0
-#define CONST_LANE_SEPERATOR_SIZE 0.03
+#define CONST_LANE_SEPERATOR_SIZE 0.2
 
 @interface RoadObject : CityObject {
 	float x1,y1,z1,x2,y2,z2,totalRoadWidth;

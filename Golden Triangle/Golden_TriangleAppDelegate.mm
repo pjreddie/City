@@ -41,7 +41,7 @@
 		NSOpenGLPFADoubleBuffer,
 		NSOpenGLPFAAccelerated,
 		NSOpenGLPFAColorSize, 32,
-		NSOpenGLPFADepthSize, 16,
+		NSOpenGLPFADepthSize, 32,
 		0
 	};
 	pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
@@ -155,6 +155,4 @@
 - (void) mouseMoved:(NSEvent *)theEvent {
 	[glView	rotateFromMouse:[theEvent deltaX] deltaY:[theEvent deltaY]];
 }
-
-//CGWarpMouseCursorPosition
 @end

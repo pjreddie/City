@@ -13,6 +13,7 @@
 #import "voronoi.h"
 #import "CityGLView.h"
 
+using namespace std;
 
 @interface CityGen : NSObject {
 

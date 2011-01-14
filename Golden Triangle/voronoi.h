@@ -275,7 +275,8 @@ struct Voronoi{
 			if(poly.front() == poly.back()){
 				poly.pop_front();
 			}
-			polys.push_back(Shrink(poly,shrink));
+			list<JPoint> shrunk = Shrink(poly,shrink);
+			if (shrunk.size() > 2) polys.push_back(shrunk);
 		}
 		return polys;
 	}
@@ -345,6 +346,6 @@ struct Voronoi{
 
 Voronoi GenerateRoads(list<JPoint> points);
 
-list<list<JPoint> > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
+pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
 
 void testdraw();

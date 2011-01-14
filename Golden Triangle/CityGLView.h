@@ -17,11 +17,11 @@
 #define DMOVE 0.40
 
 //Texture Constants
-#define TEXTURE_END 8
+#define TEXTURE_END 9
 #define TEXTURE_SKYBOX_START 0
 #define TEXTURE_SKYBOX_END 5
 #define TEXTURE_LOADING_START 6
-#define TEXTURE_LOADING_END 8
+#define TEXTURE_LOADING_END 9
 
 
 @interface CityGLView : NSOpenGLView {

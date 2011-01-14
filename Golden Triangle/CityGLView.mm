@@ -243,7 +243,8 @@
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_down.bmp" ] intoIndex:5 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading1.bmp" ] intoIndex:6 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ]
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading4.bmp" ] intoIndex:9 ]
 
 	   )
 	{
