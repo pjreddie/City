@@ -28,6 +28,42 @@ bool isIn(JPoint p, list<Segment> poly){
 	return true;
 }
 
+bool isIn(JPoint p, list<JPoint> poly){
+	list<JPoint>::iterator first = poly.begin(), second = ++(poly.begin());
+	bool test = Segment(*first,*second).isLeft(p);
+	for(; second != poly.end(); ++first, ++second){
+		if(Segment(*first, *second).isLeft(p) != test){
+			return false;
+		}
+	}
+	if(Segment(*first, poly.front()).isLeft(p) != test){
+		return true;
+	}
+	return false;
+}
+
+bool isConvex(list<JPoint> poly){
+	list<JPoint>::iterator first = poly.begin(), second = ++(poly.begin()), third = ++(++(poly.begin()));
+	bool test = Segment(*first, *second).isLeft(*third);
+	for(;third != poly.end(); ++first, ++second, ++ third){
+		if( Segment(*first, *second).isLeft(*third)!= test){
+			return false;
+		}
+	}
+	third = poly.begin();
+	if( Segment(*first, *second).isLeft(*third)!= test){
+		return false;
+	}
+	++third;
+	++first;
+	second = poly.begin();
+	if( Segment(*first, *second).isLeft(*third)!= test){
+		return false;
+	}
+	return true;
+}
+
+
 Voronoi GenerateRoads(list<JPoint> points, double dx, double dy){
 	list<Segment> bounds;
 	JPoint minp = points.front();
@@ -53,6 +89,7 @@ list<JPoint> Shrink(list<JPoint> poly, double s){
 	if(poly.size() < 3) return poly;
 	
 	list<JPoint> sp;
+	
 	
 	for(list<JPoint>::iterator pit = poly.begin(), pit2 = ++poly.begin(); pit2 != poly.end();){
 		if ((*pit).distance(*pit2) < 2*s){			
@@ -169,12 +206,12 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	list<list<JPoint> > blocks;
 	
 	list<list<JPoint> > polys = d.getPolygons(2);
-	
 	list<Segment> bigRoads;
 	list<Segment> smallRoads;
 
 	bigRoads.insert(bigRoads.begin(),d.diagram.begin(), d.diagram.end());
 
+	
 	
 	for(list<list<JPoint> > ::iterator pit = polys.begin(); pit != polys.end(); ++pit){
 		Voronoi r = GenerateRoads(*pit, (maxx-minx)/15,(maxx-minx)/20);
@@ -183,7 +220,8 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 		smallRoads.insert(smallRoads.begin(),r.diagram.begin(), r.diagram.end());
 		//smallRoads.insert(smallRoads.begin(),r.bounds.begin(), r.bounds.end());
 
-	}	
+	}
+	
 
 	list<list<JPoint> > buildings;
 

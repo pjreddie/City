@@ -220,7 +220,7 @@
 	glRotated(xRotated,  cos(t), 0.0, sin(t));
 	glTranslated(xTranslate,yTranslate,zTranslate);
 	[self drawSkybox];
-
+	
 	[self drawPolygons];
 	}else if (loadState == 0){
 		loadState = 1;
