@@ -19,6 +19,7 @@ using namespace std;
 
 @interface RoadObject : CityObject {
 	float x1,y1,z1,x2,y2,z2,totalRoadWidth;
+	float intersectionx1,intersectionx2, intersectionz1, intersectionz2;
 	NSMutableArray * wallPolygons; //Stupid extra var that should be inherited, dont know why it wasnt working
 }
 

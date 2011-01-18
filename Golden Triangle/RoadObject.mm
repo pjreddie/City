@@ -27,7 +27,6 @@
 	angle= atan2(deltaZ,deltaX);
 	float intersectiondx = CONST_INTERSECTION_SIZE*cos(angle);
 	float intersectiondz = CONST_INTERSECTION_SIZE*sin(angle);
-	float intersectionx1,intersectionx2, intersectionz1, intersectionz2;
 	if(x1 > x2){
 		intersectionx1 = x1-intersectiondx;
 		intersectionx2 = x2+intersectiondx;

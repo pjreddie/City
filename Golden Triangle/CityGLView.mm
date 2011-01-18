@@ -70,22 +70,22 @@
 - (void) createPolygonObject:(NSMutableArray *) polygonArray index:(int)index {
 	glNewList(displayLists[index], GL_COMPILE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+
+	glBegin(GL_TRIANGLES);
 	for (int polygon=0; polygon<[polygonArray count]; polygon++) {
 		for (int i=0; i<[[polygonArray objectAtIndex:polygon] count]; i+=3) {
 			if(i==0){
-				glBegin(GL_POLYGON);
-				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
-						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
-						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);
+				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:0] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:1] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:2] floatValue]);
 			}else{
 				glVertex3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);				
 			}
 		}
-		glEnd();
 	}
+	glEnd();
 	glEndList();
 	displayLists[index+1] = displayLists[index]+1;
 }
@@ -99,6 +99,8 @@
 	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:0.1];
 	[self createPolygonObject:stopLight index:1];
 
+
+
 	
 	// Populates polygonsToDraw with all generated polygons
 	NSArray * polygonsToDraw = [CityGen masterGenerate:self];
@@ -108,9 +110,6 @@
 	CityPoint * pt;
 	BoundingPolygon * polygon;
 	glNewList(displayLists[2], GL_COMPILE);
-
-	double xCor = 0.0;
-	
 	//Loop around drawing polygons and outlines
 	for(int l=0; l<2; l++){
 		if (l==0) {
@@ -126,30 +125,76 @@
 				case 4: glBegin(GL_QUADS); break;
 				default: break;			
 			}
-			for(int i=0; i<polygonsToDrawCount; i++){
+			for(int i=0; i<polygonsToDrawCount; i++){				
 				for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-					if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
-						if(l==0){ //Draw with defined color
-							glColor3f( [polygon red], [polygon blue], [polygon green] );
-						}
-						if(j>4){ // Polygons must be defined independantly
-							glBegin(GL_POLYGON);
-						}
-						for(pt in [polygon coordinates]){
-							glVertex3f([pt x], [pt y], [pt z]);
-						}
-						if(j>4){ // Polygons must be defined independantly
-							glEnd();
+					if (l!=1 || [polygon border]){ // Only draw border if it is requested
+							
+						//3*(polygonsToDrawCount/50
+						if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
+							if(l==0){ //Draw with defined color
+								glColor3f( [polygon red], [polygon blue], [polygon green] );
+							}
+							if(j>4){ // Polygons must be defined independantly
+								glBegin(GL_POLYGON);
+							}
+							for(pt in [polygon coordinates]){
+								glVertex3f([pt x], [pt y], [pt z]);
+							}
+							if(j>4){ // Polygons must be defined independantly
+								glEnd();
+							}
 						}
 					}
 				}				
-			}			
+			}
 			if (j<5) {
 				glEnd();
 			}
 		}
 	}
-	
+//	-(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
+/*	double x = 0.0, z=0.0;
+	for (int i=0; i<polygonsToDrawCount; i++) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
+		//	x = [[polygonsToDraw objectAtIndex:i].intersections().first.first.x - x;
+		 //   z = [[polygonsToDraw objectAtIndex:i].intersections().first.first.y - y;
+//				 glTranslate(x,0.0,z);
+			glTranslate(x,0.0,z);
+		}		
+	}
+	glLoadIdentity();*/
+
+	double x=0.0, z=0.0, nx, nz, mx, mz;
+	glPushAttrib(GL_TRANSFORM_BIT);
+	glTranslated(0.0,-0.9,0.0);
+	for (int i=0; i<polygonsToDrawCount; i++) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
+			for (int j=0; j<2; j++) {
+				if (j==0) {
+					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
+					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
+				}else {
+					nx = [[polygonsToDraw objectAtIndex:i] intersections].second.first.x;
+					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
+
+				}
+				if(nx > x){
+					mx = nx - x;
+				}else {
+					mx = -1*(x-nx);
+				}if(nz > z){
+					mz = nz -z;
+				}else {
+					mz = -1*(z-nz);
+				}
+				x = nx;
+				z = nz;
+				glTranslated(mx,0.0,mz);
+				glCallList(displayLists[0]);				
+			}
+		}
+	}
+	glPopAttrib();
 	glEndList();
 	[polygonsToDraw release]; //IS this enough?
 }
