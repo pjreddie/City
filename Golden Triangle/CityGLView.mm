@@ -152,14 +152,49 @@
 			}
 		}
 	}
-	double 
+//	-(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
+/*	double x = 0.0, z=0.0;
 	for (int i=0; i<polygonsToDrawCount; i++) {
 		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
-			[[[polygonsToDraw objectAtIndex:i] intersections]->first
-			glTranslate(
+		//	x = [[polygonsToDraw objectAtIndex:i].intersections().first.first.x - x;
+		 //   z = [[polygonsToDraw objectAtIndex:i].intersections().first.first.y - y;
+//				 glTranslate(x,0.0,z);
+			glTranslate(x,0.0,z);
 		}		
 	}
-	glLoadIdentity();
+	glLoadIdentity();*/
+
+	double x=0.0, z=0.0, nx, nz, mx, mz;
+	glPushAttrib(GL_TRANSFORM_BIT);
+	glTranslated(0.0,-0.9,0.0);
+	for (int i=0; i<polygonsToDrawCount; i++) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
+			for (int j=0; j<2; j++) {
+				if (j==0) {
+					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
+					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
+				}else {
+					nx = [[polygonsToDraw objectAtIndex:i] intersections].second.first.x;
+					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
+
+				}
+				if(nx > x){
+					mx = nx - x;
+				}else {
+					mx = -1*(x-nx);
+				}if(nz > z){
+					mz = nz -z;
+				}else {
+					mz = -1*(z-nz);
+				}
+				x = nx;
+				z = nz;
+				glTranslated(mx,0.0,mz);
+				glCallList(displayLists[0]);				
+			}
+		}
+	}
+	glPopAttrib();
 	glEndList();
 	[polygonsToDraw release]; //IS this enough?
 }

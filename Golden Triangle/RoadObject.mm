@@ -24,11 +24,9 @@
 	float deltaX = std::max(x2,x1)-std::min(x2,x1);
 	float deltaZ = std::max(z2,z1)-std::min(z2,z1);
 	double angle;
-
 	angle= atan2(deltaZ,deltaX);
 	float intersectiondx = CONST_INTERSECTION_SIZE*cos(angle);
 	float intersectiondz = CONST_INTERSECTION_SIZE*sin(angle);
-	float intersectionx1,intersectionx2, intersectionz1, intersectionz2;
 	if(x1 > x2){
 		intersectionx1 = x1-intersectiondx;
 		intersectionx2 = x2+intersectiondx;
@@ -58,6 +56,19 @@
 	// sidewalk
 	[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2] andColorRed:1.0 green:1.0 blue:1.0]];
 	
+}
+
+- (pair<pair<JPoint, double>, pair<JPoint, double> >) intersections{
+	float deltaX = std::max(x2,x1)-std::min(x2,x1);
+	float deltaZ = std::max(z2,z1)-std::min(z2,z1);
+	
+	double angle;
+	
+	angle= atan2(deltaZ,deltaX);
+	
+	deltaX = (totalRoadWidth/2)*sin(angle);
+	deltaZ = (totalRoadWidth/2)*cos(angle);
+	return make_pair(make_pair(JPoint(x1+deltaX, z1+deltaZ), angle),make_pair(JPoint(x1-deltaX, z1-deltaZ), -angle));
 }
 
 - (NSArray *) polygons {
