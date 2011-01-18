@@ -99,6 +99,8 @@
 	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:0.1];
 	[self createPolygonObject:stopLight index:1];
 
+
+
 	
 	// Populates polygonsToDraw with all generated polygons
 	NSArray * polygonsToDraw = [CityGen masterGenerate:self];
@@ -108,9 +110,6 @@
 	CityPoint * pt;
 	BoundingPolygon * polygon;
 	glNewList(displayLists[2], GL_COMPILE);
-
-	double xCor = 0.0;
-	
 	//Loop around drawing polygons and outlines
 	for(int l=0; l<2; l++){
 		if (l==0) {
@@ -126,20 +125,24 @@
 				case 4: glBegin(GL_QUADS); break;
 				default: break;			
 			}
-			for(int i=0; i<polygonsToDrawCount; i++){
+			for(int i=0; i<polygonsToDrawCount; i++){				
 				for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-					if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
-						if(l==0){ //Draw with defined color
-							glColor3f( [polygon red], [polygon blue], [polygon green] );
-						}
-						if(j>4){ // Polygons must be defined independantly
-							glBegin(GL_POLYGON);
-						}
-						for(pt in [polygon coordinates]){
-							glVertex3f([pt x], [pt y], [pt z]);
-						}
-						if(j>4){ // Polygons must be defined independantly
-							glEnd();
+					if (l!=1 || [polygon border]){ // Only draw border if it is requested
+							
+						//3*(polygonsToDrawCount/50
+						if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
+							if(l==0){ //Draw with defined color
+								glColor3f( [polygon red], [polygon blue], [polygon green] );
+							}
+							if(j>4){ // Polygons must be defined independantly
+								glBegin(GL_POLYGON);
+							}
+							for(pt in [polygon coordinates]){
+								glVertex3f([pt x], [pt y], [pt z]);
+							}
+							if(j>4){ // Polygons must be defined independantly
+								glEnd();
+							}
 						}
 					}
 				}				
@@ -149,7 +152,14 @@
 			}
 		}
 	}
-	
+	double 
+	for (int i=0; i<polygonsToDrawCount; i++) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
+			[[[polygonsToDraw objectAtIndex:i] intersections]->first
+			glTranslate(
+		}		
+	}
+	glLoadIdentity();
 	glEndList();
 	[polygonsToDraw release]; //IS this enough?
 }
