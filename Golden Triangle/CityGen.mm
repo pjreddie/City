@@ -43,7 +43,7 @@
 													[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:MINX y:-1.0 z:MINZ],
 																	[[CityPoint alloc] initWithX:MINX y:-1.0 z:MAXZ],
 																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MAXZ],
-																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MINZ], nil] andColorRed:0.093 green:0.32 blue:0.046],nil]]];
+																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MINZ], nil] andColorRed:.1289 green:.1484 blue:.125],nil]]];
 }
 
 + (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
@@ -61,7 +61,7 @@
 
 		double dist = abs(cz-z) + abs(cx-x);
 		double avgH = 2+30*[CityMath bell:dist/40 sigma:.7 mu:0];
-		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:1 green:1 blue:1] avgHeight:avgH]];
+		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:.09 green:.09 blue:.09] avgHeight:avgH]];
 	}
 	
 	// For each polygon call addBuilding w/ height generated from gausian

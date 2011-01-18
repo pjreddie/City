@@ -15,7 +15,6 @@
 
 #define MAX_DISPLAY_LISTS 128
 #define DMOVE 0.40
-
 //Texture Constants
 #define TEXTURE_END 9
 #define TEXTURE_SKYBOX_START 0

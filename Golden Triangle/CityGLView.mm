@@ -39,8 +39,8 @@
 	/*
 	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
-	glFogf(GL_FOG_START, 3.0f);
-	glFogf(GL_FOG_END, 15.0f);
+	glFogf(GL_FOG_START, 20.0f);
+	glFogf(GL_FOG_END, 100.0f);
 	*/
 	/*
 	glEnable ( GL_LIGHTING ) ;
@@ -269,12 +269,12 @@
 {
 	BOOL status = FALSE;
 	
-	if( [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_north.bmp" ] intoIndex:0 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_west.bmp" ] intoIndex:1 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_south.bmp" ] intoIndex:2 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_east.bmp" ] intoIndex:3 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_up.bmp" ] intoIndex:4 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_down.bmp" ] intoIndex:5 ] &&
+	if( [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"north.bmp" ] intoIndex:0 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"west.bmp" ] intoIndex:1 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"south.bmp" ] intoIndex:2 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"east.bmp" ] intoIndex:3 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"up.bmp" ] intoIndex:4 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"down.bmp" ] intoIndex:5 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading1.bmp" ] intoIndex:6 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
@@ -465,18 +465,18 @@
 	
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
-	
 	glVertex3f( -1.0f, -1.0f, -1.0f );
+	
 	glTexCoord2f( 1.0f, 0.0f );
+	glVertex3f( 1.0f, -1.0f,  -1.0f );
 	
-	glVertex3f( -1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	
 	glVertex3f(  1.0f, -1.0f,  1.0f );
+
 	glTexCoord2f( 0.0f, 1.0f );
-	
-	glVertex3f(  1.0f, -1.0f, -1.0f );
-    glEnd();
+	glVertex3f(  -1.0f, -1.0f, 1.0f );
+    
+	glEnd();
 	
     // Restore enable bits and matrix
     glPopAttrib();
