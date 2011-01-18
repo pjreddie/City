@@ -21,7 +21,7 @@ using namespace std;
 #define MAXX 100
 #define MINZ -200
 #define MAXZ 0
-#define RANDSEED 0
+#define RANDSEED rand()
 #define NUMCONTROL 10
 @interface CityGen : NSObject {
 

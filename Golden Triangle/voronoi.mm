@@ -79,7 +79,7 @@ Voronoi GenerateRoads(list<JPoint> points, double dx, double dy){
 	Voronoi d(bounds);
 	for(double i = minp.x+dx/10; i < maxp.x; i += dx){
 		for(double j = minp.y+dy/10; j < maxp.y; j += dy){
-			d.addPoint(JPoint(i,j));
+				d.addPoint(JPoint(i,j));
 		}
 	}
 	return d;
@@ -226,8 +226,8 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	list<list<JPoint> > buildings;
 
 	for(list<list<JPoint> > ::iterator pit = blocks.begin(); pit != blocks.end(); ++pit){
-		Voronoi r = GenerateRoads(*pit, (maxx-minx)/100,(maxx-minx)/100);
-		list<list<JPoint> > b = r.getPolygons(0);
+		Voronoi r = GenerateRoads(*pit, (maxx-minx)/50,(maxx-minx)/50);
+		list<list<JPoint> > b = r.getPolygons(0.2);
 		buildings.insert(buildings.begin(), b.begin(), b.end());
 	}	
 	

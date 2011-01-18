@@ -62,7 +62,7 @@ struct JPoint{
 		y = newy;
 	}	
 };
-struct Line{
+struct JLine{
 	
 	JPoint p,q;
 	void print(){
@@ -75,14 +75,14 @@ struct Line{
 		q = t;
 	}
 	
-	Line(JPoint _p, JPoint _q){
+	JLine(JPoint _p, JPoint _q){
 		p = _p;
 		q = _q;
 	}
-	Line Bisector(){
-		return Line(JPoint((p.x+q.x)/2,(p.y+q.y)/2), JPoint((p.x+q.x)/2 + (p.y-q.y), (p.y+q.y)/2 - (p.x - q.x))); 
+	JLine Bisector(){
+		return JLine(JPoint((p.x+q.x)/2,(p.y+q.y)/2), JPoint((p.x+q.x)/2 + (p.y-q.y), (p.y+q.y)/2 - (p.x - q.x))); 
 	}
-	JPoint Intersection(Line l){
+	JPoint Intersection(JLine l){
 		if (((p.x-q.x)*(l.p.y-l.q.y) - (p.y-q.y)*(l.p.x-l.q.x)) == 0){
 			return JPoint(INF, INF);
 		}
@@ -124,8 +124,8 @@ struct Segment{
 	JPoint Midd(){
 		return JPoint((p.x+q.x)/2, (p.y+q.y)/2);
 	}
-	Line Bisector(){
-		return Line(JPoint((p.x+q.x)/2,(p.y+q.y)/2), JPoint((p.x+q.x)/2 + (p.y-q.y), (p.y+q.y)/2 - (p.x - q.x))); 
+	JLine Bisector(){
+		return JLine(JPoint((p.x+q.x)/2,(p.y+q.y)/2), JPoint((p.x+q.x)/2 + (p.y-q.y), (p.y+q.y)/2 - (p.x - q.x))); 
 	}
 	bool operator==(const Segment &s){
 		return (p == s.p && q == s.q) || (p == s.q && q == s.p);
@@ -133,7 +133,7 @@ struct Segment{
 	bool sameDir(Segment s){
 		return (p.y-q.y)*(s.p.x - s.q.x)+FUDGE >= (p.x-q.x)*(s.p.y - s.q.y) && (p.y-q.y)*(s.p.x - s.q.x)-FUDGE <= (p.x-q.x)*(s.p.y - s.q.y);
 	}
-	JPoint Intersection(Line l){
+	JPoint Intersection(JLine l){
 		if (((p.x-q.x)*(l.p.y-l.q.y) - (p.y-q.y)*(l.p.x-l.q.x)) == 0){
 			return JPoint(INF, INF);
 		}
@@ -277,6 +277,34 @@ struct Voronoi{
 			if(poly.front() == poly.back()){
 				poly.pop_front();
 			}else{
+
+				list<JPoint> toAdd;
+				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
+					double dist = sit->p.distance(*pit);
+					bool add = true;
+					for(list<JPoint>::iterator cpit = controlPoints.begin(); cpit != controlPoints.end(); ++cpit){
+						if(sit->p.distance(*cpit)+FUDGE < dist){
+							add = false;
+							break;
+						}
+					}
+					if(add){
+						toAdd.push_back(sit->p);
+					}
+				}
+				while(!toAdd.empty()){
+					JPoint add = toAdd.front();
+					toAdd.pop_front();
+					poly.push_front(add);
+					while(!isConvex(poly)){
+						poly.pop_front();
+						poly.push_back(poly.front());
+						poly.pop_front();
+						poly.push_front(add);
+					}
+				}
+				
+				/*
 				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
 					poly.push_front(sit->p);
 					if (!isConvex(poly)){
@@ -286,7 +314,7 @@ struct Voronoi{
 							poly.pop_back();
 						}
 					}
-				}
+				}*/
 			}
 			list<JPoint> shrunk = Shrink(poly,shrink);
 			if (shrunk.size() > 2) polys.push_back(shrunk);
@@ -310,7 +338,7 @@ struct Voronoi{
 			return;
 		}
 		for(list<JPoint>::iterator  pit = controlPoints.begin(); pit != controlPoints.end(); ++pit){
-			Line bi = Segment(a, *pit).Bisector();
+			JLine bi = Segment(a, *pit).Bisector();
 			JPoint p = pinf, q = pinf;
 			for(list<Segment>::iterator bit = bounds.begin(); bit!= bounds.end(); ++bit){
 				JPoint t = (*bit).Intersection(bi);
