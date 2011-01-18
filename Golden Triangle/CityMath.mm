@@ -26,6 +26,10 @@
 	return (mean + y1 * dev);
 }
 
++ (double) bell:(double)x sigma:(double)s mu:(double)m{
+	return 1/sqrt(2*PI*s*s)*pow(E,(-((x-m)*(x-m))/(2*s*s)));
+}
+
 // Poisson generation from uniform distribution Donald Knuth
 + (int) poisson:(float)lambda{
 	float l = pow(2.71828183, -lambda),p = 1;

@@ -253,7 +253,7 @@
 	glRotated(xRotated,  cos(t), 0.0, sin(t));
 	glTranslated(xTranslate,yTranslate,zTranslate);
 	[self drawSkybox];
-
+	
 	[self drawPolygons];
 	}else if (loadState == 0){
 		loadState = 1;
@@ -356,10 +356,12 @@
 - (void) drawSkybox {
 	glPushMatrix();
 	
+	double t = (3.14159265*dRotated)/180;
+
     // Reset and transform the matrix.
     glLoadIdentity();
 	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glRotated(xRotated, 1.0, 0.0, 0.0);
+	glRotated(xRotated,  cos(t), 0.0, sin(t));
 	
 	/* gluLookAt(
 	 0,0,0,

@@ -17,11 +17,17 @@
 
 using namespace std;
 
+#define MINX -100
+#define MAXX 100
+#define MINZ -200
+#define MAXZ 0
+#define RANDSEED 0
+#define NUMCONTROL 10
 @interface CityGen : NSObject {
 
 }
 
 + (NSMutableArray *) masterGenerate:(NSView *)glView;
 + (void) addPlane:(NSMutableArray *)polygons;
-+ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram: (std::list<std::list<JPoint> > ) polys;
++ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD;
 @end

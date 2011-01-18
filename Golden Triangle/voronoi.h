@@ -20,8 +20,6 @@
 
 using namespace std;
 
-#define PI 3.1415926536
-
 #define INF 9999999.9
 
 #define FUDGE 0.0001
@@ -164,6 +162,10 @@ struct Segment{
 };
 
 bool isIn(JPoint p, list<Segment> poly);
+bool isIn(JPoint p, list<JPoint> poly);
+
+bool isConvex(list<JPoint> poly);
+
 
 list<JPoint> Shrink(list<JPoint> poly, double s);
 
@@ -274,6 +276,17 @@ struct Voronoi{
 			}
 			if(poly.front() == poly.back()){
 				poly.pop_front();
+			}else{
+				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
+					poly.push_front(sit->p);
+					if (!isConvex(poly)){
+						poly.pop_front();
+						poly.push_back(sit->p);
+						if(!isConvex(poly)){
+							poly.pop_back();
+						}
+					}
+				}
 			}
 			list<JPoint> shrunk = Shrink(poly,shrink);
 			if (shrunk.size() > 2) polys.push_back(shrunk);
