@@ -70,22 +70,22 @@
 - (void) createPolygonObject:(NSMutableArray *) polygonArray index:(int)index {
 	glNewList(displayLists[index], GL_COMPILE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+
+	glBegin(GL_TRIANGLES);
 	for (int polygon=0; polygon<[polygonArray count]; polygon++) {
 		for (int i=0; i<[[polygonArray objectAtIndex:polygon] count]; i+=3) {
 			if(i==0){
-				glBegin(GL_POLYGON);
-				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
-						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
-						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);
+				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:0] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:1] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:2] floatValue]);
 			}else{
 				glVertex3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);				
 			}
 		}
-		glEnd();
 	}
+	glEnd();
 	glEndList();
 	displayLists[index+1] = displayLists[index]+1;
 }
@@ -143,12 +143,13 @@
 						}
 					}
 				}				
-			}			
+			}
 			if (j<5) {
 				glEnd();
 			}
 		}
 	}
+	
 	glEndList();
 	[polygonsToDraw release]; //IS this enough?
 }
