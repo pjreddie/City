@@ -47,6 +47,7 @@
 																			pointb,
 																			nil] andColorRed:[basePolygon red] green:[basePolygon green] blue:[basePolygon blue] border:true]];
 			[roofPolygon addObject:[[CityPoint alloc] initWithX:[pointa x] y:[pointa y]+tierHeight z:[pointa z]]];
+			
 			//[self addWindowsToFace:pointa pt2:pointb h:tierHeight];
 		}
 		//Update basePolygon
@@ -126,7 +127,7 @@
 																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum z:zAccum+adjustedWindowZ],
 																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum-windowSizeY z:zAccum+adjustedWindowZ],
 																		[[CityPoint alloc] initWithX:xAccum y:deltaY-yAccum-windowSizeY z:zAccum],
-																		nil] andColorRed:0.0 green:1.0 blue:0.0 border:true]];
+																		nil] andColorRed:1.0 green:1.0 blue:0.5 border:true]];
 			xAccum = xAccum+directionAdjustX*(adjustedWindowX+2*adjustedWindowSpacerX);
 			zAccum = zAccum+(adjustedWindowZ+2*adjustedWindowSpacerZ);
 		}

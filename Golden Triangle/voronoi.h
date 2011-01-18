@@ -277,6 +277,34 @@ struct Voronoi{
 			if(poly.front() == poly.back()){
 				poly.pop_front();
 			}else{
+
+				list<JPoint> toAdd;
+				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
+					double dist = sit->p.distance(*pit);
+					bool add = true;
+					for(list<JPoint>::iterator cpit = controlPoints.begin(); cpit != controlPoints.end(); ++cpit){
+						if(sit->p.distance(*cpit)+FUDGE < dist){
+							add = false;
+							break;
+						}
+					}
+					if(add){
+						toAdd.push_back(sit->p);
+					}
+				}
+				while(!toAdd.empty()){
+					JPoint add = toAdd.front();
+					toAdd.pop_front();
+					poly.push_front(add);
+					while(!isConvex(poly)){
+						poly.pop_front();
+						poly.push_back(poly.front());
+						poly.pop_front();
+						poly.push_front(add);
+					}
+				}
+				
+				/*
 				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
 					poly.push_front(sit->p);
 					if (!isConvex(poly)){
@@ -286,7 +314,7 @@ struct Voronoi{
 							poly.pop_back();
 						}
 					}
-				}
+				}*/
 			}
 			list<JPoint> shrunk = Shrink(poly,shrink);
 			if (shrunk.size() > 2) polys.push_back(shrunk);

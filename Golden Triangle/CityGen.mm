@@ -27,6 +27,8 @@
 	[CityGen addCityBuildings:polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
 	[glView addLoadingMessage:@"paving roads..."];
 
+	//list<pair<JPoint, double> > stoplightPos;
+	
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
 		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
