@@ -16,6 +16,7 @@
 	//[CityGen addPlane:polygons3D];
 	[glView addLoadingMessage:@"building city..."];
 	[glView addLoadingMessage:@"generating voronoi diagrams..."];
+	[CityGen addPlane:polygons3D];
 	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(RANDSEED, NUMCONTROL, MINX, MAXX, MINZ, MAXZ);
 	[glView addLoadingMessage:@"constructing buildings..."];
 	double cx = MINX + (MAXX-MINX)/2;
@@ -37,10 +38,10 @@
 
 + (void) addPlane:(NSMutableArray *)polygons3D {
 	[polygons3D addObject:[[PlaneObject alloc] initWithPolygons:[[NSArray alloc] initWithObjects:
-													[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:-20.0 y:-1.0 z:-500.0],
-																	[[CityPoint alloc] initWithX:-20.0 y:-1.0 z:-1.0],
-																	[[CityPoint alloc] initWithX:20.0 y:-1.0 z:-1.0],
-																	[[CityPoint alloc] initWithX:20.0 y:-1.0 z:-500.0], nil] andColorRed:1.0 green:1.0 blue:1.0],nil]]];
+													[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:MINX y:-1.0 z:MINZ],
+																	[[CityPoint alloc] initWithX:MINX y:-1.0 z:MAXZ],
+																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MAXZ],
+																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MINZ], nil] andColorRed:0.093 green:0.32 blue:0.046],nil]]];
 }
 
 + (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
