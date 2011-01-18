@@ -117,7 +117,6 @@
 	
 	yAccum = topWindowBufferY;
 	// Loop through the plane and make windows
-	NSLog(@"%i",numOfWindowsY*numOfWindowsX);
 	for(int i=0; i<numOfWindowsY; i++) {
 		xAccum = xInit+directionAdjustX*(deltaX*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerX);
 		zAccum = zInit+(deltaZ*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerZ);

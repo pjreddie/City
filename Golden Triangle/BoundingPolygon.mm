@@ -14,8 +14,8 @@
 	self = [super init];
 	coordinates = coord;
 	red = r;
-	green = g;
-	blue = b;
+	green = b;
+	blue = g;
 	border = false;
 	return self;
 }
@@ -24,8 +24,8 @@
 	self = [super init];
 	coordinates = coord;
 	red = r;
-	green = g;
-	blue = b;
+	green = b;
+	blue = g;
 	border = bor;
 	return self;
 }

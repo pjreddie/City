@@ -13,7 +13,7 @@
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
 
-#define MAX_DISPLAY_LISTS 10024
+#define MAX_DISPLAY_LISTS 128
 #define DMOVE 0.40
 
 //Texture Constants

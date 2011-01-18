@@ -12,6 +12,8 @@
 #import "RoadObject.h"
 #import "voronoi.h"
 #import "CityGLView.h"
+#import "FileIO.h"
+#import <vector>
 
 using namespace std;
 
