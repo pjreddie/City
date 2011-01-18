@@ -14,7 +14,7 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	for(int i=0; i<1; i++){
+	for(int i=0; i<3; i++){
 		glCallList(displayLists[i]);
 	}
 }
@@ -67,17 +67,50 @@
 	
 }
 
+- (void) createPolygonObject:(NSMutableArray *) polygonArray index:(int)index {
+	glNewList(displayLists[index], GL_COMPILE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	
+	for (int polygon=0; polygon<[polygonArray count]; polygon++) {
+		for (int i=0; i<[[polygonArray objectAtIndex:polygon] count]; i+=3) {
+			if(i==0){
+				glBegin(GL_POLYGON);
+				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
+						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);
+			}else{
+				glVertex3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
+						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
+						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+2] floatValue]);				
+			}
+		}
+		glEnd();
+	}
+	glEndList();
+	displayLists[index+1] = displayLists[index]+1;
+}
+
 - (void) initDisplayLists {	
+	// Draw static display lists
+	// Stop sign
+	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
+	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:0.1];
+	[self createPolygonObject:stopSign index:0];
+	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:0.1];
+	[self createPolygonObject:stopLight index:1];
+
+	
 	// Populates polygonsToDraw with all generated polygons
 	NSArray * polygonsToDraw = [CityGen masterGenerate:self];
 	polygonsToDrawCount = [polygonsToDraw count];
 
 	//Draw polygons
-	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
 	CityPoint * pt;
 	BoundingPolygon * polygon;
-	glNewList(displayLists[0], GL_COMPILE);
+	glNewList(displayLists[2], GL_COMPILE);
 
+	double xCor = 0.0;
+	
 	//Loop around drawing polygons and outlines
 	for(int l=0; l<2; l++){
 		if (l==0) {
@@ -110,7 +143,7 @@
 						}
 					}
 				}				
-			}
+			}			
 			if (j<5) {
 				glEnd();
 			}
