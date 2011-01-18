@@ -149,6 +149,7 @@
 			}
 		}
 	}
+	
 	glEndList();
 	[polygonsToDraw release]; //IS this enough?
 }
