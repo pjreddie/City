@@ -127,7 +127,7 @@
 																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum z:zAccum+adjustedWindowZ],
 																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum-windowSizeY z:zAccum+adjustedWindowZ],
 																		[[CityPoint alloc] initWithX:xAccum y:deltaY-yAccum-windowSizeY z:zAccum],
-																		nil] andColorRed:1.0 green:1.0 blue:0.5 border:true]];
+																		nil] andColorRed:1.0 green:1.0 blue:.328 border:true]];
 			xAccum = xAccum+directionAdjustX*(adjustedWindowX+2*adjustedWindowSpacerX);
 			zAccum = zAccum+(adjustedWindowZ+2*adjustedWindowSpacerZ);
 		}

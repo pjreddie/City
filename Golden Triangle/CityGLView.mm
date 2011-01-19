@@ -39,8 +39,8 @@
 	/*
 	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
-	glFogf(GL_FOG_START, 3.0f);
-	glFogf(GL_FOG_END, 15.0f);
+	glFogf(GL_FOG_START, 20.0f);
+	glFogf(GL_FOG_END, 100.0f);
 	*/
 	/*
 	glEnable ( GL_LIGHTING ) ;
@@ -153,12 +153,13 @@
 		}
 	}
 	// Draw stopsigns
-	double x=0.0, z=0.0, nx, nz, mx, mz, r=0.0, nr, mr;
+	double nx, nz, nr,tx,tz;
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glTranslated(0.0,-0.9,0.0);
 	for (int i=0; i<polygonsToDrawCount; i++) {
 		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
 			for (int j=0; j<2; j++) {
+				tx = 0.0; tz = 0.0;
 				if (j==0) {
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
@@ -168,28 +169,20 @@
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
 					nr = [[polygonsToDraw objectAtIndex:i] intersections].second.second;
 				}
-				/*if (nr > r) {
-					mr = nr-r;
-				}else {
-					mr = -1*(r-nr);
-				}*/
-
-				//glRotated(nr, 0.0, 1.0, 0.0);
-				/*if(nx > x){
-					mx = nx - x;
-				}else {
-					mx = -1*(x-nx);
-				}if(nz > z){
-					mz = nz -z;
-				}else {
-					mz = -1*(z-nz);
+				if (nx > 0) {
+					tx = nx*-cos(nr+3.14159265/2);
+					tz = nz*sin(nr+3.14159265/2);
+				}else if (nx < 0){
+					tx = nx*-cos(nr-3.14159265/2);
+					tz = nz*sin(nr-3.14159265/2);
+				}if (nz >0) {
+					tx += nx*-sin(nr);
+					tz += nz*cos(nr);
+				}else if (nx < 0){
+					tx += nx*sin(nr);
+					tz += nz*-cos(nr);
 				}
-				x = nx;
-				z = nz;
-				r = nr;*/
-				nr = (3.14159265*nr)/180;
-				nx = nx * cos(nr);
-				nz = nz * cos(nr);
+				nr = (nr/3.14159265)*180;
 				glRotated(nr, 0.0, 1.0, 0.0);
 				glTranslated(nx,0.0,nz);
 				glCallList(displayLists[0]);
@@ -320,12 +313,12 @@
 {
 	BOOL status = FALSE;
 	
-	if( [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_north.bmp" ] intoIndex:0 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_west.bmp" ] intoIndex:1 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_south.bmp" ] intoIndex:2 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_east.bmp" ] intoIndex:3 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_up.bmp" ] intoIndex:4 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"alpine_down.bmp" ] intoIndex:5 ] &&
+	if( [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"north.bmp" ] intoIndex:0 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"west.bmp" ] intoIndex:1 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"south.bmp" ] intoIndex:2 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"east.bmp" ] intoIndex:3 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"up.bmp" ] intoIndex:4 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"down.bmp" ] intoIndex:5 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading1.bmp" ] intoIndex:6 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
@@ -516,18 +509,18 @@
 	
     glBegin(GL_QUADS);
 	glTexCoord2f( 0.0f, 0.0f );
-	
 	glVertex3f( -1.0f, -1.0f, -1.0f );
+	
 	glTexCoord2f( 1.0f, 0.0f );
+	glVertex3f( 1.0f, -1.0f,  -1.0f );
 	
-	glVertex3f( -1.0f, -1.0f,  1.0f );
 	glTexCoord2f( 1.0f, 1.0f );
-	
 	glVertex3f(  1.0f, -1.0f,  1.0f );
+
 	glTexCoord2f( 0.0f, 1.0f );
-	
-	glVertex3f(  1.0f, -1.0f, -1.0f );
-    glEnd();
+	glVertex3f(  -1.0f, -1.0f, 1.0f );
+    
+	glEnd();
 	
     // Restore enable bits and matrix
     glPopAttrib();
