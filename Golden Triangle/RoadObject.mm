@@ -59,22 +59,31 @@
 }
 
 - (pair<pair<JPoint, double>, pair<JPoint, double> >) intersections{
-	float deltaX = std::max(x2,x1)-std::min(x2,x1);
-	float deltaZ = std::max(z2,z1)-std::min(z2,z1);
+	float deltaX = x2-x1;
+	float deltaZ = z2-z1;
+	double mag = sqrt((deltaX*deltaX) + (deltaZ)*(deltaZ));
+	double dx = deltaX/mag;
+	double dz = deltaZ/mag;
 	
 	double angle;
 	
-	angle= atan2(deltaZ,deltaX);
+	angle= atan2(dz,dx);
 	
-	deltaX = (totalRoadWidth/2)*sin(angle);
-	deltaZ = (totalRoadWidth/2)*cos(angle);
-	return make_pair(make_pair(JPoint(x1+deltaX, z1+deltaZ), angle),make_pair(JPoint(x1-deltaX, z1-deltaZ), -angle));
+	double adjustX = (totalRoadWidth/2)*sin(angle);
+	double adjustZ = (totalRoadWidth/2)*cos(angle);
+	
+	adjustX = 0;
+	adjustZ = 0;
+	
+	return make_pair(make_pair(JPoint(intersectionx1+adjustX, intersectionz1+adjustZ), -angle+PI/2),make_pair(JPoint(intersectionx2-adjustX, intersectionz2-adjustZ), -angle-PI/2));
 }
 
 - (NSArray *) polygons {
 	return wallPolygons;
 }
-
+- (double) width{
+	return totalRoadWidth;
+}
 - (NSArray *) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2{
 	float deltaX = std::max(x_2,x_1)-std::min(x_2,x_1);
 	float deltaZ = std::max(z_2,z_1)-std::min(z_2,z_1);

@@ -23,6 +23,7 @@ using namespace std;
 	NSMutableArray * wallPolygons; //Stupid extra var that should be inherited, dont know why it wasnt working
 }
 
+- (double) width;
 -(RoadObject *) initWithEndPoints:(double)roadWidth x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2;
 -(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
 - (NSArray *) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2;
