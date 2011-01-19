@@ -94,9 +94,9 @@
 	// Draw static display lists
 	// Stop sign
 	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
-	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:0.1];
+	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER];
 	[self createPolygonObject:stopSign index:0];
-	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:0.1];
+	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER];
 	[self createPolygonObject:stopLight index:1];
 
 
@@ -152,19 +152,8 @@
 			}
 		}
 	}
-//	-(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
-/*	double x = 0.0, z=0.0;
-	for (int i=0; i<polygonsToDrawCount; i++) {
-		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
-		//	x = [[polygonsToDraw objectAtIndex:i].intersections().first.first.x - x;
-		 //   z = [[polygonsToDraw objectAtIndex:i].intersections().first.first.y - y;
-//				 glTranslate(x,0.0,z);
-			glTranslate(x,0.0,z);
-		}		
-	}
-	glLoadIdentity();*/
-
-	double x=0.0, z=0.0, nx, nz, mx, mz;
+	// Draw stopsigns
+	double x=0.0, z=0.0, nx, nz, mx, mz, r=0.0, nr, mr;
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glTranslated(0.0,-0.9,0.0);
 	for (int i=0; i<polygonsToDrawCount; i++) {
@@ -173,12 +162,20 @@
 				if (j==0) {
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
+					nr = [[polygonsToDraw objectAtIndex:i] intersections].first.second;
 				}else {
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].second.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
-
+					nr = [[polygonsToDraw objectAtIndex:i] intersections].second.second;
 				}
-				if(nx > x){
+				/*if (nr > r) {
+					mr = nr-r;
+				}else {
+					mr = -1*(r-nr);
+				}*/
+
+				//glRotated(nr, 0.0, 1.0, 0.0);
+				/*if(nx > x){
 					mx = nx - x;
 				}else {
 					mx = -1*(x-nx);
@@ -189,8 +186,17 @@
 				}
 				x = nx;
 				z = nz;
-				glTranslated(mx,0.0,mz);
-				glCallList(displayLists[0]);				
+				r = nr;*/
+				nr = (3.14159265*nr)/180;
+				nx = nx * cos(nr);
+				nz = nz * cos(nr);
+				glRotated(nr, 0.0, 1.0, 0.0);
+				glTranslated(nx,0.0,nz);
+				glCallList(displayLists[0]);
+				glTranslated(-nx,0.0,-nz);
+				glRotated(-nr, 0.0, 1.0, 0.0);
+				//glTranslated(nx*cos(nr),0.0,nz*sin(nr));
+				//glTranslated(-1*(nx*cos(nr)),0.0,-1*(nz*sin(nr)));
 			}
 		}
 	}
