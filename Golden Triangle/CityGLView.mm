@@ -42,28 +42,28 @@
 	glFogf(GL_FOG_START, 20.0f);
 	glFogf(GL_FOG_END, 100.0f);
 	*/
-	/*
+	
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);
-
+	glEnable(GL_COLOR_MATERIAL);
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+	glEnable(GL_NORMALIZE);
 	
 	GLfloat ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
 	GLint position[] = {-5.0f,5.0f,10.0f,0.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
-	GLfloat specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	GLfloat diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	
 	//glColor3f(1.0, 0.0, 0.0);
-	glEnable(GL_COLOR_MATERIAL);
-	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-	GLfloat matSpec[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
+	//GLfloat matSpec[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
 	GLfloat matEm[] = {0.0f, 0.0f, 0.0f, 1.0f};
-	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);*/
+	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
 	
 }
 
@@ -78,6 +78,16 @@
 				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:0] floatValue],
 						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:1] floatValue],
 						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:2] floatValue]);
+				CityNormal facenorm = [CityMath generateFaceNormal:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
+																		y:[[[polygonArray objectAtIndex:polygon] objectAtIndex:4] floatValue]
+																		z:[[[polygonArray objectAtIndex:polygon] objectAtIndex:5] floatValue]]
+											b:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
+																		 y:[[[polygonArray objectAtIndex:polygon] objectAtIndex:4] floatValue]
+																		 z:[[[polygonArray objectAtIndex:polygon] objectAtIndex:5] floatValue]] 
+										   c:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
+																		y:[[[polygonArray objectAtIndex:polygon] objectAtIndex:4] floatValue]
+																		z:[[[polygonArray objectAtIndex:polygon] objectAtIndex:5] floatValue]]];
+				glNormal3f(facenorm.x, facenorm.y, facenorm.z);
 			}else{
 				glVertex3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
@@ -109,6 +119,8 @@
 	//Draw polygons
 	CityPoint * pt;
 	BoundingPolygon * polygon;
+	// Reset normal
+	glNormal3f(0.0, 0.0, 1.0);
 	glNewList(displayLists[2], GL_COMPILE);
 	//Loop around drawing polygons and outlines
 	for(int l=0; l<2; l++){
@@ -133,6 +145,11 @@
 						if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
 							if(l==0){ //Draw with defined color
 								glColor3f( [polygon red], [polygon blue], [polygon green] );
+								CityNormal facenorm = [CityMath generateFaceNormal:[[polygon coordinates] objectAtIndex:0]
+																				 b:[[polygon coordinates] objectAtIndex:1]
+																				 c:[[polygon coordinates] objectAtIndex:2]];
+								glNormal3f(facenorm.x, facenorm.y, facenorm.z);
+								
 							}
 							if(j>4){ // Polygons must be defined independantly
 								glBegin(GL_POLYGON);
@@ -161,6 +178,7 @@
 			for (int j=0; j<2; j++) {
 				tx = 0.0; tz = 0.0;
 				if (j==0) {
+					//TODO stop calling so much
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
 					nr = [[polygonsToDraw objectAtIndex:i] intersections].first.second;
