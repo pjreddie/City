@@ -51,7 +51,7 @@
 	
 	GLfloat ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {-5.0f,5.0f,10.0f,1.0f};//1?
+	GLint position[] = {-5.0f,5.0f,10.0f,0.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
 	GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
