@@ -51,7 +51,7 @@
 	
 	GLfloat ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {-5.0f,5.0f,10.0f,0.0f};//1?
+	GLint position[] = {-5.0f,5.0f,10.0f,1.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
 	GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
@@ -59,10 +59,10 @@
 	GLfloat diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	
-	//glColor3f(1.0, 0.0, 0.0);
-	//GLfloat matSpec[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glColor3f(1.0, 0.0, 0.0);
+	//GLfloat matSpec[] = {0.2f, 0.2f, 0.2f, 1.0f};
 	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
-	GLfloat matEm[] = {0.0f, 0.0f, 0.0f, 1.0f};
+	GLfloat matEm[] = {0.1f, 0.1f, 0.1f, 1.0f};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
 	
 }
