@@ -174,7 +174,7 @@
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glTranslated(0.0,-0.9,0.0);
 	for (int i=0; i<polygonsToDrawCount; i++) {
-		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]&& [[polygonsToDraw objectAtIndex:i]width] > 3) {
 			for (int j=0; j<2; j++) {
 				tx = 0.0; tz = 0.0;
 				if (j==0) {
@@ -187,27 +187,16 @@
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
 					nr = [[polygonsToDraw objectAtIndex:i] intersections].second.second;
 				}
-				if (nx > 0) {
-					tx = nx*-cos(nr+3.14159265/2);
-					tz = nz*sin(nr+3.14159265/2);
-				}else if (nx < 0){
-					tx = nx*-cos(nr-3.14159265/2);
-					tz = nz*sin(nr-3.14159265/2);
-				}if (nz >0) {
-					tx += nx*-sin(nr);
-					tz += nz*cos(nr);
-				}else if (nx < 0){
-					tx += nx*sin(nr);
-					tz += nz*-cos(nr);
-				}
+				tx = nx*cos(nr)-nz*sin(nr);
+				tz = nx*sin(nr)+nz*cos(nr);
+				
 				nr = (nr/3.14159265)*180;
 				glRotated(nr, 0.0, 1.0, 0.0);
-				glTranslated(nx,0.0,nz);
+				glTranslated(tx,0.0,tz);
 				glCallList(displayLists[0]);
-				glTranslated(-nx,0.0,-nz);
+				glTranslated(-tx,0.0,-tz);
 				glRotated(-nr, 0.0, 1.0, 0.0);
-				//glTranslated(nx*cos(nr),0.0,nz*sin(nr));
-				//glTranslated(-1*(nx*cos(nr)),0.0,-1*(nz*sin(nr)));
+
 			}
 		}
 	}
