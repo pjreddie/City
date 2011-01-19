@@ -44,7 +44,7 @@
 
 	
 	int numLanes = totalRoadWidth/CONST_LANE_SIZE;
-	float sidewalkSize = (totalRoadWidth - (CONST_LANE_SIZE*numLanes))/2;
+	//float sidewalkSize = (totalRoadWidth - (CONST_LANE_SIZE*numLanes))/2;
 	
 	
 	

@@ -94,9 +94,9 @@
 	// Draw static display lists
 	// Stop sign
 	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
-	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:0.1];
+	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER];
 	[self createPolygonObject:stopSign index:0];
-	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:0.1];
+	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER];
 	[self createPolygonObject:stopLight index:1];
 
 
@@ -152,45 +152,44 @@
 			}
 		}
 	}
-//	-(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
-/*	double x = 0.0, z=0.0;
-	for (int i=0; i<polygonsToDrawCount; i++) {
-		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
-		//	x = [[polygonsToDraw objectAtIndex:i].intersections().first.first.x - x;
-		 //   z = [[polygonsToDraw objectAtIndex:i].intersections().first.first.y - y;
-//				 glTranslate(x,0.0,z);
-			glTranslate(x,0.0,z);
-		}		
-	}
-	glLoadIdentity();*/
-
-	double x=0.0, z=0.0, nx, nz, mx, mz;
+	// Draw stopsigns
+	double nx, nz, nr,tx,tz;
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glTranslated(0.0,-0.9,0.0);
 	for (int i=0; i<polygonsToDrawCount; i++) {
 		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]) {
 			for (int j=0; j<2; j++) {
+				tx = 0.0; tz = 0.0;
 				if (j==0) {
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].first.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].first.first.y;
+					nr = [[polygonsToDraw objectAtIndex:i] intersections].first.second;
 				}else {
 					nx = [[polygonsToDraw objectAtIndex:i] intersections].second.first.x;
 					nz = [[polygonsToDraw objectAtIndex:i] intersections].second.first.y;
-
+					nr = [[polygonsToDraw objectAtIndex:i] intersections].second.second;
 				}
-				if(nx > x){
-					mx = nx - x;
-				}else {
-					mx = -1*(x-nx);
-				}if(nz > z){
-					mz = nz -z;
-				}else {
-					mz = -1*(z-nz);
+				if (nx > 0) {
+					tx = nx*-cos(nr+3.14159265/2);
+					tz = nz*sin(nr+3.14159265/2);
+				}else if (nx < 0){
+					tx = nx*-cos(nr-3.14159265/2);
+					tz = nz*sin(nr-3.14159265/2);
+				}if (nz >0) {
+					tx += nx*-sin(nr);
+					tz += nz*cos(nr);
+				}else if (nx < 0){
+					tx += nx*sin(nr);
+					tz += nz*-cos(nr);
 				}
-				x = nx;
-				z = nz;
-				glTranslated(mx,0.0,mz);
-				glCallList(displayLists[0]);				
+				nr = (nr/3.14159265)*180;
+				glRotated(nr, 0.0, 1.0, 0.0);
+				glTranslated(nx,0.0,nz);
+				glCallList(displayLists[0]);
+				glTranslated(-nx,0.0,-nz);
+				glRotated(-nr, 0.0, 1.0, 0.0);
+				//glTranslated(nx*cos(nr),0.0,nz*sin(nr));
+				//glTranslated(-1*(nx*cos(nr)),0.0,-1*(nz*sin(nr)));
 			}
 		}
 	}
