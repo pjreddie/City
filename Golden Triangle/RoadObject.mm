@@ -68,7 +68,7 @@
 	
 	deltaX = (totalRoadWidth/2)*sin(angle);
 	deltaZ = (totalRoadWidth/2)*cos(angle);
-	return make_pair(make_pair(JPoint(x1+deltaX, z1+deltaZ), angle),make_pair(JPoint(x1-deltaX, z1-deltaZ), -angle));
+	return make_pair(make_pair(JPoint(intersectionx1+deltaX, intersectionz1+deltaZ), angle),make_pair(JPoint(intersectionx2-deltaX, intersectionz2-deltaZ), -angle));
 }
 
 - (NSArray *) polygons {
