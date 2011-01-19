@@ -174,7 +174,7 @@
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glTranslated(0.0,-0.9,0.0);
 	for (int i=0; i<polygonsToDrawCount; i++) {
-		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]&& [[polygonsToDraw objectAtIndex:i]width] > 3) {
+		if ([[polygonsToDraw objectAtIndex:i] isMemberOfClass:[RoadObject class]]&& [[polygonsToDraw objectAtIndex:i] roadWidth] < 4&& [[polygonsToDraw objectAtIndex:i] roadLength] > 2) {
 			for (int j=0; j<2; j++) {
 				tx = 0.0; tz = 0.0;
 				if (j==0) {

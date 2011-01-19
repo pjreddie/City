@@ -21,33 +21,20 @@
 
 // Currently just using left over space for 
 - (void) calculateRoadPolygons {
-	float deltaX = std::max(x2,x1)-std::min(x2,x1);
-	float deltaZ = std::max(z2,z1)-std::min(z2,z1);
-	double angle;
-	angle= atan2(deltaZ,deltaX);
+	float deltaX = x2-x1;
+	float deltaZ = z2-z1;
+	double angle = atan2(deltaZ,deltaX);
 	float intersectiondx = CONST_INTERSECTION_SIZE*cos(angle);
 	float intersectiondz = CONST_INTERSECTION_SIZE*sin(angle);
-	if(x1 > x2){
-		intersectionx1 = x1-intersectiondx;
-		intersectionx2 = x2+intersectiondx;
-	}else {
-		intersectionx1 = x1+intersectiondx;
-		intersectionx2 = x2-intersectiondx;
-	}if(z1>z2){
-		intersectionz1 = z1-intersectiondz;
-		intersectionz2 = z2+intersectiondz;
-	}else {
-		intersectionz1 = z1+intersectiondz;
-		intersectionz2 = z2-intersectiondz;
-	}
-
-
+	
+	intersectionx1 = x1+intersectiondx;
+	intersectionx2 = x2-intersectiondx;
+	
+	intersectionz1 = z1+intersectiondz;
+	intersectionz2 = z2-intersectiondz;
 	
 	int numLanes = totalRoadWidth/CONST_LANE_SIZE;
 	//float sidewalkSize = (totalRoadWidth - (CONST_LANE_SIZE*numLanes))/2;
-	
-	
-	
 	
 	// Street
 	[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2] andColorRed:0.0 green:0.0 blue:0.0]];
@@ -65,55 +52,51 @@
 	double dx = deltaX/mag;
 	double dz = deltaZ/mag;
 	
-	double angle;
+	double angle= atan2(dz,dx);
 	
-	angle= atan2(dz,dx);
+	double adjustX = (totalRoadWidth/2)*cos(angle+PI/2);
+	double adjustZ = (totalRoadWidth/2)*sin(angle+PI/2);
 	
-	double adjustX = (totalRoadWidth/2)*sin(angle);
-	double adjustZ = (totalRoadWidth/2)*cos(angle);
+	//adjustX = 0;
+	//adjustZ = 0;
 	
-	adjustX = 0;
-	adjustZ = 0;
-	
-	return make_pair(make_pair(JPoint(intersectionx1+adjustX, intersectionz1+adjustZ), -angle+PI/2),make_pair(JPoint(intersectionx2-adjustX, intersectionz2-adjustZ), -angle-PI/2));
+	return make_pair(make_pair(JPoint(intersectionx1-adjustX, intersectionz1-adjustZ), -angle+PI/2),make_pair(JPoint(intersectionx2+adjustX, intersectionz2+adjustZ), -angle-PI/2));
 }
 
 - (NSArray *) polygons {
 	return wallPolygons;
 }
-- (double) width{
+- (double) roadWidth{
 	return totalRoadWidth;
 }
+
+- (double) roadLength{
+	float deltaX = x2-x1;
+	float deltaZ = z2-z1;
+	double mag = sqrt((deltaX*deltaX) + (deltaZ)*(deltaZ));
+	return mag;
+}
+
 - (NSArray *) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2{
-	float deltaX = std::max(x_2,x_1)-std::min(x_2,x_1);
-	float deltaZ = std::max(z_2,z_1)-std::min(z_2,z_1);
-	int adjust = 1;
+	float deltaX = x_2-x_1;
+	float deltaZ = z_2-z_1;
+	
+	/*int adjust = 1;
 	if((x_2>x_1&&z_2>z_1)||(x_1>x_2&&z_1>z_2)){
 		adjust = -1;
-	}
-	double angle;
-		angle= atan2(deltaZ,deltaX);
-	deltaX = (width/2)*sin(angle);
-	deltaZ = (width/2)*cos(angle);
+	}*/
+	double angle = atan2(deltaZ,deltaX);
+	deltaX = (width/2)*cos(angle+PI/2);
+	deltaZ = (width/2)*sin(angle+PI/2);
 	
 	NSMutableArray * roadPoints = [[NSMutableArray alloc] init];
-	float tempx, tempz;
-	if([CityMath isLeftOf:x_1 y1:z_1 toX2:x_2 y2:z_2 x3:x_2+adjust*deltaX y3:z_2+deltaZ]){
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_2+adjust*deltaX y:y_2 z:z_2+deltaZ]];
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_2-adjust*deltaX y:y_2 z:z_2-deltaZ]];
-		tempx = x_2+adjust*deltaX; tempz = z_2+deltaZ;
-	}else {
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_2-adjust*deltaX y:y_2 z:z_2-deltaZ]];
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_2+adjust*deltaX y:y_2 z:z_2+deltaZ]];
-		tempx = x_2-adjust*deltaX; tempz = z_2-deltaZ;
-	}
-	if(![CityMath isLeftOf:tempx y1:tempz toX2:x_1 y2:z_1 x3:x_1+adjust*deltaX y3:z_1+deltaZ]){
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_1-adjust*deltaX y:y_1 z:z_1-deltaZ]];
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_1+adjust*deltaX y:y_1 z:z_1+deltaZ]];
-	}else{
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_1+adjust*deltaX y:y_1 z:z_1+deltaZ]];
-		[roadPoints addObject:[[CityPoint alloc] initWithX:x_1-adjust*deltaX y:y_1 z:z_1-deltaZ]];
-	}
+
+	[roadPoints addObject:[[CityPoint alloc] initWithX:x_2+deltaX y:y_2 z:z_2+deltaZ]];
+	[roadPoints addObject:[[CityPoint alloc] initWithX:x_2-deltaX y:y_2 z:z_2-deltaZ]];
+	[roadPoints addObject:[[CityPoint alloc] initWithX:x_1-deltaX y:y_1 z:z_1-deltaZ]];
+	[roadPoints addObject:[[CityPoint alloc] initWithX:x_1+deltaX y:y_1 z:z_1+deltaZ]];
+	
+	
 	return roadPoints;
 }
 @end
