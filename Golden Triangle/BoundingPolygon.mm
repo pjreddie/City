@@ -9,13 +9,14 @@
 #import "BoundingPolygon.h"
 
 
+
 @implementation BoundingPolygon
 -(BoundingPolygon *) initWithCoord:(NSArray *)coord andColorRed:(float)r green:(float)g blue:(float)b {
 	self = [super init];
 	coordinates = coord;
 	red = r;
-	green = b;
-	blue = g;
+	green = g;
+	blue = b;
 	border = false;
 	return self;
 }
@@ -24,8 +25,8 @@
 	self = [super init];
 	coordinates = coord;
 	red = r;
-	green = b;
-	blue = g;
+	green = g;
+	blue = b;
 	border = bor;
 	return self;
 }

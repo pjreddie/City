@@ -46,13 +46,5 @@
 	return ((x_2-x_1) * (y_3-y_1) - (y_2-y_1)*(x_3-x_1)) >= 0;
 }
 
-+(CityNormal) generateFaceNormal:(CityPoint *)a b:(CityPoint *)b c:(CityPoint *)c{
-	double normx = ([a z]-[b z])*([c y]-[b y])-([a y]-[b y])*([c z]-[b z]);
-	double normy = ([a x]-[b x])*([c z]-[b z])-([a z]-[b z])*([c x]-[b x]);
-	double normz = ([a y]-[b y])*([c x]-[b x])-([a x]-[b x])*([c y]-[b y]);
-	double normlength = sqrt(normx*normx+normy*normy+normz*normz);
-	return CityNormal(normx /= normlength,normy /= normlength,normz /= normlength);
-}
-
 
 @end

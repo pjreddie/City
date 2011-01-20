@@ -14,9 +14,10 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	for(int i=0; i<3; i++){
-		glCallList(displayLists[i]);
-	}
+//	for(int i=2; i<3; i++){
+//		glCallList(displayLists[i]);
+//	}
+	glCallList(displayLists[0]);
 }
 
 /*
@@ -45,25 +46,25 @@
 	
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);
-	glEnable(GL_COLOR_MATERIAL);
-	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+	//glEnable(GL_COLOR_MATERIAL);
+	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_NORMALIZE);
 	
-	GLfloat ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	GLfloat ambient[] = {0.4f, 0.4f, 0.4f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {-5.0f,5.0f,10.0f,0.0f};//1?
+	GLint position[] = {0.0f,1.0f,1.0f,1.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
-	GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	GLfloat diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	//GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	GLfloat diffuse[] = {0.2f, 0.2f, 0.4f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	
 	glColor3f(1.0, 0.0, 0.0);
 	//GLfloat matSpec[] = {0.2f, 0.2f, 0.2f, 1.0f};
 	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
-	GLfloat matEm[] = {0.1f, 0.1f, 0.1f, 1.0f};
-	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
+	//GLfloat matEm[] = {0.1f, 0.1f, 0.1f, 1.0f};
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, matEm);
 	
 }
 
@@ -78,7 +79,7 @@
 				glColor3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:0] floatValue],
 						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:1] floatValue],
 						  [[[polygonArray objectAtIndex:polygon] objectAtIndex:2] floatValue]);
-				CityNormal facenorm = [CityMath generateFaceNormal:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
+				/*CityNormal facenorm = [CityMath generateFaceNormal:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
 																		y:[[[polygonArray objectAtIndex:polygon] objectAtIndex:4] floatValue]
 																		z:[[[polygonArray objectAtIndex:polygon] objectAtIndex:5] floatValue]]
 											b:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
@@ -87,7 +88,7 @@
 										   c:[[CityPoint alloc] initWithX:[[[polygonArray objectAtIndex:polygon] objectAtIndex:3] floatValue] 
 																		y:[[[polygonArray objectAtIndex:polygon] objectAtIndex:4] floatValue]
 																		z:[[[polygonArray objectAtIndex:polygon] objectAtIndex:5] floatValue]]];
-				glNormal3f(facenorm.x, facenorm.y, facenorm.z);
+				glNormal3f(facenorm.x, facenorm.y, facenorm.z);*/
 			}else{
 				glVertex3f([[[polygonArray objectAtIndex:polygon] objectAtIndex:i] floatValue],
 						   [[[polygonArray objectAtIndex:polygon] objectAtIndex:i+1] floatValue],
@@ -104,24 +105,67 @@
 	// Draw static display lists
 	// Stop sign
 	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
-	NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER];
-	[self createPolygonObject:stopSign index:0];
-	NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER];
-	[self createPolygonObject:stopLight index:1];
+	//NSMutableArray * stopSign = [FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER];
+	//[self createPolygonObject:stopSign index:0];
+	//NSMutableArray * stopLight = [FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER];
+	//[self createPolygonObject:stopLight index:1];
 
 
 
 	
 	// Populates polygonsToDraw with all generated polygons
-	NSArray * polygonsToDraw = [CityGen masterGenerate:self];
-	polygonsToDrawCount = [polygonsToDraw count];
+	vector<CityPolyObject> polygonObjToDraw = [CityGen masterGenerate:self];
+	//NSArray * polygonsToDraw = [CityGen masterGenerate:self];
+	
+	//polygonsToDrawCount = polygonsToDraw.size();
 
-	//Draw polygons
-	CityPoint * pt;
-	BoundingPolygon * polygon;
 	// Reset normal
-	glNormal3f(0.0, 0.0, 1.0);
-	glNewList(displayLists[2], GL_COMPILE);
+//	glNormal3f(0.0, 0.0, 1.0);
+	//glNewList(displayLists[2], GL_COMPILE);
+	glNewList(displayLists[0], GL_COMPILE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	//glColor3f( 0.0, 0.0, 0.0 ); //define default color
+	for (int vn=3; vn<=5; vn++) {
+		switch (vn) {
+			case 3: glBegin(GL_TRIANGLES); break;
+			case 4: glBegin(GL_QUADS); break;
+			default: break;			
+		}
+		for(int obj=0; obj<polygonObjToDraw.size(); obj++){				
+			for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
+				glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
+				glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
+				glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
+				if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
+					if (vn==5) {
+						glBegin(GL_POLYGON);
+					}
+					for (int vertex=0; vertex<polygonObjToDraw[obj].polygons[face].vertexList.size(); vertex++) {
+						glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
+								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
+								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);
+						//glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
+						//		   polygonObjToDraw[obj].polygons[face].faceNormal.y,
+						//		   polygonObjToDraw[obj].polygons[face].faceNormal.z);
+						glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
+								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
+								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);
+						
+					}
+					if (vn==5){
+						glEnd();
+					}
+				}
+			}
+		}
+		if (vn<5) {
+			glEnd();
+		}
+	}
+	glEndList();
+	
+	
+	/*
 	//Loop around drawing polygons and outlines
 	for(int l=0; l<2; l++){
 		if (l==0) {
@@ -138,24 +182,24 @@
 				default: break;			
 			}
 			for(int i=0; i<polygonsToDrawCount; i++){				
-				for(polygon in [[polygonsToDraw objectAtIndex:i] polygons]){
-					if (l!=1 || [polygon border]){ // Only draw border if it is requested
+				for (int k=0; k<polygonsToDraw[i].polygons.size(); j++) {					
+					if (l!=1 ){ //[polygon border]){ // Only draw border if it is requested
 							
-						//3*(polygonsToDrawCount/50
-						if([[polygon coordinates] count] == j || (j>4 && [[polygon coordinates] count] > 4)){
+						if(polygonsToDraw[i].polygons[k].vertexList.size() == j || (j>4 && polygonsToDraw[i].polygons[k].vertexList.size() > 4)){
 							if(l==0){ //Draw with defined color
-								glColor3f( [polygon red], [polygon blue], [polygon green] );
-								CityNormal facenorm = [CityMath generateFaceNormal:[[polygon coordinates] objectAtIndex:0]
-																				 b:[[polygon coordinates] objectAtIndex:1]
-																				 c:[[polygon coordinates] objectAtIndex:2]];
-								glNormal3f(facenorm.x, facenorm.y, facenorm.z);
-								
+								//glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonsToDraw[i].polygons[k].diffuseLight);
 							}
 							if(j>4){ // Polygons must be defined independantly
 								glBegin(GL_POLYGON);
 							}
-							for(pt in [polygon coordinates]){
-								glVertex3f([pt x], [pt y], [pt z]);
+							for (int a=0; a<polygonsToDraw[i].polygons[k].vertexList.size(); a++) {
+								//glNormal3f(polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].vertexNormal.x, 
+								//		   polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].vertexNormal.y, 
+								//		   polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].vertexNormal.z);
+								NSLog(@"vertex x%f y%f z%f",polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].x, polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].y, polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].z);
+								glVertex3f(polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].x,
+										   polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].y, 
+										   polygonsToDraw[i].vertices[polygonsToDraw[i].polygons[k].vertexList[a]].z);
 							}
 							if(j>4){ // Polygons must be defined independantly
 								glEnd();
@@ -168,7 +212,8 @@
 				glEnd();
 			}
 		}
-	}
+	}*/
+	/*
 	// Draw stopsigns
 	double nx, nz, nr,tx,tz;
 	glPushAttrib(GL_TRANSFORM_BIT);
@@ -200,9 +245,8 @@
 			}
 		}
 	}
-	glPopAttrib();
+	glPopAttrib();*/
 	glEndList();
-	[polygonsToDraw release]; //IS this enough?
 }
 
 - (void) addLoadingMessage:(NSString *)message {
@@ -304,8 +348,10 @@
 	glRotated(dRotated, 0.0, 1.0, 0.0);
 	glRotated(xRotated,  cos(t), 0.0, sin(t));
 	glTranslated(xTranslate,yTranslate,zTranslate);
+	GLint position[] = {xTranslate+0.0f,yTranslate+1.0f,zTranslate+1.0f,1.0f};//1?
+	glLightiv(GL_LIGHT0, GL_POSITION, position);
+
 	[self drawSkybox];
-	
 	[self drawPolygons];
 	}else if (loadState == 0){
 		loadState = 1;

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CityObject.h"
 #import <cmath>
+#import "BoundingPolygon.h"
 
 
 #define MINHEIGHT 2
@@ -23,12 +24,15 @@
 	float windowSeperationX; 
 	float windowSeperationY;
 	BoundingPolygon * basePolygon;
+	vector<CityVertex> vertices;
+	vector<CityPolygon> faces;
 	NSMutableArray * wallPolygons; //Stupid extra var that should be inherited, dont know why it wasnt working
 }
 
--(BuildingObject *) initWithBounds:(BoundingPolygon *)bounds avgHeight:(float)height;
+-(BuildingObject *) initWithBounds:(vector<CityVertex>)v avgHeight:(float)height;
 - (void) buildRectangularBuilding;
 - (void) buildCircularBuilding;
+- (CityPolyObject) cityPoly;
 - (void) addWindowsToFace:(CityPoint *)pointa pt2:(CityPoint *)pointb h:(float)buildingHeight;
 - (NSArray *) polygons;
 

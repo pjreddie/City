@@ -6,20 +6,16 @@
 //  Copyright 2011 Middlebury College. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+//#import <Cocoa/Cocoa.h>
 #import <stdlib.h>
 #import <algorithm>
-#import "CityPoint.h"
+//#import "CityPoint.h"
+#import "BoundingPolygon.h"
 
 #define PI 3.14159265
 #define E 2.71828183
 
-struct CityNormal {
-	double x,y,z;
-	CityNormal(double _x, double _y, double _z){
-		x = _x; y=_y; z=_z;
-	}
-};
+using namespace std;
 
 @interface CityMath : NSObject {
 
@@ -28,6 +24,5 @@ struct CityNormal {
 + (int) poisson:(float)lambda;
 + (double) bell:(double)x sigma:(double)s mu:(double)m;
 +(bool) isLeftOf:(float)x_1 y1:(float)y_1 toX2:(float)x_2 y2:(float)y_2 x3:(float)x_3 y3:(float)y_3;
-+(CityNormal) generateFaceNormal:(CityPoint *)a b:(CityPoint *)b c:(CityPoint *)c;
 								  
 @end

@@ -7,16 +7,17 @@
 //
 
 #import "CityGen.h"
+#import "BoundingPolygon.h"
 
 @implementation CityGen
 
 //TODO change to instance of CityGLView
-+ (NSMutableArray *) masterGenerate:(NSView *)glView {
-	NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
-	//[CityGen addPlane:polygons3D];
++ (vector<CityPolyObject>) masterGenerate:(NSView *)glView {
+	//NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
+	vector<CityPolyObject> polygons3D = vector<CityPolyObject>();
 	[glView addLoadingMessage:@"building city..."];
 	[glView addLoadingMessage:@"generating voronoi diagrams..."];
-	[CityGen addPlane:polygons3D];
+	[CityGen addPlane:&polygons3D];
 	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(RANDSEED, NUMCONTROL, MINX, MAXX, MINZ, MAXZ);
 	[glView addLoadingMessage:@"constructing buildings..."];
 	double cx = MINX + (MAXX-MINX)/2;
@@ -24,46 +25,54 @@
 	
 	double maxDist = MAXX-cx + MAXZ - cz;
 	
-	[CityGen addCityBuildings:polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
+	[CityGen addCityBuildings:&polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
 	[glView addLoadingMessage:@"paving roads..."];
 
 	//list<pair<JPoint, double> > stoplightPos;
 	
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
-		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
 	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
-		[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
 	}
 	return polygons3D;
 }
 
-+ (void) addPlane:(NSMutableArray *)polygons3D {
-	[polygons3D addObject:[[PlaneObject alloc] initWithPolygons:[[NSArray alloc] initWithObjects:
-													[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:MINX y:-1.0 z:MINZ],
-																	[[CityPoint alloc] initWithX:MINX y:-1.0 z:MAXZ],
-																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MAXZ],
-																	[[CityPoint alloc] initWithX:MAXX y:-1.0 z:MINZ], nil] andColorRed:.1289 green:.1484 blue:.125],nil]]];
++ (void) addPlane:(vector<CityPolyObject> *)polygons3D {
+	CityVertex vertices[4] = {CityVertex(MINX, -1.0, MINZ), CityVertex(MINX, -1.0, MAXZ), CityVertex(MAXX, -1.0, MAXZ), CityVertex(MAXX, -1.0, MINZ)}; 
+	GLfloat dl[4] = {.1289,.1484,.125,1.0};
+	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el[4] = {0.0,0.0,0.0,1.0};
+	int planeVerts[4] = {0,1,2,3};
+	vector<int> vpv = vector<int>(planeVerts, planeVerts+sizeof(planeVerts)/sizeof(planeVerts[0]));
+	CityPolygon polygons[1] = {CityPolygon(vpv,dl,sl,el)};
+	vector<CityVertex> vv = vector<CityVertex>(vertices, vertices + sizeof(vertices)/sizeof(vertices[0]));
+	vector<CityPolygon> vp = vector<CityPolygon>(polygons, polygons + sizeof(polygons)/sizeof(polygons[0]));
+	(*polygons3D).push_back(CityPolyObject(vv, vp));
 }
 
-+ (void) addCityBuildings:(NSMutableArray *) polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
++ (void) addCityBuildings:(vector<CityPolyObject> *)polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
 	
 	for(std::list<std::list<JPoint> >::iterator p = polys.begin(); p != polys.end(); ++p){
-		NSMutableArray * points = [[NSMutableArray alloc] init];
+		// allocate space for vertices building height
+		vector<CityVertex> vertices = vector<CityVertex>();
+		int ti = 0;
 		for(std::list<JPoint>::iterator pit = (*p).begin(); pit != (*p).end(); ++pit){
-			double x = (*pit).x;
-			double z = (*pit).y;
-			[points addObject: [[CityPoint alloc] initWithX:x y:-0.9 z:z]];
-			
+			//double x = (*pit).x;
+			//double z = (*pit).y;
+			//[points addObject: [[CityPoint alloc] initWithX:x y:-0.9 z:z]];
+			vertices.push_back(CityVertex((*pit).x,-0.9,(*pit).y));
 		}
 		double x = (*p).front().x;
 		double z = (*p).front().y;
 
 		double dist = abs(cz-z) + abs(cx-x);
 		double avgH = 2+30*[CityMath bell:dist/40 sigma:.7 mu:0];
-		[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:points andColorRed:.09 green:.09 blue:.09] avgHeight:avgH]];
+		BuildingObject * temp = [[BuildingObject alloc] initWithBounds:vertices avgHeight:avgH];
+		CityPolyObject t = [temp cityPoly];
+		(*polygons3D).push_back(t);
 	}
-	
 	// For each polygon call addBuilding w/ height generated from gausian
 	/*
 	[polygons3D addObject:[[BuildingObject alloc] initWithBounds:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:
