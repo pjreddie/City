@@ -54,13 +54,22 @@ struct CityPolygon {
 };
 
 struct CityPolyObject {
-	vector<CityVertex> vertices;
-	vector<CityPolygon> polygons;
+	vector<CityVertex> * vp;
+	vector<CityPolygon> * pp;
+	vector<CityVertex>  vertices;
+	vector<CityPolygon>  polygons;
 	
 	CityPolyObject(vector<CityVertex> &cv,vector<CityPolygon> &cp) {
-		vertices = vector<CityVertex>(cv);
-		polygons = vector<CityPolygon>(cp);
+		vp = &cv;
+		pp = &cp;
+		vertices = *vp;
+		polygons = *pp;
+//		vertices = vector<CityVertex>(cv);
+//		polygons = vector<CityPolygon>(cp);
 		generateNormals();
+	}
+	CityPolyObject(){
+		
 	}
 	void generateNormals () {
 		// Generate face normals
