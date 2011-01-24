@@ -29,12 +29,17 @@
 	[glView addLoadingMessage:@"paving roads..."];
 
 	//list<pair<JPoint, double> > stoplightPos;
-	
+	NSLog(@"sssize %i", polygons3D.size());
 	for(list<Segment>::iterator sit = city.second.first.begin(); sit != city.second.first.end(); ++sit){
 	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+		RoadObject * tmp = [[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y];
+		polygons3D.push_back([tmp roadPoly]);
 	}
+	NSLog(@"sssize %i", polygons3D.size());
 	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
 	//	[polygons3D addObject:[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y]];
+		RoadObject * tmp =[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y];
+		polygons3D.push_back([tmp roadPoly]);
 	}
 	return polygons3D;
 }

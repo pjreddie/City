@@ -26,14 +26,14 @@
 	BoundingPolygon * basePolygon;
 	vector<CityVertex> vertices;
 	vector<CityPolygon> faces;
-	NSMutableArray * wallPolygons; //Stupid extra var that should be inherited, dont know why it wasnt working
+	CityPolyObject building;
 }
 
 -(BuildingObject *) initWithBounds:(vector<CityVertex>)v avgHeight:(float)height;
 - (void) buildRectangularBuilding;
 - (void) buildCircularBuilding;
 - (CityPolyObject) cityPoly;
-- (void) addWindowsToFace:(CityPoint *)pointa pt2:(CityPoint *)pointb h:(float)buildingHeight;
+- (CityPolyObject) addWindowsToFace:(CityPolygon)face;
 - (NSArray *) polygons;
 
 @end

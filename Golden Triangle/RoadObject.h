@@ -18,7 +18,8 @@
 using namespace std;
 
 @interface RoadObject : CityObject {
-	float x1,y1,z1,x2,y2,z2,totalRoadWidth, adjustX, adjustZ;
+	CityPolyObject road;
+	float x1,y1,z1,x2,y2,z2,totalRoadWidth;
 	float intersectionx1,intersectionx2, intersectionz1, intersectionz2;
 	NSMutableArray * wallPolygons; //Stupid extra var that should be inherited, dont know why it wasnt working
 }
@@ -28,7 +29,8 @@ using namespace std;
 
 -(RoadObject *) initWithEndPoints:(double)roadWidth x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2;
 -(pair<pair<JPoint, double>, pair<JPoint, double> >) intersections;
-- (NSArray *) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2;
+- (vector<CityVertex>) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2;
 - (void) calculateRoadPolygons;
+- (CityPolyObject) roadPoly;
 
 @end

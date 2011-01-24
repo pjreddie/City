@@ -50,14 +50,18 @@
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_NORMALIZE);
 	
+<<<<<<< HEAD
 	GLfloat ambient[] = {0.f, 0.f, 0.f, 0.0f};
+=======
+	GLfloat ambient[] = {1.0f, 1.0f, 1.0f, 0.0f};
+>>>>>>> 5fd08339e0ef84f40d3f2f11cfafe20c9480d222
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
 	GLint position[] = {0.0f,1.0f,1.0f,0.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
 	//GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
 	//glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	GLfloat diffuse[] = {0.2f, 0.2f, 0.4f, 1.0f};
+	GLfloat diffuse[] = {0.2f, 0.2f, 0.4f, 0.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	
 	glColor3f(1.0, 0.0, 0.0);
@@ -140,8 +144,10 @@
 			case 4: glBegin(GL_QUADS); break;
 			default: break;			
 		}
-		for(int obj=0; obj<polygonObjToDraw.size(); obj++){				
+		for(int obj=0; obj<polygonObjToDraw.size(); obj++){
+			//CityPolygon = 
 			for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
+<<<<<<< HEAD
 				if(l==0){
 					glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
 					glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
@@ -150,6 +156,15 @@
 					GLfloat t[4] ={1.0,1.0,1.0,1.0};
 					glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, t);
 				}
+=======
+				glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
+				glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
+				glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
+				/*glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
+						   polygonObjToDraw[obj].polygons[face].faceNormal.y,
+						   polygonObjToDraw[obj].polygons[face].faceNormal.z);
+				*/
+>>>>>>> 5fd08339e0ef84f40d3f2f11cfafe20c9480d222
 				if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
 					if (vn==5) {
 						glBegin(GL_POLYGON);
@@ -158,9 +173,6 @@
 						glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);
-						//glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
-						//		   polygonObjToDraw[obj].polygons[face].faceNormal.y,
-						//		   polygonObjToDraw[obj].polygons[face].faceNormal.z);
 						glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);

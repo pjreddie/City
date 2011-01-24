@@ -33,16 +33,45 @@
 	intersectionz1 = z1+intersectiondz;
 	intersectionz2 = z2-intersectiondz;
 	
-	int numLanes = totalRoadWidth/CONST_LANE_SIZE;
-	//float sidewalkSize = (totalRoadWidth - (CONST_LANE_SIZE*numLanes))/2;
-	
+	vector<CityPolygon> vp = vector<CityPolygon>();
+	vector<CityVertex> cv = vector<CityVertex>();
 	// Street
-	[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2] andColorRed:0.0 green:0.0 blue:0.0]];
-	// Lane Seperator
-	[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[self generateRectangleFromLine:CONST_LANE_SEPERATOR_SIZE x1:intersectionx1 y1:y1+.03 z1:intersectionz1 x2:intersectionx2 y2:y2+.03 z2:intersectionz2] andColorRed:.16797 green:.16797 blue:.05859]];
-	// sidewalk
-	[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2] andColorRed:.234 green:.234 blue:.234]];
+	GLfloat dl[4] = {0.0,0.0,0.0,1.0};
+	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el[4] = {0.0,0.0,0.0,1.0};
+	int vn[4] = {0,1,2,3};
+	vector<int> vvn = vector<int>(vn, vn + sizeof(vn)/sizeof(vn[0]));
+	vp.push_back(CityPolygon(vvn,dl,sl,el));
+	vector<CityVertex> tmp = [self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
+	//CityPolyObject r1 = CityPolyObject([self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2],
+	//								   vp);
 	
+	// Lane Seperator
+	GLfloat dl2[4] = {1.0,1.0,0.0,1.0};
+	GLfloat sl2[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el2[4] = {0.0,0.0,0.0,1.0};
+	int vn2[4] = {4,5,6,7};
+	vvn = vector<int>(vn2, vn2 + sizeof(vn2)/sizeof(vn2[0]));
+	vp.push_back(CityPolygon(vvn,dl2,sl2,el2));
+	tmp = [self generateRectangleFromLine:CONST_LANE_SEPERATOR_SIZE x1:intersectionx1 y1:y1+.03 z1:intersectionz1 x2:intersectionx2 y2:y2+.03 z2:intersectionz2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
+
+	//CityPolyObject r2 = CityPolyObject(,
+	//								   vp);
+
+	// sidewalk
+	GLfloat dl3[4] = {1.0,1.0,1.0,1.0};
+	GLfloat sl3[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el3[4] = {0.0,0.0,0.0,1.0};
+	int vn3[4] = {8,9,10,11};
+	vvn = vector<int>(vn3, vn3 + sizeof(vn3)/sizeof(vn3[0]));
+	vp.push_back(CityPolygon(vvn,dl3,sl3,el3));
+	tmp = [self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
+	//vector<CityVertex> vcv = [self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2];
+	
+	road = CityPolyObject(cv,vp);;
 }
 
 - (pair<pair<JPoint, double>, pair<JPoint, double> >) intersections{
@@ -66,6 +95,11 @@
 - (NSArray *) polygons {
 	return wallPolygons;
 }
+
+- (CityPolyObject) roadPoly{
+	return road;
+}
+
 - (double) roadWidth{
 	return totalRoadWidth;
 }
@@ -77,7 +111,7 @@
 	return mag;
 }
 
-- (NSArray *) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2{
+- (vector<CityVertex>) generateRectangleFromLine:(double)width x1:(double)x_1 y1:(double)y_1 z1:(double)z_1 x2:(double)x_2 y2:(double)y_2 z2:(double)z_2{
 	float deltaX = x_2-x_1;
 	float deltaZ = z_2-z_1;
 	
@@ -88,15 +122,12 @@
 	double angle = atan2(deltaZ,deltaX);
 	deltaX = (width/2)*cos(angle+PI/2);
 	deltaZ = (width/2)*sin(angle+PI/2);
-	
-	NSMutableArray * roadPoints = [[NSMutableArray alloc] init];
-
-	[roadPoints addObject:[[CityPoint alloc] initWithX:x_2+deltaX y:y_2 z:z_2+deltaZ]];
-	[roadPoints addObject:[[CityPoint alloc] initWithX:x_2-deltaX y:y_2 z:z_2-deltaZ]];
-	[roadPoints addObject:[[CityPoint alloc] initWithX:x_1-deltaX y:y_1 z:z_1-deltaZ]];
-	[roadPoints addObject:[[CityPoint alloc] initWithX:x_1+deltaX y:y_1 z:z_1+deltaZ]];
-	
-	
-	return roadPoints;
+		
+	CityVertex vt[4] = {CityVertex(x_2+deltaX, y_2, z_2+deltaZ),
+					CityVertex(x_2-deltaX, y_2, z_2-deltaZ),
+					CityVertex(x_1-deltaX, y_1, z_1-deltaZ),			
+					CityVertex(x_1+deltaX, y_1, z_1+deltaZ)};
+	vector<CityVertex> vvt = vector<CityVertex>(vt, vt + sizeof(vt)/sizeof(vt[0]));
+	return vvt;
 }
 @end
