@@ -73,14 +73,13 @@
 		for (int p=0; p<tmp.polygons.size(); p++) {
 			for (int j=0; j<tmp.polygons[p].vertexList.size(); j++) {
 				int tmpv = tmp.polygons[p].vertexList[j];
-				tmp.polygons[p].vertexList[j] = tmpv + vertexEnd; ///problem
+				tmp.polygons[p].vertexList[j] = tmpv + vertexEnd;
 			}
 		}
 		vertices.insert(vertices.end(), tmp.vertices.begin(), tmp.vertices.end());
 		faces.insert(faces.end(), tmp.polygons.begin(), tmp.polygons.end());
-	}
-	building = CityPolyObject(vertices, faces);*/
-	
+	}*/
+	//building = CityPolyObject(vertices, faces);
 }
 
 - (CityPolyObject) cityPoly{
