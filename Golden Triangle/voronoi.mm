@@ -177,7 +177,6 @@ list<JPoint> Shrink(list<JPoint> poly, double s){
 	dy = dy/n;
 	dist = s/(p1).distance(m);
 	sp.push_back(JPoint((*pit2).x+dx*dist, (*pit2).y+dy*dist));
-
 	
 	return sp;
 	
@@ -218,8 +217,6 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 		list<list<JPoint> > b = r.getPolygons(1.5);
 		blocks.insert(blocks.begin(), b.begin(), b.end());
 		smallRoads.insert(smallRoads.begin(),r.diagram.begin(), r.diagram.end());
-		//smallRoads.insert(smallRoads.begin(),r.bounds.begin(), r.bounds.end());
-
 	}
 	
 
@@ -234,22 +231,3 @@ pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(i
 	return make_pair(buildings,make_pair(bigRoads, smallRoads));
 	
 }
-/*
-void testdraw(){
-	
-	Voronoi d = GenerateVoronoi(1, 20, -5, 5, -10, 0);
-	
-	
-	d.draw2(0.05);
-	list<list<JPoint> > polys = d.getPolygons(.05);
-	for(list<list<JPoint> > ::iterator pit = polys.begin(); pit != polys.end(); ++pit){
-	 Voronoi r = GenerateRoads(*pit, .6,.3);
-	 r.draw2(.007);
-	}
-}*/
-
-/*
- int main(void){
-	 pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > polys = GenerateVoronoi(5, 20, -100, 100, -200, 0);
- }
-*/

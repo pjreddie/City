@@ -50,9 +50,9 @@
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_NORMALIZE);
 	
-	GLfloat ambient[] = {0.4f, 0.4f, 0.4f, 1.0f};
+	GLfloat ambient[] = {0.f, 0.f, 0.f, 0.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {0.0f,1.0f,1.0f,1.0f};//1?
+	GLint position[] = {0.0f,1.0f,1.0f,0.0f};//1?
 	glLightiv(GL_LIGHT0, GL_POSITION, position);
 	
 	//GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
@@ -125,6 +125,15 @@
 	glNewList(displayLists[0], GL_COMPILE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	//glColor3f( 0.0, 0.0, 0.0 ); //define default color
+	
+	for(int l=0; l<2; l++){
+		if (l==0) {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}else {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		}
+			
+	
 	for (int vn=3; vn<=5; vn++) {
 		switch (vn) {
 			case 3: glBegin(GL_TRIANGLES); break;
@@ -133,9 +142,14 @@
 		}
 		for(int obj=0; obj<polygonObjToDraw.size(); obj++){				
 			for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
-				glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
-				glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
-				glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
+				if(l==0){
+					glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
+					glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
+					glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
+				}else{
+					GLfloat t[4] ={1.0,1.0,1.0,1.0};
+					glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, t);
+				}
 				if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
 					if (vn==5) {
 						glBegin(GL_POLYGON);
@@ -161,6 +175,7 @@
 		if (vn<5) {
 			glEnd();
 		}
+	}
 	}
 	glEndList();
 	
