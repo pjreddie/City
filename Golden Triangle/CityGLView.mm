@@ -366,7 +366,7 @@
 		
 		
 		if ( time > 6 && time < 18){
-			double p = PI*(time-6)/12;
+			double p = 1.5*PI*(time-6)/12;
 			// Create light components
 			GLfloat ambientLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 			GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0, 1.0f };
