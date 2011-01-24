@@ -48,7 +48,7 @@
 	glEnable(GL_LIGHT0);
 	//glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-	glEnable(GL_NORMALIZE);
+	//glEnable(GL_NORMALIZE);
 	
 	GLfloat ambient[] = {1.0f, 1.0f, 1.0f, 0.0f};
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
@@ -95,10 +95,10 @@
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER] index:1];
 	
 	// Populates polygonsToDraw with all generated polygons
-	pair<vector<CityPolyObject>, CityPregen> tpair = [CityGen masterGenerate:self];
+	vector<CityPolyObject> polygonObjToDraw = vector<CityPolyObject>(500);
+	CityPregen pregenCoords = CityPregen();
+	[CityGen masterGenerate:self polyObjs:&polygonObjToDraw pregenObjs:&pregenCoords];
 	NSLog(@"creating display lists...");
-	vector<CityPolyObject> polygonObjToDraw = tpair.first;
-	CityPregen pregenCoords = tpair.second;
 
 	// Draw generated ojbects
 	glNewList(displayLists[2], GL_COMPILE);
@@ -114,18 +114,18 @@
 				glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
 				glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
 				glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
-				/*glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
+				glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
 						   polygonObjToDraw[obj].polygons[face].faceNormal.y,
 						   polygonObjToDraw[obj].polygons[face].faceNormal.z);
-				*/
+				
 				if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
 					if (vn==5) {
 						glBegin(GL_POLYGON);
 					}
 					for (int vertex=0; vertex<polygonObjToDraw[obj].polygons[face].vertexList.size(); vertex++) {
-						glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
+						/*glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
-								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);
+								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);*/
 						glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
 								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);
