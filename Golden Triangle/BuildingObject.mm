@@ -6,12 +6,12 @@
 
 @implementation BuildingObject
 
--(BuildingObject *) initWithBounds:(vector<CityVertex>)v avgHeight:(float)height{
+-(BuildingObject *) initWithBounds:(vector<CityVertex> *)v avgHeight:(float)height{
 	[super initWithPolygons:[[NSArray alloc] init]];
 	//wallPolygons = [[NSMutableArray alloc] init];
 	//basePolygon = bounds;
 	
-	vertices = vector<CityVertex>(v);
+	vertices = *v;
 	faces = vector<CityPolygon>();
 	
 	
@@ -53,6 +53,7 @@
 		int fv[4] = {v,nextIndex,nextIndex+ovn,v+ovn};
 		vector<int> vv = vector<int>(fv, fv + sizeof(fv)/sizeof(fv[0]));
 		faces.push_back(CityPolygon(vv,dl,sl,el));
+		faces.back().calculateNormal(vertices);
 	}
 	//Add Top
 	vector<int> tv = vector<int>();
@@ -61,10 +62,9 @@
 	}
 	faces.push_back(CityPolygon(tv,dl,sl,el));
 	// defining the building also generates the normals
-	building = CityPolyObject(vertices, faces);
+	//building = CityPolyObject(vertices, faces);
 	
 	// Add Windows to all building faces except top
-	/*
 	ovn = faces.size();
 	for (int i=0; i<ovn-1; i++) {
 		CityPolyObject tmp = [self addWindowsToFace:faces[i]];
@@ -79,7 +79,7 @@
 		vertices.insert(vertices.end(), tmp.vertices.begin(), tmp.vertices.end());
 		faces.insert(faces.end(), tmp.polygons.begin(), tmp.polygons.end());
 	}
-	building = CityPolyObject(vertices, faces);*/
+	building = CityPolyObject(vertices, faces);
 	
 }
 
@@ -94,8 +94,8 @@
 	CityVertex pointb = vertices[face.vertexList[1]];
 	double faceHeight = vertices[face.vertexList[2]].y - pointa.y;
 	
-	vector<CityVertex> wVertices = vector<CityVertex>();
-	vector<CityPolygon> wPolygons = vector<CityPolygon>();
+	vector<CityVertex> wVertices = vector<CityVertex>(10000);
+	vector<CityPolygon> wPolygons = vector<CityPolygon>(1000);
 	
 	float deltaX,deltaZ,xAccum,zAccum,yAccum,zInit,xInit;
 	float directionAdjustX = 1.0;
@@ -161,6 +161,7 @@
 			vector<int> vwv = vector<int>(wv, wv + sizeof(wv)/sizeof(wv[0]));
 			vertexIndex += 4;
 			wPolygons.push_back(CityPolygon(vwv, dl,sl,el));
+			wPolygons.back().faceNormal = face.faceNormal;
 		}
 		yAccum += windowSizeY+2*windowSeperationY;
 	}
