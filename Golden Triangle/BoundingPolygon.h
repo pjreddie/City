@@ -33,6 +33,15 @@ struct CityVertex{
 	CityVertex(){}
 };
 
+// Stores a location and a rotation
+struct CityCoordinate {
+	float x,y,z,r;
+	CityCoordinate(double _x, double _y, double _z, double _r){
+		x = _x; y =_y; z = _z; r=_r;
+	}
+	CityCoordinate(){}	
+};
+
 struct CityPolygon {
 	vector<int> vertexList;
 	CityNormal faceNormal;
@@ -98,6 +107,14 @@ struct CityPolyObject {
 			}
 			vertices[i].vertexNormal = CityNormal(tx/vertices[i].faces.size(),ty/vertices[i].faces.size(),tz/vertices[i].faces.size());
 		}
+	}
+};
+
+struct CityPregen {
+	vector< vector<CityCoordinate> > coordinates;
+	
+	CityPregen(){
+		coordinates = vector< vector<CityCoordinate> >(2); //YOU SHOULD BE A CONSTANT
 	}
 };
 

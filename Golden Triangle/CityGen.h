@@ -27,7 +27,7 @@ using namespace std;
 
 }
 
-+ (vector<CityPolyObject>) masterGenerate:(NSView *)glView;
++ (pair<vector<CityPolyObject>, CityPregen>) masterGenerate:(NSView *)glView;
 + (void) addPlane:(vector<CityPolyObject> *)polygons3D;
 + (void) addCityBuildings:(vector<CityPolyObject> *)polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD;
 @end
