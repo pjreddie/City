@@ -14,9 +14,6 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-//	for(int i=2; i<3; i++){
-//		glCallList(displayLists[i]);
-//	}
 	glCallList(displayLists[2]);
 }
 
@@ -38,29 +35,22 @@
 
 - (void) initLighting {	
 	/*
-	glEnable(GL_FOG);
-	glFogi(GL_FOG_MODE, GL_LINEAR);
-	glFogf(GL_FOG_START, 20.0f);
-	glFogf(GL_FOG_END, 100.0f);
-	*/
-	
+	 glEnable(GL_FOG);
+	 glFogi(GL_FOG_MODE, GL_LINEAR);
+	 glFogf(GL_FOG_START, 20.0f);
+	 glFogf(GL_FOG_END, 100.0f);
+	 */
+	time = 6.0;
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);
 	//glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	//glEnable(GL_NORMALIZE);
 	
-	GLfloat ambient[] = {1.0f, 1.0f, 1.0f, 0.0f};
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-	GLint position[] = {0.0f,1.0f,1.0f,1.0f};//1?
-	glLightiv(GL_LIGHT0, GL_POSITION, position);
-	
-	//GLfloat specular[] = {0.5f, 0.5f, 0.5f, 1.0f};
-	//glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	GLfloat diffuse[] = {0.2f, 0.2f, 0.4f, 0.0f};
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	
 	glColor3f(1.0, 0.0, 0.0);
+	
+	glShadeModel(GL_SMOOTH);
+	
 	//GLfloat matSpec[] = {0.2f, 0.2f, 0.2f, 1.0f};
 	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
 	//GLfloat matEm[] = {0.1f, 0.1f, 0.1f, 1.0f};
@@ -102,43 +92,56 @@
 
 	// Draw generated ojbects
 	glNewList(displayLists[2], GL_COMPILE);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	for (int vn=3; vn<=5; vn++) {
-		switch (vn) {
-			case 3: glBegin(GL_TRIANGLES); break;
-			case 4: glBegin(GL_QUADS); break;
-			default: break;			
+	for(int l=0; l<2; l++){
+		if (l==0) {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}else {
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		}
-		for(int obj=0; obj<polygonObjToDraw.size(); obj++){
-			for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
-				glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
-				glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
-				glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
-				glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
-						   polygonObjToDraw[obj].polygons[face].faceNormal.y,
-						   polygonObjToDraw[obj].polygons[face].faceNormal.z);
-				
-				if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
-					if (vn==5) {
-						glBegin(GL_POLYGON);
-					}
-					for (int vertex=0; vertex<polygonObjToDraw[obj].polygons[face].vertexList.size(); vertex++) {
-						/*glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
-								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
-								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);*/
-						glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
-								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
-								   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);
+		
+		
+		for (int vn=3; vn<=5; vn++) {
+			switch (vn) {
+				case 3: glBegin(GL_TRIANGLES); break;
+				case 4: glBegin(GL_QUADS); break;
+				default: break;			
+			}
+			for(int obj=0; obj<polygonObjToDraw.size(); obj++){
+				for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
+					if(l==0){
+						glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
+						glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
+						glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
+						glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
+								   polygonObjToDraw[obj].polygons[face].faceNormal.y,
+								   polygonObjToDraw[obj].polygons[face].faceNormal.z );
 						
+					}else{
+						GLfloat t[4] ={1.0,1.0,1.0,1.0};
+						glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, t);
 					}
-					if (vn==5){
-						glEnd();
+					if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
+						if (vn==5) {
+							glBegin(GL_POLYGON);
+						}
+						for (int vertex=0; vertex<polygonObjToDraw[obj].polygons[face].vertexList.size(); vertex++) {
+							//glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
+							//		   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
+							//		   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);
+							glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
+									   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
+									   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);
+							
+						}
+						if (vn==5){
+							glEnd();
+						}
 					}
 				}
 			}
-		}
-		if (vn<5) {
-			glEnd();
+			if (vn<5) {
+				glEnd();
+			}
 		}
 	}
 	
@@ -196,10 +199,10 @@
 { 	
 	[self reshape:frame];
 	if( ![ self loadGLTextures]){
-	 
+		
 		NSLog(@"Error loading textures");
 	}
-
+	
 	glShadeModel( GL_SMOOTH );                // Enable smooth shading
 	glEnable(GL_LINE_SMOOTH);
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );   // Black background
@@ -210,18 +213,19 @@
 	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
 	[self initLighting];
 	[ self setNeedsDisplay: YES ] ;
-
-
+	
+	
 }
 
 - (void) initializeData {
+
 	fullscreen = false;
 	xTranslate = 0.0;
 	yTranslate = 0.0;
 	zTranslate = 0.0;
 	dRotated = 0.0;
 	loadState = 0;
-
+	
 }
 
 -(bool) fullscreen {
@@ -230,38 +234,71 @@
 }
 
 /*  Draw Method - 
-	Called every 0.015 seconds */
+ Called every 0.015 seconds */
 -(void) draw:(NSRect) bounds {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 	if(loadState == 2){
-	double t = (3.14159265*dRotated)/180;
-	double s = (3.14159265*xRotated)/180;
-	if(movingLeft == true){
-		zTranslate += DMOVE*-cos(t+3.14159265/2);
-		xTranslate += DMOVE*sin(t+3.14159265/2);
-	}if(movingRight == true){
-		zTranslate += DMOVE*-cos(t-3.14159265/2);
-		xTranslate += DMOVE*sin(t-3.14159265/2);
-	}if(movingUp == true){
-		zTranslate += DMOVE*cos(t)*cos(s);
-		xTranslate += DMOVE*-sin(t)*cos(s);
-		yTranslate += DMOVE*sin(s);
-	}if(movingDown == true){
-		zTranslate += DMOVE*-cos(t)*cos(s);
-		xTranslate += DMOVE*sin(t)*cos(s);
-		yTranslate += DMOVE*-sin(s);
-	}if (rotating) {
-		dRotated += 0.5*rotateDirection;
-	}
-	glRotated(dRotated, 0.0, 1.0, 0.0);
-	glRotated(xRotated,  cos(t), 0.0, sin(t));
-	glTranslated(xTranslate,yTranslate,zTranslate);
-	GLint position[] = {xTranslate+0.0f,yTranslate+1.0f,zTranslate+1.0f,1.0f};//1?
-	glLightiv(GL_LIGHT0, GL_POSITION, position);
-
-	[self drawSkybox];
-	[self drawPolygons];
+		double t = (3.14159265*dRotated)/180;
+		double s = (3.14159265*xRotated)/180;
+		if(movingLeft == true){
+			zTranslate += DMOVE*-cos(t+3.14159265/2);
+			xTranslate += DMOVE*sin(t+3.14159265/2);
+		}if(movingRight == true){
+			zTranslate += DMOVE*-cos(t-3.14159265/2);
+			xTranslate += DMOVE*sin(t-3.14159265/2);
+		}if(movingUp == true){
+			zTranslate += DMOVE*cos(t)*cos(s);
+			xTranslate += DMOVE*-sin(t)*cos(s);
+			yTranslate += DMOVE*sin(s);
+		}if(movingDown == true){
+			zTranslate += DMOVE*-cos(t)*cos(s);
+			xTranslate += DMOVE*sin(t)*cos(s);
+			yTranslate += DMOVE*-sin(s);
+		}if (rotating) {
+			dRotated += 0.5*rotateDirection;
+		}
+				
+		time = fmod(time+.01, 24.);		
+		
+		glRotated(dRotated, 0.0, 1.0, 0.0);
+		glRotated(xRotated,  cos(t), 0.0, sin(t));
+		glTranslated(xTranslate,yTranslate,zTranslate);		
+		
+		
+		if ( time > 6 && time < 18){
+			double p = PI*(time-6)/12;
+			// Create light components
+			GLfloat ambientLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+			GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0, 1.0f };
+			GLfloat specularLight[] = { 0.7f, 0.7f, 0.7f, 1.0f };
+			GLfloat position[] = { 0.0f, 1000.0*sin(p), 1000.0*cos(p),1.0f };
+			
+			// Assign created components to GL_LIGHT0
+			glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+			glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+			glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+			glLightfv(GL_LIGHT0, GL_POSITION, position);
+						
+			
+		}else{
+			
+			// Create light components
+			GLfloat ambientLight[] = { 0.2f, 0.2f, 0.4f, 1.0f };
+			GLfloat diffuseLight[] = { 0.8f, 0.8f, 1.0, 1.0f };
+			GLfloat specularLight[] = { 0.5f, 0.5f, 0.8f, 1.0f };
+			GLfloat position[] = { -1.5f, 1.0f, -4.0f, 1.0f };
+			
+			// Assign created components to GL_LIGHT0
+			glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+			glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+			glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+			glLightfv(GL_LIGHT0, GL_POSITION, position);
+			
+		}
+		
+		[self drawSkybox];
+		[self drawPolygons];
 	}else if (loadState == 0){
 		loadState = 1;
 		numberOfLoadMessages = 0;
@@ -284,8 +321,10 @@
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading1.bmp" ] intoIndex:6 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading4.bmp" ] intoIndex:9 ]
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading4.bmp" ] intoIndex:9 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Sun.bmp" ] intoIndex:10 ]
 
+	   
 	   )
 	{
 		status = TRUE;
@@ -364,7 +403,7 @@
 	glPushMatrix();
 	
 	double t = (3.14159265*dRotated)/180;
-
+	
     // Reset and transform the matrix.
     glLoadIdentity();
 	glRotated(dRotated, 0.0, 1.0, 0.0);
@@ -478,11 +517,22 @@
 	
 	glTexCoord2f( 1.0f, 1.0f );
 	glVertex3f(  1.0f, -1.0f,  1.0f );
-
+	
 	glTexCoord2f( 0.0f, 1.0f );
 	glVertex3f(  -1.0f, -1.0f, 1.0f );
     
 	glEnd();
+
+	// Draw the Sun
+	if(time > 6 && time < 18){
+		double p = PI*((time-6)/12);
+		
+		glBindTexture( GL_TEXTURE_2D, texture[ 10 ] );
+		glTranslatef(0.0f, 10.0*sin(p), 10.0*cos(p));
+		drawsphere(1, 1.0f);
+		glTranslatef(0.0f, -10.0*sin(p), -10.0*cos(p));
+	}
+	
 	
     // Restore enable bits and matrix
     glPopAttrib();

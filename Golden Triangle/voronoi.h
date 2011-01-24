@@ -304,18 +304,13 @@ struct Voronoi{
 					}
 				}
 				
-				/*
-				for(list<Segment>::iterator sit = bounds.begin(); sit != bounds.end(); ++sit){
-					poly.push_front(sit->p);
-					if (!isConvex(poly)){
-						poly.pop_front();
-						poly.push_back(sit->p);
-						if(!isConvex(poly)){
-							poly.pop_back();
-						}
-					}
-				}*/
 			}
+			
+			list<JPoint>::iterator it1 = poly.begin(), it2 = ++poly.begin(), it3 = ++(++(poly.begin()));
+			if(Segment(*it1, *it2).isLeft(*it3)){
+				poly.reverse();
+			}
+			
 			list<JPoint> shrunk = Shrink(poly,shrink);
 			if (shrunk.size() > 2) polys.push_back(shrunk);
 		}
@@ -388,5 +383,3 @@ struct Voronoi{
 Voronoi GenerateRoads(list<JPoint> points);
 
 pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > GenerateVoronoi(int seed, int numControl, double minx, double maxx, double miny, double maxy);
-
-void testdraw();

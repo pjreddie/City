@@ -12,14 +12,14 @@
 @implementation CityGen
 
 //TODO change to instance of CityGLView
-+ (pair<vector<CityPolyObject>, CityPregen>) masterGenerate:(NSView *)glView {
++ (void) masterGenerate:(NSView *)glView polyObjs:(vector<CityPolyObject> *)polygons3D pregenObjs:(CityPregen *)pregenList{
 
 	//NSMutableArray * polygons3D = [[NSMutableArray alloc] initWithObjects:nil];
-	vector<CityPolyObject> polygons3D = vector<CityPolyObject>();
-	CityPregen pregenList = CityPregen();
+	//vector<CityPolyObject> polygons3D = vector<CityPolyObject>(500);
+	//CityPregen pregenList = CityPregen();
 	[glView addLoadingMessage:@"building city..."];
 	[glView addLoadingMessage:@"generating voronoi diagrams..."];
-	[CityGen addPlane:&polygons3D];
+	[CityGen addPlane:polygons3D];
 	pair<list<list<JPoint> >, pair<list<Segment>,list<Segment> > > city = GenerateVoronoi(RANDSEED, NUMCONTROL, MINX, MAXX, MINZ, MAXZ);
 	[glView addLoadingMessage:@"constructing buildings..."];
 	double cx = MINX + (MAXX-MINX)/2;
@@ -27,7 +27,7 @@
 	
 	double maxDist = MAXX-cx + MAXZ - cz;
 	
-	[CityGen addCityBuildings:&polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
+	[CityGen addCityBuildings:polygons3D diagram:city.first centerX:cx z:cz maxDist:maxDist];
 	[glView addLoadingMessage:@"paving roads..."];
 
 	//list<pair<JPoint, double> > stoplightPos;
@@ -35,18 +35,17 @@
 		RoadObject * tmp = [[RoadObject alloc] initWithEndPoints:6.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y];
 		vector<CityCoordinate> tmpV = [tmp intersections];
 
-		pregenList.coordinates[STOPLIGHT_INDEX].insert(pregenList.coordinates[STOPLIGHT_INDEX].end(), tmpV.begin(), tmpV.end());
+		(*pregenList).coordinates[STOPLIGHT_INDEX].insert((*pregenList).coordinates[STOPLIGHT_INDEX].end(), tmpV.begin(), tmpV.end());
 		
 
-		polygons3D.push_back([tmp roadPoly]);
+		(*polygons3D).push_back([tmp roadPoly]);
 	}
 	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
 		RoadObject * tmp =[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y];
 		vector<CityCoordinate> tmpV = [tmp intersections];
-		pregenList.coordinates[STOPSIGN_INDEX].insert(pregenList.coordinates[STOPSIGN_INDEX].end(), tmpV.begin(), tmpV.end());
-		polygons3D.push_back([tmp roadPoly]);
+		(*pregenList).coordinates[STOPSIGN_INDEX].insert((*pregenList).coordinates[STOPSIGN_INDEX].end(), tmpV.begin(), tmpV.end());
+		(*polygons3D).push_back([tmp roadPoly]);
 	}
-	return make_pair(polygons3D, pregenList);
 }
 
 + (void) addPlane:(vector<CityPolyObject> *)polygons3D {

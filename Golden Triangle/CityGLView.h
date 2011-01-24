@@ -12,6 +12,7 @@
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
+#import "Sphere.h"
 
 #define MAX_DISPLAY_LISTS 128
 #define DMOVE 0.40
@@ -24,7 +25,7 @@
 #define PREGEN_MAX 1
 
 //Texture Constants
-#define TEXTURE_END 9
+#define TEXTURE_END 10
 #define TEXTURE_SKYBOX_START 0
 #define TEXTURE_SKYBOX_END 5
 #define TEXTURE_LOADING_START 6
@@ -57,6 +58,7 @@
 	int rotateDirection;
 	// Fullscreen
 	bool fullscreen;
+	double time;
 }
 
 - (void) moveLeft:(bool)move;
