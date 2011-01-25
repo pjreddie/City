@@ -6,32 +6,70 @@
 
 @implementation BuildingObject
 
--(BuildingObject *) initWithBounds:(vector<CityVertex>)v avgHeight:(float)height{
-	[super initWithPolygons:[[NSArray alloc] init]];
++ (void) initWithBounds:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces avgHeight:(float)height{
+	//[super initWithPolygons:[[NSArray alloc] init]];
 	//wallPolygons = [[NSMutableArray alloc] init];
 	//basePolygon = bounds;
+	//vector<CityVertex> vertices = *v;
+	//vector<CityPolygon> faces = *f;
 	
-	vertices = vector<CityVertex>(v);
-	faces = vector<CityPolygon>();
-	
-	
-	
-	numberOfTiers = [CityMath poisson:0.5]+1;
+	int numberOfTiers = [CityMath poisson:0.5]+1;
 
-	buildingHeight = std::max([CityMath gausian:height deviation:3], (float)MINHEIGHT);
-	windowSizeX = [CityMath gausian:0.2 deviation:0.05];
-	windowSizeY = [CityMath gausian:0.2 deviation:0.05];
-	windowSeperationX = [CityMath gausian:0.1 deviation:0.05];
-	windowSeperationY = [CityMath gausian:0.1 deviation:0.1];
+	double buildingHeight = std::max([CityMath gausian:height deviation:3], (float)MINHEIGHT);
+	double windowSizeX = [CityMath gausian:0.2 deviation:0.05];
+	double windowSizeY = [CityMath gausian:0.2 deviation:0.05];
+	double windowSeperationX = [CityMath gausian:0.1 deviation:0.05];
+	double windowSeperationY = [CityMath gausian:0.1 deviation:0.1];
 	
-	if(true){
+	/*if(true){
 		[self buildRectangularBuilding];
 	}else {
 		[self buildCircularBuilding];
 	}
-	return self;
-}
+	return self;*/
+	
+	// Colors
+	GLfloat dl[4] = {0.5,0.5,0.5,1.0};
+	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el[4] = {0.0,0.0,0.0,1.0};	
+	// Add roof vertices
+	int ovn = vertices.size();
+	for (int v=0; v<ovn; v++) {
+		vertices.push_back(CityVertex(vertices[v].x, vertices[v].y+buildingHeight, vertices[v].z));
+	}
 
+	// Define faces, every original vertex is the starting point for a face
+	int nextIndex=0;
+	for (int v=0; v<ovn; v++) {
+		nextIndex++;
+		if (v==(ovn-1)) {
+			nextIndex = 0;
+		}
+		int fv[4] = {v,nextIndex,nextIndex+ovn,v+ovn};
+		vector<int> vv = vector<int>(fv, fv + sizeof(fv)/sizeof(fv[0]));
+		faces.push_back(CityPolygon(vv,dl,sl,el,vertices));
+	}
+	//Add Top
+	vector<int> tv = vector<int>();
+	for (int v=ovn; v<vertices.size(); v++) {
+		tv.push_back(v);
+	}
+	faces.push_back(CityPolygon(tv,dl,sl,el));
+	// defining the building also generates the normals
+	//building = CityPolyObject(vertices, faces);
+	
+	// Add Windows to all building faces except top
+	
+	//use pointeres!!!!
+	ovn = faces.size();
+	for (int i=0; i<1; i++) {
+		[self addWindowsToFace:i v:vertices f:faces];
+	}
+	//building = CityPolyObject(vertices, faces);	
+
+
+}
+/*
 - (void) buildRectangularBuilding {
 	// Colors
 	GLfloat dl[4] = {0.5,0.5,0.5,1.0};
@@ -53,6 +91,7 @@
 		int fv[4] = {v,nextIndex,nextIndex+ovn,v+ovn};
 		vector<int> vv = vector<int>(fv, fv + sizeof(fv)/sizeof(fv[0]));
 		faces.push_back(CityPolygon(vv,dl,sl,el));
+		faces.back().calculateNormal(vertices);
 	}
 	//Add Top
 	vector<int> tv = vector<int>();
@@ -61,11 +100,10 @@
 	}
 	faces.push_back(CityPolygon(tv,dl,sl,el));
 	// defining the building also generates the normals
-	building = CityPolyObject(vertices, faces);
+	//building = CityPolyObject(vertices, faces);
 	
 	// Add Windows to all building faces except top
-	/*
-	ovn = faces.size();
+	/*ovn = faces.size();
 	for (int i=0; i<ovn-1; i++) {
 		CityPolyObject tmp = [self addWindowsToFace:faces[i]];
 		//change indices
@@ -78,23 +116,31 @@
 		}
 		vertices.insert(vertices.end(), tmp.vertices.begin(), tmp.vertices.end());
 		faces.insert(faces.end(), tmp.polygons.begin(), tmp.polygons.end());
-	}*/
-	//building = CityPolyObject(vertices, faces);
+	}
+	//building = CityPolyObject(vertices, faces);	
 }
 
 - (CityPolyObject) cityPoly{
 	return building;
-}
+}*/
 
 // Populate Windows
-- (CityPolyObject) addWindowsToFace:(CityPolygon)face{
-	// First two points are the base of the face
-	CityVertex pointa = vertices[face.vertexList[0]];
-	CityVertex pointb = vertices[face.vertexList[1]];
-	double faceHeight = vertices[face.vertexList[2]].y - pointa.y;
++ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces{
+	//TEMPPPP!!!
+	double windowSizeX = 0.2;
+	double windowSizeY = 0.2;
+	double windowSeperationX = 0.1;
+	double windowSeperationY = 0.1;
 	
-	vector<CityVertex> wVertices = vector<CityVertex>();
-	vector<CityPolygon> wPolygons = vector<CityPolygon>();
+	// First two points are the base of the face
+	CityVertex pointa = vertices[faces[faceIndex].vertexList[0]];
+	CityVertex pointb = vertices[faces[faceIndex].vertexList[1]];
+	double faceHeight = vertices[faces[faceIndex].vertexList[2]].y - pointa.y;
+	
+	int initVertexEnd = vertices.size();
+	
+	//vector<CityVertex> wVertices = vector<CityVertex>(10000);
+	//vector<CityPolygon> wPolygons = vector<CityPolygon>(1000);
 	
 	float deltaX,deltaZ,xAccum,zAccum,yAccum,zInit,xInit;
 	float directionAdjustX = 1.0;
@@ -132,23 +178,17 @@
 	float adjustedWindowSpacerZ = deltaZ*(windowSeperationX/buildingFaceWidth);
 	
 	yAccum = topWindowBufferY;
-	int vertexIndex =0;
+	int vertexIndex = initVertexEnd;
 	// Loop through the plane and make windows
 	for(int i=0; i<numOfWindowsY; i++) {
 		xAccum = xInit+directionAdjustX*(deltaX*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerX);
 		zAccum = zInit+(deltaZ*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerZ);
 		for(int j=0; j<numOfWindowsX; j++){
 			//CounterClockwise?
-			wVertices.push_back(CityVertex(xAccum, deltaY-yAccum, zAccum));
-			wVertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum, zAccum+adjustedWindowZ));
-			wVertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum-windowSizeY, zAccum+adjustedWindowZ));
-			wVertices.push_back(CityVertex(xAccum, deltaY-yAccum-windowSizeY, zAccum));
-/*
-			[wallPolygons addObject:[[BoundingPolygon alloc] initWithCoord:[[NSArray alloc] initWithObjects:[[CityPoint alloc] initWithX:xAccum y:deltaY-yAccum	z:zAccum],
-																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum z:zAccum+adjustedWindowZ],
-																		[[CityPoint alloc] initWithX:xAccum+directionAdjustX*adjustedWindowX y:deltaY-yAccum-windowSizeY z:zAccum+adjustedWindowZ],
-																		[[CityPoint alloc] initWithX:xAccum y:deltaY-yAccum-windowSizeY z:zAccum],
-																		nil] andColorRed:1.0 green:1.0 blue:.328 border:true]];*/
+			vertices.push_back(CityVertex(xAccum, deltaY-yAccum, zAccum));
+			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum, zAccum+adjustedWindowZ));
+			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum-windowSizeY, zAccum+adjustedWindowZ));
+			vertices.push_back(CityVertex(xAccum, deltaY-yAccum-windowSizeY, zAccum));
 			xAccum = xAccum+directionAdjustX*(adjustedWindowX+2*adjustedWindowSpacerX);
 			zAccum = zAccum+(adjustedWindowZ+2*adjustedWindowSpacerZ);
 			
@@ -159,13 +199,15 @@
 			int wv[4] = {vertexIndex, vertexIndex+1, vertexIndex+2, vertexIndex+3};
 			vector<int> vwv = vector<int>(wv, wv + sizeof(wv)/sizeof(wv[0]));
 			vertexIndex += 4;
-			wPolygons.push_back(CityPolygon(vwv, dl,sl,el));
+			faces.push_back(CityPolygon(vwv, dl,sl,el,faces[faceIndex].faceNormal));
+			//wPolygons.back().faceNormal = face.faceNormal;
 		}
 		yAccum += windowSizeY+2*windowSeperationY;
 	}
-	return CityPolyObject(wVertices, wPolygons);
+	//return CityPolyObject(wVertices, wPolygons);
 }
 
+/*
 - (void) buildCircularBuilding {
 	// NEED A CENTER POINT AND A RADIUS - obtain from passed in polygon
 	float x=3.0, y=-0.9, z=-2.0, r = 3.0;
@@ -194,6 +236,6 @@
 	[super dealloc];
 	[self release];
 }
-
+*/
 
 @end

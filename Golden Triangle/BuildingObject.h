@@ -16,24 +16,25 @@
 
 @interface BuildingObject : CityObject {
 	// Building Vars
-	int numberOfTiers;
+	//int numberOfTiers;
 	//float * tierHeights;
-	float buildingHeight;
+	/*float buildingHeight;
 	float windowSizeX;
 	float windowSizeY;
 	float windowSeperationX; 
-	float windowSeperationY;
-	BoundingPolygon * basePolygon;
-	vector<CityVertex> vertices;
-	vector<CityPolygon> faces;
-	CityPolyObject building;
+	float windowSeperationY;*/
+	//BoundingPolygon * basePolygon;
+	//vector<CityVertex> vertices;
+	//vector<CityPolygon> faces;
+	//CityPolyObject building;
 }
 
--(BuildingObject *) initWithBounds:(vector<CityVertex>)v avgHeight:(float)height;
-- (void) buildRectangularBuilding;
-- (void) buildCircularBuilding;
-- (CityPolyObject) cityPoly;
-- (CityPolyObject) addWindowsToFace:(CityPolygon)face;
-- (NSArray *) polygons;
++ (void) initWithBounds:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces avgHeight:(float)height;
++ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces;
+//- (void) buildRectangularBuilding;
+//- (void) buildCircularBuilding;
+//- (CityPolyObject) cityPoly;
+//- (CityPolyObject) addWindowsToFace:(CityPolygon)face;
+//- (NSArray *) polygons;
 
 @end

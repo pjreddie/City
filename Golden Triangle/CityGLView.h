@@ -18,8 +18,11 @@
 #define DMOVE 0.40
 
 // Blender Objects
+#define STOPSIGN_INDEX 0
 #define STOPSIGN_SCALER 0.05
+#define STOPLIGHT_INDEX 1
 #define STOPLIGHT_SCALER 0.1
+#define PREGEN_MAX 1
 
 //Texture Constants
 #define TEXTURE_END 10

@@ -74,7 +74,7 @@
 	road = CityPolyObject(cv,vp);;
 }
 
-- (pair<pair<JPoint, double>, pair<JPoint, double> >) intersections{
+- (vector<CityCoordinate>) intersections{
 	float deltaX = x2-x1;
 	float deltaZ = z2-z1;
 	double mag = sqrt((deltaX*deltaX) + (deltaZ)*(deltaZ));
@@ -86,10 +86,29 @@
 	double adjustX = (totalRoadWidth/2)*cos(angle+PI/2);
 	double adjustZ = (totalRoadWidth/2)*sin(angle+PI/2);
 	
-	//adjustX = 0;
-	//adjustZ = 0;
+	//return make_pair(make_pair(JPoint(intersectionx1-adjustX, intersectionz1-adjustZ), -angle+PI/2),make_pair(JPoint(intersectionx2+adjustX, intersectionz2+adjustZ), -angle-PI/2));
+	CityCoordinate a,b;
+	vector<CityCoordinate> coords = vector<CityCoordinate>();
+	double nx, nz, nr,tx,tz;
+	for (int j=0; j<2; j++) {
+		tx = 0.0; tz = 0.0;
+		if (j==0) {
+			nx = intersectionx1-adjustX;
+			nz = intersectionz1-adjustZ;
+			nr = -angle+PI/2;
+		}else {
+			nx = intersectionx2+adjustX;
+			nz = intersectionz2+adjustZ;
+			nr = -angle-PI/2;
+		}
+		tx = nx*cos(nr)-nz*sin(nr);
+		tz = nx*sin(nr)+nz*cos(nr);
+		
+		nr = (nr/3.14159265)*180;
+		coords.push_back(CityCoordinate(tx,y1,tz,nr));
+	}		
 	
-	return make_pair(make_pair(JPoint(intersectionx1-adjustX, intersectionz1-adjustZ), -angle+PI/2),make_pair(JPoint(intersectionx2+adjustX, intersectionz2+adjustZ), -angle-PI/2));
+	return coords;
 }
 
 - (NSArray *) polygons {

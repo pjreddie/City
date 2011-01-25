@@ -33,6 +33,15 @@ struct CityVertex{
 	CityVertex(){}
 };
 
+// Stores a location and a rotation
+struct CityCoordinate {
+	float x,y,z,r;
+	CityCoordinate(double _x, double _y, double _z, double _r){
+		x = _x; y =_y; z = _z; r=_r;
+	}
+	CityCoordinate(){}	
+};
+
 struct CityPolygon {
 	vector<int> vertexList;
 	CityNormal faceNormal;
@@ -50,7 +59,40 @@ struct CityPolygon {
 			specularLight[i] = sl[i];
 			emissiveLight[i] = el[i];
 		}
-	}	
+	}
+	/* create and calulate normal */
+	CityPolygon(vector <int> &vl, GLfloat dl[], GLfloat sl[], GLfloat el[], vector<CityVertex> &vertices) {
+		vertexList = vector<int>(vl);
+		for(int i=0; i<4; i++){
+			diffuseLight[i] = dl[i];
+			specularLight[i] = sl[i];
+			emissiveLight[i] = el[i];
+		}
+		calculateNormal(vertices);
+	}
+	
+	/* create and calulate normal */
+	CityPolygon(vector <int> &vl, GLfloat dl[], GLfloat sl[], GLfloat el[], CityNormal &fnormal) {
+		vertexList = vector<int>(vl);
+		for(int i=0; i<4; i++){
+			diffuseLight[i] = dl[i];
+			specularLight[i] = sl[i];
+			emissiveLight[i] = el[i];
+		}
+		faceNormal = fnormal;
+	}
+	
+	
+	void calculateNormal(vector<CityVertex> &vertices){
+		CityVertex a = vertices[vertexList[0]]; 
+		CityVertex b = vertices[vertexList[1]]; 
+		CityVertex c = vertices[vertexList[2]];
+		double normx = (a.z-b.z)*(c.y-b.y)-(a.y-b.y)*(c.z-b.z);
+		double normy = (a.x-b.x)*(c.z-b.z)-(a.z-b.z)*(c.x-b.x);
+		double normz = (a.y-b.y)*(c.x-b.x)-(a.x-b.x)*(c.y-b.y);
+		double normlength = sqrt(normx*normx+normy*normy+normz*normz);
+		faceNormal = CityNormal(normx /= normlength,normy /= normlength,normz /= normlength);
+	}
 };
 
 struct CityPolyObject {
@@ -66,28 +108,18 @@ struct CityPolyObject {
 		polygons = *pp;
 //		vertices = vector<CityVertex>(cv);
 //		polygons = vector<CityPolygon>(cp);
-		generateNormals();
+	//	generateNormals();
 	}
 	CityPolyObject(){
 		
 	}
 	void generateNormals () {
-		// Generate face normals
-		for (int i=0; i<polygons.size(); i++) {
-			CityVertex a = vertices[polygons[i].vertexList[0]]; 
-			CityVertex b = vertices[polygons[i].vertexList[1]]; 
-			CityVertex c = vertices[polygons[i].vertexList[2]];
-			double normx = (a.z-b.z)*(c.y-b.y)-(a.y-b.y)*(c.z-b.z);
-			double normy = (a.x-b.x)*(c.z-b.z)-(a.z-b.z)*(c.x-b.x);
-			double normz = (a.y-b.y)*(c.x-b.x)-(a.x-b.x)*(c.y-b.y);
-			double normlength = sqrt(normx*normx+normy*normy+normz*normz);
-			polygons[i].faceNormal = CityNormal(normx /= normlength,normy /= normlength,normz /= normlength);
-		
-			// Add faces to vertex definitions
+		// Add faces to vertex definitions
+		for (int i=0; i<polygons.size(); i++) {		
 			for (int j=0; j<polygons[i].vertexList.size(); j++) {
 				vertices[polygons[i].vertexList[j]].faces.push_back(i);
 			}
-		}
+		}/*
 		// Generate vertex normals NOT NORMALIZED!
 		for (int i=0; i<vertices.size(); i++){
 			double tx=0.0, ty=0.0,tz=0.0;
@@ -97,7 +129,15 @@ struct CityPolyObject {
 				tz += polygons[vertices[i].faces[j]].faceNormal.z;
 			}
 			vertices[i].vertexNormal = CityNormal(tx/vertices[i].faces.size(),ty/vertices[i].faces.size(),tz/vertices[i].faces.size());
-		}
+		}*/
+	}
+};
+
+struct CityPregen {
+	vector< vector<CityCoordinate> > coordinates;
+	
+	CityPregen(){
+		coordinates = vector< vector<CityCoordinate> >(2); //YOU SHOULD BE A CONSTANT
 	}
 };
 
