@@ -66,6 +66,7 @@
 	for(std::list<std::list<JPoint> >::iterator p = polys.begin(); p != polys.end(); ++p){
 		// allocate space for vertices building height
 		vector<CityVertex> vertices = vector<CityVertex>();
+		vector<CityPolygon> faces = vector<CityPolygon>();
 		for(std::list<JPoint>::iterator pit = (*p).begin(); pit != (*p).end(); ++pit){
 			vertices.push_back(CityVertex((*pit).x,-0.9,(*pit).y));
 		}
@@ -74,8 +75,8 @@
 
 		double dist = abs(cz-z) + abs(cx-x);
 		double avgH = 2+30*[CityMath bell:dist/40 sigma:.7 mu:0];
-		BuildingObject * temp = [[BuildingObject alloc] initWithBounds:vertices avgHeight:avgH];
-		CityPolyObject t = [temp cityPoly];
+		[BuildingObject initWithBounds:vertices faces:faces avgHeight:avgH];
+		CityPolyObject t = CityPolyObject(vertices, faces);
 		(*polygons3D).push_back(t);
 	}
 }

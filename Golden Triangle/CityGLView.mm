@@ -85,7 +85,7 @@
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER] index:1];
 	
 	// Populates polygonsToDraw with all generated polygons
-	vector<CityPolyObject> polygonObjToDraw = vector<CityPolyObject>(500);
+	vector<CityPolyObject> polygonObjToDraw = vector<CityPolyObject>();
 	CityPregen pregenCoords = CityPregen();
 	[CityGen masterGenerate:self polyObjs:&polygonObjToDraw pregenObjs:&pregenCoords];
 	NSLog(@"creating display lists...");
