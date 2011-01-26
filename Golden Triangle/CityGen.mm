@@ -50,9 +50,9 @@
 
 + (void) addPlane:(vector<CityPolyObject> *)polygons3D {
 	CityVertex vertices[4] = {CityVertex(MINX, -1.0, MINZ), CityVertex(MINX, -1.0, MAXZ), CityVertex(MAXX, -1.0, MAXZ), CityVertex(MAXX, -1.0, MINZ)}; 
-	GLfloat dl[4] = {.1289,.4,.125,1.0};
+	GLfloat dl[4] = {0.0,0.0,0.0,1.0};
 	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
-	GLfloat el[4] = {0.0,0.0,0.0,1.0};
+	GLfloat el[4] = {.1289,.4,.125,1.0};
 	int planeVerts[4] = {0,1,2,3};
 	vector<int> vpv = vector<int>(planeVerts, planeVerts+sizeof(planeVerts)/sizeof(planeVerts[0]));
 	CityPolygon polygons[1] = {CityPolygon(vpv,dl,sl,el)};

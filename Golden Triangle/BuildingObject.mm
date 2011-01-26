@@ -70,7 +70,7 @@
 		else tv.push_back(ovn);
 		tv.push_back(vertices.size()-1);
 		
-		faces.push_back(CityPolygon(tv, dl, sl,el));
+		faces.push_back(CityPolygon(tv, dl, sl,el, vertices));
 	}
 	
 	

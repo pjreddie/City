@@ -25,7 +25,7 @@
 #define PREGEN_MAX 1
 
 //Texture Constants
-#define TEXTURE_END 10
+#define TEXTURE_END 11
 #define TEXTURE_SKYBOX_START 0
 #define TEXTURE_SKYBOX_END 5
 #define TEXTURE_LOADING_START 6
@@ -59,6 +59,7 @@
 	// Fullscreen
 	bool fullscreen;
 	double time;
+	double moon;
 }
 
 - (void) moveLeft:(bool)move;
