@@ -48,7 +48,7 @@
 
 	//glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-	//glEnable(GL_NORMALIZE);
+	glEnable(GL_NORMALIZE);
 	
 	glColor3f(1.0, 0.0, 0.0);
 	
@@ -164,7 +164,7 @@
 			}
 		}
 	
-/*
+
 	//glNewList(displayLists[2], GL_COMPILE);
 
 	// Draw pregenerated objects
@@ -178,7 +178,7 @@
 			glTranslated(-tcc.x,0.0,-tcc.z);
 			glRotated(-tcc.r, 0.0, 1.0, 0.0);
 		}
-	}*/
+	}
 	glEndList();
 }
 
