@@ -402,11 +402,13 @@
 		glLightfv(GL_LIGHT0, GL_POSITION, position);
 		
 		// Create light components
+		GLfloat ambientLightM[]  = { .2*mr, .2*mg, .2*mb, 1.0f }; 
 		GLfloat diffuseLightM[] = { .4*mr, .4*mg, .4*mb, 1.0f };
 		GLfloat specularLightM[] = { 0.3*mr, 0.3*mg, 0.3*mb, 1.0f };
 		GLfloat positionM[] = { 0.0f, 1000.0*sin(mp), 1000.0*cos(mp),1.0f };
 		
 		// Assign created components to GL_LIGHT0
+		glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLightM);
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLightM);
 		glLightfv(GL_LIGHT1, GL_SPECULAR, specularLightM);
 		glLightfv(GL_LIGHT1, GL_POSITION, positionM);
