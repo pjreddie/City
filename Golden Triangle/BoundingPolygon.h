@@ -115,7 +115,7 @@ struct CityPolyObject {
 	}
 	void generateNormals () {
 		// Add faces to vertex definitions
-		for (int i=0; i<polygons.size(); i++) {		
+		for (int i=0; i<polygons.size(); i++) {
 			for (int j=0; j<polygons[i].vertexList.size(); j++) {
 				vertices[polygons[i].vertexList[j]].faces.push_back(i);
 			}

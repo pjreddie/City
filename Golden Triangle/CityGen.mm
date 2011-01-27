@@ -35,6 +35,7 @@
 		vector<CityCoordinate> tmpV = [tmp intersections];
 		pregenList.coordinates[STOPLIGHT_INDEX].insert(pregenList.coordinates[STOPLIGHT_INDEX].end(), tmpV.begin(), tmpV.end());
 		[tmp roadPoly:vertices f:faces];
+
 	}
 	for(list<Segment>::iterator sit = city.second.second.begin(); sit != city.second.second.end(); ++sit){
 		RoadObject * tmp =[[RoadObject alloc] initWithEndPoints:3.0 x1:(*sit).p.x y1:-.9 z1:(*sit).p.y x2:(*sit).q.x y2:-0.9 z2:(*sit).q.y];
@@ -61,9 +62,6 @@
 + (void) addCityBuildings:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD{
 	
 	for(std::list<std::list<JPoint> >::iterator p = polys.begin(); p != polys.end(); ++p){
-		// allocate space for vertices building height
-		//vector<CityVertex> vertices = vector<CityVertex>();
-		//vector<CityPolygon> faces = vector<CityPolygon>();
 		int startIndex = vertices.size();
 		for(std::list<JPoint>::iterator pit = (*p).begin(); pit != (*p).end(); ++pit){
 			vertices.push_back(CityVertex((*pit).x,-0.9,(*pit).y));
@@ -74,8 +72,6 @@
 		double dist = abs(cz-z) + abs(cx-x);
 		double avgH = 2+30*[CityMath bell:dist/40 sigma:.7 mu:0];
 		[BuildingObject initWithBounds:vertices faces:faces startIndex:startIndex avgHeight:avgH];
-		//CityPolyObject t = CityPolyObject(vertices, faces);
-		//polygons3D.push_back(t);
 	}
 }
 

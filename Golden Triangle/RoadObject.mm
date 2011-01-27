@@ -36,42 +36,44 @@
 	vector<CityPolygon> vp = vector<CityPolygon>();
 	vector<CityVertex> cv = vector<CityVertex>();
 	// Street
+	vector<CityVertex> tmp = [self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
 	GLfloat dl[4] = {0.0,0.0,0.0,1.0};
 	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
 	GLfloat el[4] = {0.0,0.0,0.0,1.0};
 	int vn[4] = {0,1,2,3};
 	vector<int> vvn = vector<int>(vn, vn + sizeof(vn)/sizeof(vn[0]));
-	vp.push_back(CityPolygon(vvn,dl,sl,el));
-	vector<CityVertex> tmp = [self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2];
-	cv.insert(cv.end(), tmp.begin(), tmp.end());
+	vp.push_back(CityPolygon(vvn,dl,sl,el,cv));
+	
 	//CityPolyObject r1 = CityPolyObject([self generateRectangleFromLine:totalRoadWidth-2*CONST_SIDEWALK_SIZE x1:x1 y1:y1 z1:z1 x2:x2 y2:y2 z2:z2],
 	//								   vp);
 	
 	// Lane Seperator
-	GLfloat dl2[4] = {1.0,1.0,0.0,1.0};
+	tmp = [self generateRectangleFromLine:CONST_LANE_SEPERATOR_SIZE x1:intersectionx1 y1:y1+.03 z1:intersectionz1 x2:intersectionx2 y2:y2+.03 z2:intersectionz2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
+	GLfloat dl2[4] = {0.9,0.9,0.0,1.0};
 	GLfloat sl2[4] = {0.0,0.0,0.0,1.0};
 	GLfloat el2[4] = {0.0,0.0,0.0,1.0};
 	int vn2[4] = {4,5,6,7};
 	vvn = vector<int>(vn2, vn2 + sizeof(vn2)/sizeof(vn2[0]));
-	vp.push_back(CityPolygon(vvn,dl2,sl2,el2));
-	tmp = [self generateRectangleFromLine:CONST_LANE_SEPERATOR_SIZE x1:intersectionx1 y1:y1+.03 z1:intersectionz1 x2:intersectionx2 y2:y2+.03 z2:intersectionz2];
-	cv.insert(cv.end(), tmp.begin(), tmp.end());
-
+	vp.push_back(CityPolygon(vvn,dl2,sl2,el2,cv));
+	
 	//CityPolyObject r2 = CityPolyObject(,
 	//								   vp);
 
 	// sidewalk
+	tmp = [self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2];
+	cv.insert(cv.end(), tmp.begin(), tmp.end());
 	GLfloat dl3[4] = {1.0,1.0,1.0,1.0};
 	GLfloat sl3[4] = {0.0,0.0,0.0,1.0};
 	GLfloat el3[4] = {0.0,0.0,0.0,1.0};
 	int vn3[4] = {8,9,10,11};
 	vvn = vector<int>(vn3, vn3 + sizeof(vn3)/sizeof(vn3[0]));
-	vp.push_back(CityPolygon(vvn,dl3,sl3,el3));
-	tmp = [self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2];
-	cv.insert(cv.end(), tmp.begin(), tmp.end());
+	vp.push_back(CityPolygon(vvn,dl3,sl3,el3,cv));	
 	//vector<CityVertex> vcv = [self generateRectangleFromLine:totalRoadWidth x1:intersectionx1 y1:y1-.03 z1:intersectionz1 x2:intersectionx2 y2:y2-.03 z2:intersectionz2];
-	
-	road = CityPolyObject(cv,vp);;
+	vertices = cv;
+	faces = vp;
+	//road = CityPolyObject(cv,vp);;
 }
 
 - (vector<CityCoordinate>) intersections{
@@ -116,13 +118,14 @@
 }
 //Make me better!
 - (void) roadPoly:(vector<CityVertex> &)v f:(vector<CityPolygon> &)f {
-	for(int i=0; i<road.polygons.size(); i++){
-		road.polygons[i].calculateNormal(road.vertices);
+	int initsize = v.size();
+	for (int i=0; i<faces.size(); i++) {
+		for (int j=0; j<faces[i].vertexList.size(); j++) {
+			faces[i].vertexList[j] += initsize;
+		}
 	}
-	v.insert(v.end(), road.vertices.begin(), road.vertices.end());
-	f.insert(f.end(), road.polygons.begin(), road.polygons.end());
-
-	//return road;
+	v.insert(v.end(), vertices.begin(), vertices.end());
+	f.insert(f.end(), faces.begin(), faces.end());
 }
 
 - (double) roadWidth{

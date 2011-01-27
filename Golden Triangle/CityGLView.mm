@@ -91,7 +91,7 @@
 	vector<CityPolygon> faces = vector<CityPolygon>();
 	CityPregen pregenCoords = CityPregen();
 	[CityGen masterGenerate:self vertices:vertices faces:faces pregenObjs:pregenCoords];
-	
+	NSLog(@"f4 %i", faces.size());
 	vector< vector<CityPolygon> > sortedFaces = vector< vector<CityPolygon> >();
 	vector<double> index = vector<double>();
 	for (int i=0; i<faces.size(); i++) {
@@ -114,6 +114,11 @@
 			sortedFaces.back().push_back(faces[i]);
 		}
 	}
+	int total = 0;
+	for (int i=0; i<sortedFaces.size(); i++) {
+		total += sortedFaces[i].size();
+	}
+	NSLog(@"f5 %i %i", total,sortedFaces.size() );
 	
 
 	NSLog(@"creating display lists...");
@@ -121,7 +126,6 @@
 	// Draw generated ojbects
 	glNewList(displayLists[2], GL_COMPILE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		
 	for(int cl=0; cl<sortedFaces.size(); cl++){
 		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, sortedFaces[cl][0].diffuseLight);
 		glMaterialfv(GL_FRONT, GL_SPECULAR, sortedFaces[cl][0].specularLight);
@@ -155,7 +159,10 @@
 						if (vn==5){
 							glEnd();
 						}
+					}else if (sortedFaces[cl][face].vertexList.size() < 3){
+						NSLog(@"ohno!");
 					}
+
 				}
 			if (vn<5) {
 				glEnd();
