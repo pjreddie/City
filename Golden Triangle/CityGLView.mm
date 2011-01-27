@@ -84,15 +84,76 @@
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER] index:0];
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER] index:1];
 	
-	// Populates polygonsToDraw with all generated polygons
-	vector<CityPolyObject> polygonObjToDraw = vector<CityPolyObject>();
+	vector<CityVertex> vertices = vector<CityVertex>();
+	vector<CityPolygon> faces = vector<CityPolygon>();
 	CityPregen pregenCoords = CityPregen();
-	[CityGen masterGenerate:self polyObjs:&polygonObjToDraw pregenObjs:&pregenCoords];
+	[CityGen masterGenerate:self vertices:vertices faces:faces pregenObjs:pregenCoords];
+	/*
+	vector<CityPolygon> sortedFaces = vector<CityPolygon>();
+	vector<double> index = vector<double>();
+	for (int i=0; i<faces.size(); i++) {
+		bool found = false;
+		for (int j=0; j<index.size(); j++) {
+			if (){
+				found = true;
+				break;
+			}
+		}
+	}
+	
+	/*
+	// Add all faces to vertices
+	for (int i=0; i<faces.size(); i++) {
+		for (int j=0; j<faces[i].vertexList.size(); j++) {
+			vertices[faces[i].vertexList[j]].faces.push_back(i);
+		}
+	}
+	NSLog(@"%i %i", vertices.size(), faces.size());
+	int vsize = vertices.size();
+	// Create array of aligned vertices and calculate normals
+	//allignedVertex pvertices[vertices.size()];
+	allignedVertex * pvertices;
+	//words* array = (words*)malloc(sizeof(words));
+	
+	pvertices = (allignedVertex *)malloc(sizeof(*pvertices)*vsize);
+	//allignedVertex pvertices[vertices.size()] = *ppvertices;
+	for (int i=0; i<vsize; i++) {
+		double tx = 0, ty = 0, tz = 0;
+		for (int j=0; j<vertices[i].faces.size(); j++) {
+			tx += faces[vertices[i].faces[j]].faceNormal.x;
+			ty += faces[vertices[i].faces[j]].faceNormal.y;
+			tz += faces[vertices[i].faces[j]].faceNormal.z;			
+		}
+		if(faces.size() == 0){
+			NSLog(@"This vertex has zero faces: %i", i);
+			tx = 0.0; ty = 1.0; tz =0.0;
+		}else{
+			tx = tx / vertices[i].faces.size();
+			ty = ty / vertices[i].faces.size();
+			tz = tz / vertices[i].faces.size();
+		}
+		pvertices[i].x = vertices[i].x;
+		pvertices[i].y = vertices[i].y;
+		pvertices[i].z = vertices[i].z;
+		pvertices[i].nx = tx;
+		pvertices[i].ny= ty;
+		pvertices[i].nz = tz;
+	}
+	
+	glGenBuffers(1, &vboID);
+	glBindBuffer(GL_ARRAY_BUFFER, vboID);
+	glBufferData(GL_ARRAY_BUFFER, 16000000, pvertices, GL_STATIC_DRAW);
+	glGenBuffers(1, &ivboID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ivboID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 16000000, NULL, GL_STATIC_DRAW);
+
+	delete [] pvertices;*/
+
 	NSLog(@"creating display lists...");
 
 	// Draw generated ojbects
 	glNewList(displayLists[2], GL_COMPILE);
-	for(int l=0; l<2; l++){
+	for(int l=0; l<1; l++){
 		if (l==0) {
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		}else {
@@ -106,45 +167,47 @@
 				case 4: glBegin(GL_QUADS); break;
 				default: break;			
 			}
-			for(int obj=0; obj<polygonObjToDraw.size(); obj++){
-				for (int face=0; face<polygonObjToDraw[obj].polygons.size(); face++) {
+			//for(int obj=0; obj<polygonObjToDraw.size(); obj++){
+				for (int face=0; face<faces.size(); face++) {
 					if(l==0){
-						glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, polygonObjToDraw[obj].polygons[face].diffuseLight);
-						glMaterialfv(GL_FRONT, GL_SPECULAR, polygonObjToDraw[obj].polygons[face].specularLight);
-						glMaterialfv(GL_FRONT, GL_EMISSION, polygonObjToDraw[obj].polygons[face].emissiveLight);
-						glNormal3f(polygonObjToDraw[obj].polygons[face].faceNormal.x,
-								   polygonObjToDraw[obj].polygons[face].faceNormal.y,
-								   polygonObjToDraw[obj].polygons[face].faceNormal.z );
+						//glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, faces[face].diffuseLight);
+						//glMaterialfv(GL_FRONT, GL_SPECULAR, faces[face].specularLight);
+						//glMaterialfv(GL_FRONT, GL_EMISSION, faces[face].emissiveLight);
+						glNormal3f(faces[face].faceNormal.x,
+								   faces[face].faceNormal.y,
+								   faces[face].faceNormal.z );
 						
 					}else{
 						GLfloat t[4] ={1.0,1.0,1.0,1.0};
 						glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, t);
 					}
-					if(polygonObjToDraw[obj].polygons[face].vertexList.size() == vn || (vn==5 && polygonObjToDraw[obj].polygons[face].vertexList.size() > 4)){
+					if(faces[face].vertexList.size() == vn || (vn==5 && faces[face].vertexList.size() > 4)){
 						if (vn==5) {
 							glBegin(GL_POLYGON);
 						}
-						for (int vertex=0; vertex<polygonObjToDraw[obj].polygons[face].vertexList.size(); vertex++) {
+						for (int vertex=0; vertex<faces[face].vertexList.size(); vertex++) {
 							//glNormal3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.x,
 							//		   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.y, 
 							//		   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].vertexNormal.z);
-							glVertex3f(polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].x,
-									   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].y, 
-									   polygonObjToDraw[obj].vertices[polygonObjToDraw[obj].polygons[face].vertexList[vertex]].z);
+							glVertex3f(vertices[faces[face].vertexList[vertex]].x,
+									   vertices[faces[face].vertexList[vertex]].y, 
+									   vertices[faces[face].vertexList[vertex]].z);
 							
 						}
 						if (vn==5){
 							glEnd();
 						}
 					}
-				}
+				//}
 			}
 			if (vn<5) {
 				glEnd();
 			}
 		}
 	}
-	
+
+	//glNewList(displayLists[2], GL_COMPILE);
+
 	// Draw pregenerated objects
 	glTranslated(0.0, -0.9, 0.0);
 	for (int i=0; i<=PREGEN_MAX; i++) {

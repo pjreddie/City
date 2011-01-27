@@ -13,6 +13,7 @@
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
 #import "Sphere.h"
+#include <stdlib.h>
 
 #define MAX_DISPLAY_LISTS 128
 #define DMOVE 0.40
@@ -32,8 +33,17 @@
 #define TEXTURE_LOADING_END 9
 
 
+struct allignedVertex{
+	float x,y,z;
+	float nx, ny, nz;
+	float padding[2];
+};
+
 @interface CityGLView : NSOpenGLView {
 	// Polygon data
+	GLuint vboID;
+	GLuint ivboID;
+	
 	int polygonsToDrawCount;
 	GLuint displayLists[MAX_DISPLAY_LISTS];
 	// Texture Data

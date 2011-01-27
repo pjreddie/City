@@ -27,7 +27,7 @@ using namespace std;
 
 }
 
-+ (void) masterGenerate:(NSView *)glView polyObjs:(vector<CityPolyObject> *)polygons3D pregenObjs:(CityPregen *)pregenList;
-+ (void) addPlane:(vector<CityPolyObject> *)polygons3D;
-+ (void) addCityBuildings:(vector<CityPolyObject> *)polygons3D diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD;
++ (void) masterGenerate:(NSView *)glView vertices:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces pregenObjs:(CityPregen &)pregenList;
++ (void) addPlane:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces;
++ (void) addCityBuildings:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces diagram:(std::list<std::list<JPoint> >)polys centerX:(double)cx z:(double)cz maxDist:(double)mD;
 @end
