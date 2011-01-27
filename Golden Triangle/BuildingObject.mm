@@ -231,7 +231,7 @@
 				//wPolygons.back().faceNormal = face.faceNormal;
 				
 			}else{
-				GLfloat dl[4] = {0.7,0.7,0.7,1.0};
+				GLfloat dl[4] = {0.69,0.7,0.7,1.0};
 				GLfloat sl[4] = {1.0,1.0,1.0,1.0};
 				GLfloat el[4] = {1.0,1.0,0.3,1.0};	
 				
