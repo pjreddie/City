@@ -6,7 +6,7 @@
 
 @implementation BuildingObject
 
-+ (void) initWithBounds:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces avgHeight:(float)height{
++ (void) initWithBounds:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces startIndex:(int)si avgHeight:(float)height{
 	//[super initWithPolygons:[[NSArray alloc] init]];
 	//wallPolygons = [[NSMutableArray alloc] init];
 	//basePolygon = bounds;
@@ -32,22 +32,25 @@
 	GLfloat dl[4] = {0.5,0.5,0.5,1.0};
 	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
 	GLfloat el[4] = {0.0,0.0,0.0,1.0};	
+
 	// Add roof vertices
 	int ovn = vertices.size();
-	for (int v=0; v<ovn; v++) {
+	int baseSize = ovn - si;
+	int startIndexFace = faces.size();
+	for (int v=si; v<ovn; v++) {
 		vertices.push_back(CityVertex(vertices[v].x, vertices[v].y+buildingHeight, vertices[v].z));
 	}
-
 	// Define faces, every original vertex is the starting point for a face
-	int nextIndex=0;
-	for (int v=0; v<ovn; v++) {
+
+	int nextIndex=si;
+	for (int v=si; v<ovn; v++) {
 		nextIndex++;
 		if (v==(ovn-1)) {
-			nextIndex = 0;
+			nextIndex = si;
 		}
-		int fv[4] = {v,nextIndex,nextIndex+ovn,v+ovn};
-		vector<int> vv(fv, fv + sizeof(fv)/sizeof(fv[0]));
-		faces.push_back(CityPolygon(vv,dl,sl,el,vertices));
+		int fv[4] = {v,nextIndex,nextIndex+baseSize,v+baseSize};
+		vector<int> vv = vector<int>(fv, fv + sizeof(fv)/sizeof(fv[0]));
+		faces.push_back(CityPolygon(vv,dl,sl,el, vertices));
 	}
 	//Add Top
 	double cx = 0.0, cy = 0.0, cz = 0.0;
@@ -82,7 +85,8 @@
 	
 	//use pointeres!!!!
 	ovn = faces.size();
-	for (int i=0; i<1; i++) {
+	
+	for (int i=startIndexFace; i<ovn; i++) {
 		[self addWindowsToFace:i v:vertices f:faces];
 	}
 	//building = CityPolyObject(vertices, faces);	

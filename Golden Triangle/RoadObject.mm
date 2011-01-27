@@ -114,9 +114,15 @@
 - (NSArray *) polygons {
 	return wallPolygons;
 }
+//Make me better!
+- (void) roadPoly:(vector<CityVertex> &)v f:(vector<CityPolygon> &)f {
+	for(int i=0; i<road.polygons.size(); i++){
+		road.polygons[i].calculateNormal(road.vertices);
+	}
+	v.insert(v.end(), road.vertices.begin(), road.vertices.end());
+	f.insert(f.end(), road.polygons.begin(), road.polygons.end());
 
-- (CityPolyObject) roadPoly{
-	return road;
+	//return road;
 }
 
 - (double) roadWidth{
