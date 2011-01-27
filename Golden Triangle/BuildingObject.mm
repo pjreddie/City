@@ -21,6 +21,12 @@
 	double windowSeparationX = [CityMath gausian:0.1 deviation:0.05];
 	double windowSeparationY = [CityMath gausian:0.1 deviation:0.1];
 	
+	if(windowSeparationX < 0){
+		windowSeparationX = 0.1;
+	}if(windowSeparationY <0){
+		windowSeparationY = 0.1;
+	}
+	
 	/*if(true){
 		[self buildRectangularBuilding];
 	}else {
