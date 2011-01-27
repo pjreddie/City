@@ -18,8 +18,8 @@
 	double buildingHeight = std::max([CityMath gausian:height deviation:3], (float)MINHEIGHT);
 	double windowSizeX = [CityMath gausian:0.2 deviation:0.05];
 	double windowSizeY = [CityMath gausian:0.2 deviation:0.05];
-	double windowSeperationX = [CityMath gausian:0.1 deviation:0.05];
-	double windowSeperationY = [CityMath gausian:0.1 deviation:0.1];
+	double windowSeparationX = [CityMath gausian:0.1 deviation:0.05];
+	double windowSeparationY = [CityMath gausian:0.1 deviation:0.1];
 	
 	/*if(true){
 		[self buildRectangularBuilding];
@@ -88,7 +88,7 @@
 	//ovn = faces.size();
 	
 	for (int i=startIndexFace; i<povn; i++) {
-		[self addWindowsToFace:i v:vertices f:faces];
+		[self addWindowsToFace:i v:vertices f:faces wx:windowSizeX wy:windowSizeY sx:windowSeparationX sy:windowSeparationY];
 	}
 	//building = CityPolyObject(vertices, faces);	
 
@@ -150,12 +150,7 @@
 }*/
 
 // Populate Windows
-+ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces{
-	//TEMPPPP!!!
-	double windowSizeX = 0.2;
-	double windowSizeY = 0.2;
-	double windowSeperationX = 0.1;
-	double windowSeperationY = 0.1;
++ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces wx:(double)windowSizeX wy:(double) windowSizeY sx:(double)windowSeparationX sy:(double)windowSeparationY{
 	
 	// First two points are the base of the face
 	CityVertex pointa = vertices[faces[faceIndex].vertexList[0]];
@@ -192,15 +187,15 @@
 	}
 	float buildingFaceWidth = sqrt(pow(deltaX, 2)+pow(deltaZ, 2));
 	
-	int numOfWindowsX = buildingFaceWidth/(windowSizeX+windowSeperationX*2);
-	float cornerWindowBufferX = (buildingFaceWidth-(numOfWindowsX*(windowSizeX+windowSeperationX*2)))/2;
-	int numOfWindowsY = (deltaY/(windowSizeY+windowSeperationY*2)); 
-	float topWindowBufferY = (deltaY-(numOfWindowsY*(windowSizeY+windowSeperationY*2)))/2;
+	int numOfWindowsX = buildingFaceWidth/(windowSizeX+windowSeparationX*2);
+	float cornerWindowBufferX = (buildingFaceWidth-(numOfWindowsX*(windowSizeX+windowSeparationX*2)))/2;
+	int numOfWindowsY = (deltaY/(windowSizeY+windowSeparationY*2)); 
+	float topWindowBufferY = (deltaY-(numOfWindowsY*(windowSizeY+windowSeparationY*2)))/2;
 
 	float adjustedWindowX = deltaX*(windowSizeX/buildingFaceWidth);
 	float adjustedWindowZ = deltaZ*(windowSizeX/buildingFaceWidth);
-	float adjustedWindowSpacerX = deltaX*(windowSeperationX/buildingFaceWidth);
-	float adjustedWindowSpacerZ = deltaZ*(windowSeperationX/buildingFaceWidth);
+	float adjustedWindowSpacerX = deltaX*(windowSeparationX/buildingFaceWidth);
+	float adjustedWindowSpacerZ = deltaZ*(windowSeparationX/buildingFaceWidth);
 	
 	yAccum = topWindowBufferY;
 	int vertexIndex = initVertexEnd;
@@ -243,7 +238,7 @@
 				
 			}
 		}
-		yAccum += windowSizeY+2*windowSeperationY;
+		yAccum += windowSizeY+2*windowSeparationY;
 	}
 	//return CityPolyObject(wVertices, wPolygons);
 }

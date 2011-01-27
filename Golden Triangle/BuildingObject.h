@@ -30,7 +30,7 @@
 }
 
 + (void) initWithBounds:(vector<CityVertex> &)vertices faces:(vector<CityPolygon> &)faces startIndex:(int)si avgHeight:(float)height;
-+ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces;
++ (void) addWindowsToFace:(int)faceIndex v:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces wx:(double)windowSizeX wy:(double) windowSizeY sx:(double)windowSeparationX sy:(double)windowSeparationY;
 //- (void) buildRectangularBuilding;
 //- (void) buildCircularBuilding;
 //- (CityPolyObject) cityPoly;
