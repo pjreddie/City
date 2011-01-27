@@ -53,11 +53,31 @@
 		faces.push_back(CityPolygon(vv,dl,sl,el, vertices));
 	}
 	//Add Top
-	vector<int> tv = vector<int>();
+	double cx = 0.0, cy = 0.0, cz = 0.0;
+
 	for (int v=ovn; v<vertices.size(); v++) {
-		tv.push_back(v);
+		cx += vertices[v].x;
+		cy += vertices[v].y;
+		cz += vertices[v].z;
 	}
-	faces.push_back(CityPolygon(tv,dl,sl,el));
+	cx /= vertices.size()-ovn;
+	cy /= vertices.size()-ovn;
+	cz /= vertices.size()-ovn;
+	cy += max([CityMath gausian:1.0 deviation:.5],0.0f);
+	CityVertex center(cx, cy, cz);
+	vertices.push_back(center);
+	for (int v=ovn; v<vertices.size()-1; v++) {
+		vector<int> tv;
+		tv.push_back(v);
+		if(v+2 != vertices.size()) tv.push_back(v+1);
+		else tv.push_back(ovn);
+		tv.push_back(vertices.size()-1);
+		
+		faces.push_back(CityPolygon(tv, dl, sl,el, vertices));
+	}
+	
+	
+	//faces.push_back(CityPolygon(tv,dl,sl,el));
 	// defining the building also generates the normals
 	//building = CityPolyObject(vertices, faces);
 	
@@ -189,22 +209,38 @@
 		zAccum = zInit+(deltaZ*(cornerWindowBufferX/buildingFaceWidth)+adjustedWindowSpacerZ);
 		for(int j=0; j<numOfWindowsX; j++){
 			//CounterClockwise?
-			vertices.push_back(CityVertex(xAccum, deltaY-yAccum, zAccum));
-			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum, zAccum+adjustedWindowZ));
-			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX, deltaY-yAccum-windowSizeY, zAccum+adjustedWindowZ));
-			vertices.push_back(CityVertex(xAccum, deltaY-yAccum-windowSizeY, zAccum));
+			CityNormal norm = faces[faceIndex].faceNormal;
+			vertices.push_back(CityVertex(xAccum + norm.x*.01, deltaY-yAccum + norm.y*.01, zAccum + norm.z*.01));
+			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX+ norm.x*.01, deltaY-yAccum+ norm.y*.01, zAccum+adjustedWindowZ+ norm.z*.01));
+			vertices.push_back(CityVertex(xAccum+directionAdjustX*adjustedWindowX+ norm.x*.01, deltaY-yAccum-windowSizeY+ norm.y*.01, zAccum+adjustedWindowZ+ norm.z*.01));
+			vertices.push_back(CityVertex(xAccum+ norm.x*.01, deltaY-yAccum-windowSizeY+ norm.y*.01, zAccum+ norm.z*.01));
 			xAccum = xAccum+directionAdjustX*(adjustedWindowX+2*adjustedWindowSpacerX);
 			zAccum = zAccum+(adjustedWindowZ+2*adjustedWindowSpacerZ);
 			
 			// Add the window!
-			GLfloat dl[4] = {0.5,0.5,0.0,1.0};
-			GLfloat sl[4] = {0.0,0.0,0.0,1.0};
-			GLfloat el[4] = {0.0,0.0,0.0,1.0};				
-			int wv[4] = {vertexIndex, vertexIndex+1, vertexIndex+2, vertexIndex+3};
-			vector<int> vwv = vector<int>(wv, wv + sizeof(wv)/sizeof(wv[0]));
-			vertexIndex += 4;
-			faces.push_back(CityPolygon(vwv, dl,sl,el,faces[faceIndex].faceNormal));
-			//wPolygons.back().faceNormal = face.faceNormal;
+			if(rand()%2 == 1){
+				GLfloat dl[4] = {0.7,0.7,0.7,1.0};
+				GLfloat sl[4] = {1.0,1.0,1.0,1.0};
+				GLfloat el[4] = {0.0,0.0,0.0,1.0};
+				
+				int wv[4] = {vertexIndex, vertexIndex+1, vertexIndex+2, vertexIndex+3};
+				vector<int> vwv = vector<int>(wv, wv + sizeof(wv)/sizeof(wv[0]));
+				vertexIndex += 4;
+				faces.push_back(CityPolygon(vwv, dl,sl,el,faces[faceIndex].faceNormal));
+				//wPolygons.back().faceNormal = face.faceNormal;
+				
+			}else{
+				GLfloat dl[4] = {0.7,0.7,0.7,1.0};
+				GLfloat sl[4] = {1.0,1.0,1.0,1.0};
+				GLfloat el[4] = {1.0,1.0,0.3,1.0};	
+				
+				int wv[4] = {vertexIndex, vertexIndex+1, vertexIndex+2, vertexIndex+3};
+				vector<int> vwv = vector<int>(wv, wv + sizeof(wv)/sizeof(wv[0]));
+				vertexIndex += 4;
+				faces.push_back(CityPolygon(vwv, dl,sl,el,faces[faceIndex].faceNormal));
+				//wPolygons.back().faceNormal = face.faceNormal;
+				
+			}
 		}
 		yAccum += windowSizeY+2*windowSeperationY;
 	}

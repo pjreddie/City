@@ -40,9 +40,12 @@
 	 glFogf(GL_FOG_START, 20.0f);
 	 glFogf(GL_FOG_END, 100.0f);
 	 */
-	time = 6.0;
+	time = 0.0;
+	moon = 50.0;
 	glEnable ( GL_LIGHTING ) ;
 	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+
 	//glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	//glEnable(GL_NORMALIZE);
@@ -322,44 +325,138 @@
 			dRotated += 0.5*rotateDirection;
 		}
 				
-		time = fmod(time+.01, 24.);		
+		time = fmod(time+.1, 100.);		
+		moon = fmod(moon+.104, 100.);		
 		
 		glRotated(dRotated, 0.0, 1.0, 0.0);
 		glRotated(xRotated,  cos(t), 0.0, sin(t));
 		glTranslated(xTranslate,yTranslate,zTranslate);		
 		
-		
-		if ( time > 6 && time < 18){
-			double p = 1.5*PI*(time-6)/12;
-			// Create light components
-			GLfloat ambientLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-			GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0, 1.0f };
-			GLfloat specularLight[] = { 0.7f, 0.7f, 0.7f, 1.0f };
-			GLfloat position[] = { 0.0f, 1000.0*sin(p), 1000.0*cos(p),1.0f };
+
+		double p = 2*PI*(time)/100;
+		double mp = 2*PI*(moon)/100;
 			
-			// Assign created components to GL_LIGHT0
-			glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
-			glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
-			glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-			glLightfv(GL_LIGHT0, GL_POSITION, position);
-						
+		double r, g, b;
+		
+		GLfloat ambientLight[] = {0.3,0.3,0.3,1.};
+		
+		if(time >= 0 && time < 2){
+			double t = (time)/2;
+			r = t;
+			g = 0.0;
+			b = t;
+			ambientLight[0] = 0.15*t;
+			ambientLight[1] = .15*t;
+			ambientLight[2] = .15*t;
+			
+		}else if(time >= 2 && time < 4){
+			double t = (time-2)/2;
+			r = 1.0;
+			g = 0.0;
+			b = 1.0-t;			
+			ambientLight[0] = .15+0.15*t;
+			ambientLight[1] = .15+0.15*t;
+			ambientLight[2] = .15+0.15*t;
+			
+		}else if(time >= 4 && time < 6){
+			double t = (time-4)/2;
+			r = 1.0;
+			g = t;
+			b = 0;			
+		}else if(time >= 6 && time < 8){
+			double t = (time-6)/2;
+			r = 1.0;
+			g = 1.0;
+			b = t;			
+		}else if(time >= 8 && time < 42){
+			r = 1.0;
+			g = 1.0;
+			b = 1.0;			
+		}else if(time >= 42 && time < 44){
+			double t = (time-42)/2;
+			r = 1.0;
+			g = 1.0;
+			b = 1.0-t;
+		}else if(time >= 44 && time < 46){
+			double t = (time-44)/2;
+			r = 1.0;
+			g = 1.0-t;
+			b = 0;
+		}else if(time >= 46 && time < 48){
+			double t = (time-46)/2;
+			r = 1.0;
+			g = 0.0;
+			b = t;
+			ambientLight[0] = .3-0.15*t;
+			ambientLight[1] = .3-0.15*t;
+			ambientLight[2] = .3-0.15*t;
+
+		}else if(time > 48 && time < 50){
+			double t = (time-48)/2;
+			r = 1.0-t;
+			g = 0.0;
+			b = 1.0-t;
+			ambientLight[0] = .15-0.15*t;
+			ambientLight[1] = .15-0.15*t;
+			ambientLight[2] = .15-0.15*t;
 			
 		}else{
-			
-			// Create light components
-			GLfloat ambientLight[] = { 0.2f, 0.2f, 0.4f, 1.0f };
-			GLfloat diffuseLight[] = { 0.8f, 0.8f, 1.0, 1.0f };
-			GLfloat specularLight[] = { 0.5f, 0.5f, 0.8f, 1.0f };
-			GLfloat position[] = { -1.5f, 1.0f, -4.0f, 1.0f };
-			
-			// Assign created components to GL_LIGHT0
-			glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
-			glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
-			glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-			glLightfv(GL_LIGHT0, GL_POSITION, position);
+			r = 0.0;
+			g = 0.0;
+			b = 0.0;
+			ambientLight[0] = 0.0;
+			ambientLight[1] = 0.0;
+			ambientLight[2] = 0.0;
 			
 		}
 		
+		double mr, mg, mb;
+		
+		if(moon >= 0 && moon < 2){
+			double t = (moon)/2;
+			mr = .62*t;
+			mg = .62*t;
+			mb = 1.0*t;
+		}else if(moon >= 2 && moon < 48){
+			mr = .62;
+			mg = .62;
+			mb = 1.0;			
+		}else if(moon > 48 && moon < 50){
+			double t = (moon-48)/2;
+			mr = .62*(1.0-t);
+			mg = .62*(1.0-t);
+			mb = (1.0-t);
+		}else{
+			mr = 0.0;
+			mg = 0.0;
+			mb = 0.0;
+		}
+		
+		
+		
+		// Create light components
+		GLfloat diffuseLight[] = { 1.0*r, 1.0*g, 1.0*b, 1.0f };
+		GLfloat specularLight[] = { 0.7*r, 0.7*g, 0.7*b, 1.0f };
+		GLfloat position[] = { 0.0f, 1000.0*sin(p), 1000.0*cos(p),1.0f };
+		
+		// Assign created components to GL_LIGHT0
+		glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+		glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+		glLightfv(GL_LIGHT0, GL_POSITION, position);
+		
+		// Create light components
+		GLfloat diffuseLightM[] = { .4*mr, .4*mg, .4*mb, 1.0f };
+		GLfloat specularLightM[] = { 0.3*mr, 0.3*mg, 0.3*mb, 1.0f };
+		GLfloat positionM[] = { 0.0f, 1000.0*sin(mp), 1000.0*cos(mp),1.0f };
+		
+		// Assign created components to GL_LIGHT0
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLightM);
+		glLightfv(GL_LIGHT1, GL_SPECULAR, specularLightM);
+		glLightfv(GL_LIGHT1, GL_POSITION, positionM);
+		
+		
+								
 		[self drawSkybox];
 		[self drawPolygons];
 	}else if (loadState == 0){
@@ -385,7 +482,8 @@
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading4.bmp" ] intoIndex:9 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Sun.bmp" ] intoIndex:10 ]
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Sun.bmp" ] intoIndex:10 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Moon.bmp" ] intoIndex:11 ] 
 
 	   
 	   )
@@ -587,14 +685,20 @@
 	glEnd();
 
 	// Draw the Sun
-	if(time > 6 && time < 18){
-		double p = PI*((time-6)/12);
-		
-		glBindTexture( GL_TEXTURE_2D, texture[ 10 ] );
-		glTranslatef(0.0f, 10.0*sin(p), 10.0*cos(p));
-		drawsphere(1, 1.0f);
-		glTranslatef(0.0f, -10.0*sin(p), -10.0*cos(p));
-	}
+	double p = 2*PI*time/100;
+	
+	glBindTexture( GL_TEXTURE_2D, texture[ 10 ] );
+	glTranslatef(0.0f, 10.0*sin(p), 10.0*cos(p));
+	drawsphere(1, 1.0f);
+	glTranslatef(0.0f, -10.0*sin(p), -10.0*cos(p));
+
+	// Draw The Moon
+	double mp = 2*PI*moon/100;
+	
+	glBindTexture( GL_TEXTURE_2D, texture[ 11 ] );
+	glTranslatef(0.0f, 10.0*sin(mp), 10.0*cos(mp));
+	drawsphere(1, .8f);
+	glTranslatef(0.0f, -10.0*sin(mp), -10.0*cos(mp));
 	
 	
     // Restore enable bits and matrix
