@@ -219,7 +219,7 @@
 			zAccum = zAccum+(adjustedWindowZ+2*adjustedWindowSpacerZ);
 			
 			// Add the window!
-			if(rand()%2 == 1){
+			if(rand()%4 != 1){
 				GLfloat dl[4] = {0.7,0.7,0.7,1.0};
 				GLfloat sl[4] = {1.0,1.0,1.0,1.0};
 				GLfloat el[4] = {0.0,0.0,0.0,1.0};

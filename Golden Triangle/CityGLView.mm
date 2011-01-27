@@ -352,9 +352,9 @@
 			r = 1.0-t;
 			g = 0.0;
 			b = 1.0-t;
-			ambientLight[0] = .6-0.3*t;
-			ambientLight[1] = .6-0.3*t;
-			ambientLight[2] = .6-0.3*t;
+			ambientLight[0] = .3-0.3*t;
+			ambientLight[1] = .3-0.3*t;
+			ambientLight[2] = .3-0.3*t;
 			
 		}else{
 			r = 0.0;
