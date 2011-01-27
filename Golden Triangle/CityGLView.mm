@@ -294,25 +294,25 @@
 			
 		double r, g, b;
 		
-		GLfloat ambientLight[] = {0.3,0.3,0.3,1.};
+		GLfloat ambientLight[] = {0.6,0.6,0.6,1.};
 		
 		if(time >= 0 && time < 2){
 			double t = (time)/2;
 			r = t;
 			g = 0.0;
 			b = t;
-			ambientLight[0] = 0.15*t;
-			ambientLight[1] = .15*t;
-			ambientLight[2] = .15*t;
+			ambientLight[0] = .3*t;
+			ambientLight[1] = .3*t;
+			ambientLight[2] = .3*t;
 			
 		}else if(time >= 2 && time < 4){
 			double t = (time-2)/2;
 			r = 1.0;
 			g = 0.0;
 			b = 1.0-t;			
-			ambientLight[0] = .15+0.15*t;
-			ambientLight[1] = .15+0.15*t;
-			ambientLight[2] = .15+0.15*t;
+			ambientLight[0] = .3+0.3*t;
+			ambientLight[1] = .3+0.3*t;
+			ambientLight[2] = .3+0.3*t;
 			
 		}else if(time >= 4 && time < 6){
 			double t = (time-4)/2;
@@ -343,18 +343,18 @@
 			r = 1.0;
 			g = 0.0;
 			b = t;
-			ambientLight[0] = .3-0.15*t;
-			ambientLight[1] = .3-0.15*t;
-			ambientLight[2] = .3-0.15*t;
+			ambientLight[0] = .6-0.3*t;
+			ambientLight[1] = .6-0.3*t;
+			ambientLight[2] = .6-0.3*t;
 
 		}else if(time > 48 && time < 50){
 			double t = (time-48)/2;
 			r = 1.0-t;
 			g = 0.0;
 			b = 1.0-t;
-			ambientLight[0] = .15-0.15*t;
-			ambientLight[1] = .15-0.15*t;
-			ambientLight[2] = .15-0.15*t;
+			ambientLight[0] = .6-0.3*t;
+			ambientLight[1] = .6-0.3*t;
+			ambientLight[2] = .6-0.3*t;
 			
 		}else{
 			r = 0.0;
@@ -402,7 +402,7 @@
 		glLightfv(GL_LIGHT0, GL_POSITION, position);
 		
 		// Create light components
-		GLfloat ambientLightM[]  = { .2*mr, .2*mg, .2*mb, 1.0f }; 
+		GLfloat ambientLightM[]  = { .1*mr, .1*mg, .1*mb, 1.0f }; 
 		GLfloat diffuseLightM[] = { .4*mr, .4*mg, .4*mb, 1.0f };
 		GLfloat specularLightM[] = { 0.3*mr, 0.3*mg, 0.3*mb, 1.0f };
 		GLfloat positionM[] = { 0.0f, 1000.0*sin(mp), 1000.0*cos(mp),1.0f };
