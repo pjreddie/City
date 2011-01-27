@@ -26,11 +26,11 @@
 #define PREGEN_MAX 1
 
 //Texture Constants
-#define TEXTURE_END 11
+#define TEXTURE_END 12
 #define TEXTURE_SKYBOX_START 0
 #define TEXTURE_SKYBOX_END 5
 #define TEXTURE_LOADING_START 6
-#define TEXTURE_LOADING_END 9
+#define TEXTURE_LOADING_END 10
 
 
 struct allignedVertex{
@@ -47,10 +47,10 @@ struct allignedVertex{
 	int polygonsToDrawCount;
 	GLuint displayLists[MAX_DISPLAY_LISTS];
 	// Texture Data
-	GLenum texFormat[ 12 ];   // Format of texture (GL_RGB, GL_RGBA)
-	NSSize texSize[ 12 ];     // Width and height
-	char *texBytes[ 12 ];     // Texture data
-	GLuint texture[ 12 ];     // Storage for one texture
+	GLenum texFormat[ 15 ];   // Format of texture (GL_RGB, GL_RGBA)
+	NSSize texSize[ 15 ];     // Width and height
+	char *texBytes[ 15 ];     // Texture data
+	GLuint texture[ 15 ];     // Storage for one texture
 	// Loading Screen Data
 	int numberOfLoadMessages;
 	int loadState; // 0 - init 1 - loading in Progress 2 - loaded

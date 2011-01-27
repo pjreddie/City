@@ -11,6 +11,8 @@
 
 @interface Golden_TriangleAppDelegate : NSResponder {
     NSWindow *window;
+	NSWindow *fullScreenWindow;
+
 	NSTimer *renderTimer;
 	CityGLView *glView;
 	NSRect mainDisplayRect;

@@ -46,14 +46,14 @@
 }
 
 + (void) addPlane:(vector<CityVertex> &)vertices f:(vector<CityPolygon> &)faces {
-	vertices.push_back(CityVertex(MINX, -1.0, MINZ));
-	vertices.push_back(CityVertex(MINX, -1.0, MAXZ));
-	vertices.push_back(CityVertex(MAXX, -1.0, MAXZ));
-	vertices.push_back(CityVertex(MAXX, -1.0, MINZ));
+	int startIndex = vertices.size();
+	vertices.push_back(CityVertex(-1000.0, -1.0, -1000.0));
+	vertices.push_back(CityVertex(-1000.0, -1.0, 1000.0));
+	vertices.push_back(CityVertex(1000.0, -1.0, 1000.0));
+	vertices.push_back(CityVertex(1000.0, -1.0, -1000.0));
 	GLfloat dl[4] = {.1289,.4,.125,1.0};
 	GLfloat sl[4] = {0.0,0.0,0.0,1.0};
 	GLfloat el[4] = {0.0,0.0,0.0,1.0};
-	int startIndex = vertices.size();
 	int planeVerts[4] = {startIndex,startIndex+1,startIndex+2,startIndex+3};
 	vector<int> vpv = vector<int>(planeVerts, planeVerts+sizeof(planeVerts)/sizeof(planeVerts[0]));
 	faces.push_back(CityPolygon(vpv,dl,sl,el));

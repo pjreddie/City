@@ -14,7 +14,7 @@
 // Draw from polygonList
 - (void) drawPolygons 
 {
-	glCallList(displayLists[2]);
+	glCallList(displayLists[3]);
 }
 
 /*
@@ -86,12 +86,13 @@
 	displayLists[0] = glGenLists(MAX_DISPLAY_LISTS);
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stopsign" scaler:STOPSIGN_SCALER] index:0];
 	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"stoplight" scaler:STOPLIGHT_SCALER] index:1];
+	[self createPolygonObject:[FileIO getPolygonObjectFromFile:@"owl" scaler:0.4] index:2];
 	
 	vector<CityVertex> vertices = vector<CityVertex>();
 	vector<CityPolygon> faces = vector<CityPolygon>();
 	CityPregen pregenCoords = CityPregen();
 	[CityGen masterGenerate:self vertices:vertices faces:faces pregenObjs:pregenCoords];
-	NSLog(@"f4 %i", faces.size());
+	[self addLoadingMessage:@"creating display lists..."];
 	vector< vector<CityPolygon> > sortedFaces = vector< vector<CityPolygon> >();
 	vector<double> index = vector<double>();
 	for (int i=0; i<faces.size(); i++) {
@@ -117,14 +118,10 @@
 	int total = 0;
 	for (int i=0; i<sortedFaces.size(); i++) {
 		total += sortedFaces[i].size();
-	}
-	NSLog(@"f5 %i %i", total,sortedFaces.size() );
-	
-
-	NSLog(@"creating display lists...");
+	}	
 
 	// Draw generated ojbects
-	glNewList(displayLists[2], GL_COMPILE);
+	glNewList(displayLists[3], GL_COMPILE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	for(int cl=0; cl<sortedFaces.size(); cl++){
 		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, sortedFaces[cl][0].diffuseLight);
@@ -159,11 +156,7 @@
 						if (vn==5){
 							glEnd();
 						}
-					}else if (sortedFaces[cl][face].vertexList.size() < 3){
-						NSLog(@"ohno!");
-					}
-
-				}
+					}				}
 			if (vn<5) {
 				glEnd();
 			}
@@ -173,6 +166,7 @@
 	
 
 	//glNewList(displayLists[2], GL_COMPILE);
+	glCallList(displayLists[2]);
 
 	// Draw pregenerated objects
 	glTranslated(0.0, -0.9, 0.0);
@@ -182,6 +176,12 @@
 			glRotated(tcc.r, 0.0, 1.0, 0.0);
 			glTranslated(tcc.x,0.0,tcc.z);
 			glCallList(displayLists[i]);
+			// draw owl sometimes
+			if(i==1 && j%5==0){
+				glTranslated(0.0, 1.8, 0.0);
+				glCallList(displayLists[2]);
+				glTranslated(0.0, -1.8, 0.0);
+			}			
 			glTranslated(-tcc.x,0.0,-tcc.z);
 			glRotated(-tcc.r, 0.0, 1.0, 0.0);
 		}
@@ -447,8 +447,9 @@
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading2.bmp" ] intoIndex:7 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading3.bmp" ] intoIndex:8 ] &&
 	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading4.bmp" ] intoIndex:9 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Sun.bmp" ] intoIndex:10 ] &&
-	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Moon.bmp" ] intoIndex:11 ] 
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"loading5.bmp" ] intoIndex:10 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Sun.bmp" ] intoIndex:11 ] &&
+	   [ self loadBitmap:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],"Moon.bmp" ] intoIndex:12 ] 
 
 	   
 	   )
@@ -652,7 +653,7 @@
 	// Draw the Sun
 	double p = 2*PI*time/100;
 	
-	glBindTexture( GL_TEXTURE_2D, texture[ 10 ] );
+	glBindTexture( GL_TEXTURE_2D, texture[ 11 ] );
 	glTranslatef(0.0f, 10.0*sin(p), 10.0*cos(p));
 	drawsphere(1, 1.0f);
 	glTranslatef(0.0f, -10.0*sin(p), -10.0*cos(p));
@@ -660,7 +661,7 @@
 	// Draw The Moon
 	double mp = 2*PI*moon/100;
 	
-	glBindTexture( GL_TEXTURE_2D, texture[ 11 ] );
+	glBindTexture( GL_TEXTURE_2D, texture[ 12 ] );
 	glTranslatef(0.0f, 10.0*sin(mp), 10.0*cos(mp));
 	drawsphere(1, .8f);
 	glTranslatef(0.0f, -10.0*sin(mp), -10.0*cos(mp));

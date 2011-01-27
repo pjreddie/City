@@ -47,7 +47,7 @@
 	pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 	
 	viewFullRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
-	viewRect = NSMakeRect(0.0, 0.0, 500, 400);
+	viewRect = NSMakeRect(0.0, 0.0, 800, 600);
 	
 	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
 	//[fullScreenWindow setContentView: glView];
