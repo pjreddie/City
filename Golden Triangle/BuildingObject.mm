@@ -52,6 +52,7 @@
 		vector<int> vv = vector<int>(fv, fv + sizeof(fv)/sizeof(fv[0]));
 		faces.push_back(CityPolygon(vv,dl,sl,el, vertices));
 	}
+	int povn = faces.size();
 	//Add Top
 	double cx = 0.0, cy = 0.0, cz = 0.0;
 
@@ -84,9 +85,9 @@
 	// Add Windows to all building faces except top
 	
 	//use pointeres!!!!
-	ovn = faces.size();
+	//ovn = faces.size();
 	
-	for (int i=startIndexFace; i<ovn; i++) {
+	for (int i=startIndexFace; i<povn; i++) {
 		[self addWindowsToFace:i v:vertices f:faces];
 	}
 	//building = CityPolyObject(vertices, faces);	
