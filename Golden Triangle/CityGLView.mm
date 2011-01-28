@@ -166,7 +166,6 @@
 	
 
 	//glNewList(displayLists[2], GL_COMPILE);
-	glCallList(displayLists[2]);
 
 	// Draw pregenerated objects
 	glTranslated(0.0, -0.9, 0.0);

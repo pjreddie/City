@@ -30,8 +30,8 @@
 	renderTimer = nil;
 	// Set and activate full screen
 	 mainDisplayRect = [[NSScreen mainScreen] frame];
-	//fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
-	//[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
+	fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
+	[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
 	
 	CGAssociateMouseAndMouseCursorPosition(FALSE);
 	CGDisplayHideCursor(NULL);
@@ -50,11 +50,11 @@
 	viewRect = NSMakeRect(0.0, 0.0, 800, 600);
 	
 	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
-	//[fullScreenWindow setContentView: glView];
-	//[fullScreenWindow makeKeyAndOrderFront:self];
+	[fullScreenWindow setContentView: glView];
+	[fullScreenWindow makeKeyAndOrderFront:self];
 	
-	[window setContentView: glView];
-	[window makeKeyAndOrderFront:self];
+	//[window setContentView: glView];
+	//[window makeKeyAndOrderFront:self];
 	
 	[window setAcceptsMouseMovedEvents:YES];
 	

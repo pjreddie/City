@@ -15,7 +15,7 @@
 	
 	int numberOfTiers = [CityMath poisson:0.5]+1;
 
-	double buildingHeight = std::max([CityMath gausian:height deviation:3], (float)MINHEIGHT);
+	double buildingHeight = std::max([CityMath gausian:height deviation:4], (float)MINHEIGHT);
 	double windowSizeX = [CityMath gausian:0.2 deviation:0.05];
 	double windowSizeY = [CityMath gausian:0.2 deviation:0.05];
 	double windowSeparationX = [CityMath gausian:0.1 deviation:0.05];
