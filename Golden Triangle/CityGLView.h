@@ -15,6 +15,12 @@
 #import "Sphere.h"
 #include <stdlib.h>
 
+using namespace std;
+
+// Playback
+#define AUTOPLAYBACK true
+#define DEMO_NAME "demoPath"
+
 #define MAX_DISPLAY_LISTS 128
 #define DMOVE 0.40
 
@@ -66,6 +72,11 @@ struct allignedVertex{
 	double dRotated;
 	double xRotated;
 	int rotateDirection;
+	// Recording
+	bool recording;
+	bool recordingPlaying;
+	int playbackIndex;
+	NSMutableArray * recordedValues;
 	// Fullscreen
 	bool fullscreen;
 	double time;
@@ -89,4 +100,6 @@ struct allignedVertex{
 - (void) addLoadingMessage:(NSString *)message;
 - (void) initializeData;
 - (bool) fullscreen;
+- (void) startRecording;
+- (void) playRecording;
 @end

@@ -190,34 +190,32 @@
 
 - (void) addLoadingMessage:(NSString *)message {
 	NSLog(message);
-
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-		glLoadIdentity();
-		glPushAttrib(GL_ENABLE_BIT);
-		glEnable(GL_TEXTURE_2D);
-		glDisable(GL_DEPTH_TEST);
-		glDisable(GL_LIGHTING);
-		glDisable(GL_BLEND);
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glLoadIdentity();
+	glPushAttrib(GL_ENABLE_BIT);
+	glEnable(GL_TEXTURE_2D);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glDisable(GL_BLEND);
 	
-		// Just in case we set all vertices to white.
-		glColor3f(1,1,1);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		float verticalOffset = 1.50;
-		for(int i=0; i<=numberOfLoadMessages; i++){
-			glBindTexture( GL_TEXTURE_2D, texture[ TEXTURE_LOADING_START+i ] ); 
-			glBegin(GL_POLYGON);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(-9.0f, -6.0f + i*verticalOffset, -15.0f);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f( 2.0f, -6.0f+ i*verticalOffset, -15.0f);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f, -4.0f+ i*verticalOffset, -15.0f);
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(-9.0f, -4.0f+ i*verticalOffset, -15.0f);
-			glEnd();		
-		}
-		glPopAttrib();
-		glEnable(GL_DEPTH_TEST);
+	// Just in case we set all vertices to white.
+	glColor3f(1,1,1);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	float verticalOffset = 1.50;
+	for(int i=0; i<=numberOfLoadMessages; i++){
+		glBindTexture( GL_TEXTURE_2D, texture[ TEXTURE_LOADING_START+i ] ); 
+		glBegin(GL_POLYGON);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-9.0f, -6.0f + i*verticalOffset, -15.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 2.0f, -6.0f+ i*verticalOffset, -15.0f);
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f, -4.0f+ i*verticalOffset, -15.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-9.0f, -4.0f+ i*verticalOffset, -15.0f);
+		glEnd();		
+	}
+	glPopAttrib();
+	glEnable(GL_DEPTH_TEST);
 	
-		[ [ self openGLContext ] flushBuffer ];
-		numberOfLoadMessages++;
-	
+	[ [ self openGLContext ] flushBuffer ];
+	numberOfLoadMessages++;
 }
 
 /*
@@ -227,7 +225,6 @@
 { 	
 	[self reshape:frame];
 	if( ![ self loadGLTextures]){
-		
 		NSLog(@"Error loading textures");
 	}
 	
@@ -253,6 +250,9 @@
 	zTranslate = 0.0;
 	dRotated = 0.0;
 	loadState = 0;
+	playbackIndex = 0;
+	recordingPlaying = false;
+	recording = false;
 	
 }
 
@@ -267,24 +267,43 @@
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 	if(loadState == 2){
+		if (recordingPlaying) {
+			if (playbackIndex = 0) {
+//				recordedValues = [NSKeyedUnarchiver unarchiveObjectWithFile:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],DEMO_NAME ]];
+				recordedValues = [[NSMutableArray alloc] initWithContentsOfFile:[ NSString stringWithFormat:@"%@/%s",[ [ NSBundle mainBundle ] resourcePath ],DEMO_NAME ]];
+			}if (playbackIndex != [recordedValues count]-1) {
+				xTranslate = [[recordedValues objectAtIndex:playbackIndex] doubleValue];
+				NSLog(@"%i %f", playbackIndex, xTranslate);
+				yTranslate = [[recordedValues objectAtIndex:playbackIndex+1] doubleValue];
+				zTranslate = [[recordedValues objectAtIndex:playbackIndex+2] doubleValue];
+				dRotated = [[recordedValues objectAtIndex:playbackIndex+3] doubleValue];
+				xRotated = [[recordedValues objectAtIndex:playbackIndex+4] doubleValue];
+				playbackIndex+=5;
+				NSLog(@"%i", playbackIndex);				
+			}else { // If at the end of the recording, load a different city
+				loadState = 0;
+			}
+		}
 		double t = (3.14159265*dRotated)/180;
 		double s = (3.14159265*xRotated)/180;
-		if(movingLeft == true){
-			zTranslate += DMOVE*-cos(t+3.14159265/2);
-			xTranslate += DMOVE*sin(t+3.14159265/2);
-		}if(movingRight == true){
-			zTranslate += DMOVE*-cos(t-3.14159265/2);
-			xTranslate += DMOVE*sin(t-3.14159265/2);
-		}if(movingUp == true){
-			zTranslate += DMOVE*cos(t)*cos(s);
-			xTranslate += DMOVE*-sin(t)*cos(s);
-			yTranslate += DMOVE*sin(s);
-		}if(movingDown == true){
-			zTranslate += DMOVE*-cos(t)*cos(s);
-			xTranslate += DMOVE*sin(t)*cos(s);
-			yTranslate += DMOVE*-sin(s);
-		}if (rotating) {
-			dRotated += 0.5*rotateDirection;
+		if(!recordingPlaying){
+			if(movingLeft == true){
+				zTranslate += DMOVE*-cos(t+3.14159265/2);
+				xTranslate += DMOVE*sin(t+3.14159265/2);
+			}if(movingRight == true){
+				zTranslate += DMOVE*-cos(t-3.14159265/2);
+				xTranslate += DMOVE*sin(t-3.14159265/2);
+			}if(movingUp == true){
+				zTranslate += DMOVE*cos(t)*cos(s);
+				xTranslate += DMOVE*-sin(t)*cos(s);
+				yTranslate += DMOVE*sin(s);
+			}if(movingDown == true){
+				zTranslate += DMOVE*-cos(t)*cos(s);
+				xTranslate += DMOVE*sin(t)*cos(s);
+				yTranslate += DMOVE*-sin(s);
+			}if (rotating) {
+				dRotated += 0.5*rotateDirection;
+			}
 		}
 				
 		time = fmod(time+.1, 100.);		
@@ -292,9 +311,14 @@
 		
 		glRotated(dRotated, 0.0, 1.0, 0.0);
 		glRotated(xRotated,  cos(t), 0.0, sin(t));
-		glTranslated(xTranslate,yTranslate,zTranslate);		
-		
-
+		glTranslated(xTranslate,yTranslate,zTranslate);
+		if (recording){
+			[recordedValues addObject:[[NSNumber alloc] initWithDouble:xTranslate]];
+			[recordedValues addObject:[[NSNumber alloc] initWithDouble:yTranslate]];
+			[recordedValues addObject:[[NSNumber alloc] initWithDouble:zTranslate]];
+			[recordedValues addObject:[[NSNumber alloc] initWithDouble:dRotated]];
+			[recordedValues addObject:[[NSNumber alloc] initWithDouble:xRotated]];
+		}
 		double p = 2*PI*(time)/100;
 		double mp = 2*PI*(moon)/100;
 			
@@ -692,6 +716,19 @@
 - (void) rotateFromMouse:(float)deltaX deltaY:(float)deltaY {
 	dRotated+=deltaX/6.0;
 	xRotated+=deltaY/6.0;
+}
+
+- (void) startRecording {
+	if (recording) {// Dump recorded path to file
+		[recordedValues writeToFile:[ NSString stringWithFormat:@"%@/%s",[[ NSBundle mainBundle ] resourcePath ],DEMO_NAME ] atomically:YES];
+	}else {
+		recordedValues = [[NSMutableArray alloc] init];
+	}
+	recording = !recording;
+}
+
+- (void) playRecording {	
+	recordingPlaying = !recordingPlaying;
 }
 
 @end

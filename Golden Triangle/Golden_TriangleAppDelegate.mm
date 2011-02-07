@@ -29,10 +29,11 @@
 	
 	renderTimer = nil;
 	// Set and activate full screen
-	 mainDisplayRect = [[NSScreen mainScreen] frame];
-	fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
+	NSRect mainDisplayRect = [[NSScreen mainScreen] frame];
+	NSWindow * fullScreenWindow = [[NSWindow alloc] initWithContentRect:mainDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
 	[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
-	
+	[fullScreenWindow setHidesOnDeactivate:YES];
+
 	CGAssociateMouseAndMouseCursorPosition(FALSE);
 	CGDisplayHideCursor(NULL);
 	
@@ -44,12 +45,12 @@
 		NSOpenGLPFADepthSize, 32,
 		0
 	};
-	pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
+	NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 	
-	viewFullRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
-	viewRect = NSMakeRect(0.0, 0.0, 800, 600);
+	NSRect viewFullRect = NSMakeRect(0.0, 0.0, mainDisplayRect.size.width, mainDisplayRect.size.height);
+	//viewRect = NSMakeRect(0.0, 0.0, 800, 600);
 	
-	glView = [[CityGLView alloc] initWithFrame:viewRect pixelFormat: pixelFormat];
+	glView = [[CityGLView alloc] initWithFrame:viewFullRect pixelFormat: pixelFormat];
 	[fullScreenWindow setContentView: glView];
 	[fullScreenWindow makeKeyAndOrderFront:self];
 	
@@ -113,7 +114,7 @@
 		[glView rotateScene:true direction:-1];
 	}else if(unicodeKey == 'e'){
 		[glView rotateScene:true direction:1];
-	}else if(unicodeKey == 'f'){
+	}/*else if(unicodeKey == 'f'){
 		[window setContentView:nil];
 		[[glView openGLContext] clearDrawable];
 		if(![glView fullscreen]){
@@ -130,6 +131,11 @@
 		}else{
 			NSLog(@"exit fullscreen");
 		}
+	}*/
+	else if(unicodeKey == 'r'){
+		[glView startRecording];
+	}else if(unicodeKey == 'p'){
+		[glView playRecording];
 	}
 }
 

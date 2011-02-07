@@ -10,15 +10,15 @@
 #import "CityGLView.h"
 
 @interface Golden_TriangleAppDelegate : NSResponder {
-    NSWindow *window;
-	NSWindow *fullScreenWindow;
+    //NSWindow *window;
+	//NSWindow *fullScreenWindow;
 
 	NSTimer *renderTimer;
 	CityGLView *glView;
-	NSRect mainDisplayRect;
-	NSRect viewRect;
-	NSRect viewFullRect;
-	NSOpenGLPixelFormat* pixelFormat;
+	//NSRect mainDisplayRect;
+	//NSRect viewRect;
+	//NSRect viewFullRect;
+	//NSOpenGLPixelFormat* pixelFormat;
 }
 
 
